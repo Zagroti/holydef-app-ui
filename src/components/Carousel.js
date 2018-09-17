@@ -4,20 +4,86 @@ import Carousel from "react-native-carousel-control";
 import colors from '../styles/colors';
 import normalize from '../styles/normalizeText';
 
+import img01 from '../assets/img/01.jpg'
+import img02 from '../assets/img/02.jpg'
+import img03 from '../assets/img/03.jpg'
+import img04 from '../assets/img/04.jpg'
+import img05 from '../assets/img/05.jpg'
+import img06 from '../assets/img/06.jpg'
+import img07 from '../assets/img/07.jpg'
+import img08 from '../assets/img/08.jpg'
+import img09 from '../assets/img/09.jpg'
+import img10 from '../assets/img/10.jpg'
+import img11 from '../assets/img/11.jpg'
+import img12 from '../assets/img/12.jpg'
 
 class CarouselComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            sourceFile: img01,
+            currentPage: 1 ,
+
+         }
+    }
+
+
+    handleOnPageChange(position) {
+        //alert(position + 1); 
+        
+            if(position ===0)
+                this.setState({currentPage:position, sourceFile : img01});
+            else if(position ===1)
+                this.setState({currentPage:position, sourceFile : img02});
+            else if(position ===2)
+                this.setState({currentPage:position, sourceFile : img03});
+            else if(position ===3)
+                this.setState({currentPage:position, sourceFile : img04});
+ 
     }
     render() { 
         return ( 
 
-            <View style={{backgroundColor:'#333', width:'100%', height:'100%'}}>
-                <Carousel swipeThreshold={0.1}    pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
+            <ImageBackground source= {this.state.sourceFile} blurRadius={8} style={{ width:'100%', height:'100%', }}>
+                 {this.props.children}
+                <Carousel swipeThreshold={0.1}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
+                    
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/01.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
 
                     <View style={styles.container}>
-                        <ImageBackground source={require('../assets/img/img-01.png')} style={styles.backgroundImage} >
+                        <ImageBackground source={require('../assets/img/02.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/03.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+
+
+                    <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/04.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>سلام بر حسین</Text>
@@ -29,7 +95,7 @@ class CarouselComponent extends Component {
               
 
                 </Carousel>
-            </View>
+            </ImageBackground>
          );
     }
 }
@@ -38,15 +104,15 @@ const styles  = StyleSheet.create({
 
  container:{
      backgroundColor: colors.themeBackground,
-     flex: 1,
-     justifyContent: 'center', 
-     width:'100%'
+     flex: 1, 
+     width:'100%' ,
+
  },
  tocuContainer:{
      backgroundColor: 'transparent', 
      justifyContent: 'flex-end', 
      width: '100%',
-     height: '100%',
+     height: '90%',
      
  },
  backgroundImage: {
@@ -73,4 +139,4 @@ textStyling:{
 }
 });
 
-export default CarouselComponent;
+export default  CarouselComponent;

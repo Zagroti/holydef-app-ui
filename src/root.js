@@ -40,7 +40,7 @@ const defaultNavigationOptions = {
 },
 {
     //  initialRouteName : 'Auth',
-    initialRouteName : 'Carousel',
+    initialRouteName : 'Drawer',
     headerMode: 'none'
 
 }) 

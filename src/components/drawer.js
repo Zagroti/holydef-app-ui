@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { Text, ImageBackground , StyleSheet, View } from 'react-native'
 import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container } from 'native-base'
 import SideBar from './SideBar'
-import Carousel from "react-native-carousel-control";
+import CarouselComponent from './Carousel';
+import LinderUnderMenu from './lineUnderMenu';
+
+
+
 
 export default class AppHeader extends Component {
   constructor(props) {
@@ -28,34 +32,34 @@ export default class AppHeader extends Component {
         content={<SideBar />}
         onClose={() => this.closeDrawer()}
       >
-        <Header style={{ backgroundColor: 'transparent', border:0, borderColor: 'transparent',   }} >
-          <Left>
-            <Button transparent onPress={() => this._search()}>
-                    <Icon name='search' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>HolyDef</Title>
-          </Body>
-          <Right>
-            <Button transparent onPress={() => this.openDrawer()}>
-                    <Icon name='menu' />
-            </Button>
-          </Right>
-        </Header>
+      
 
+        <CarouselComponent>
+          <Header style={{ backgroundColor: 'transparent', border:0, borderColor: 'transparent',   }} >
+            <Left>
+              <Button transparent onPress={() => this._search()}>
+                      <Icon name='search' />
+              </Button>
+            </Left>
+            <Body>
+              <Title>HolyDef</Title>
+            </Body>
+            <Right>
+              <Button transparent onPress={() => this.openDrawer()}>
+                      <Icon name='menu' />
+              </Button>
+            </Right>
+          </Header>
 
+          <LinderUnderMenu />
+
+          
+        </CarouselComponent>
 
 
       </Drawer>
 
-        <Container>
-            <Carousel>
-                <Text>Hello</Text>
-                <Text>World!</Text>
-                <Text>From carousel</Text>
-            </Carousel>
-        </Container>
+     
 
       </ImageBackground>
     )
