@@ -30,7 +30,8 @@ class CarouselComponent extends Component {
 
     handleOnPageChange(position) {
         //alert(position + 1); 
-        
+        this.setState({currentPage:position});
+
             if(position ===0)
                 this.setState({currentPage:position, sourceFile : img01});
             else if(position ===1)
@@ -44,7 +45,7 @@ class CarouselComponent extends Component {
     render() { 
         return ( 
 
-            <ImageBackground source= {this.state.sourceFile} blurRadius={8} style={{ width:'100%', height:'100%', }}>
+            <ImageBackground source= {this.state.sourceFile} blurRadius={4} style={{ width:'100%', height:'100%', }}>
                  {this.props.children}
                 <Carousel swipeThreshold={0.1}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
                     
@@ -118,7 +119,9 @@ const styles  = StyleSheet.create({
  backgroundImage: {
     width: '100%',
     height: '100%',
-    flex:1,
+    flex:1, 
+    borderWidth: 3  ,
+    borderColor: '#fff',
 
 },
 viewTextContainer:{
