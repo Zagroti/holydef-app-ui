@@ -8,6 +8,7 @@ import colors from './styles/colors';
 import MainScreen from './components/main';
 import TestScreen from './components/test';
 import DrawerScreen from './components/drawer';
+import CarouselScreen  from './components/Carousel';
 
 
 
@@ -32,14 +33,14 @@ const defaultNavigationOptions = {
   const RootStack = createStackNavigator({
 
     Main : {screen : MainScreen},
-
     Test : {screen : TestScreen},
     Drawer : {screen : DrawerScreen},
+    Carousel : {screen : CarouselScreen},
 
 },
 {
     //  initialRouteName : 'Auth',
-    initialRouteName : 'Drawer',
+    initialRouteName : 'Carousel',
     headerMode: 'none'
 
 }) 

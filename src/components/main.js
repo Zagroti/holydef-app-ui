@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text } from 'react-native';
-import {drawer} from './drawer';
+import {View, Text } from 'react-native'; 
 
 class Main extends Component {
     constructor(props) {
@@ -10,8 +9,8 @@ class Main extends Component {
     render() { 
         return ( 
 
-            <View>
-              <drawer />
+            <View> 
+                
             </View>
          );
     }

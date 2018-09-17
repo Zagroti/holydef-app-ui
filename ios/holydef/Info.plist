@@ -72,6 +72,19 @@
 		<string>FontAwesome5_Brands.ttf</string>
 		<string>FontAwesome5_Regular.ttf</string>
 		<string>FontAwesome5_Solid.ttf</string>
+		<string>Inter-UI-Black.ttf</string>
+		<string>Inter-UI-BlackItalic.ttf</string>
+		<string>Inter-UI-Bold.ttf</string>
+		<string>Inter-UI-BoldItalic.ttf</string>
+		<string>Inter-UI-Italic.ttf</string>
+		<string>Inter-UI-Medium.ttf</string>
+		<string>Inter-UI-MediumItalic.ttf</string>
+		<string>Inter-UI-Regular.ttf</string>
+		<string>IRANSans_Bold.ttf</string>
+		<string>IRANSans_Light.ttf</string>
+		<string>IRANSans_Medium.ttf</string>
+		<string>IRANSans_UltraLight.ttf</string>
+		<string>IRANSans.ttf</string>
 	</array>
 </dict>
 </plist>
