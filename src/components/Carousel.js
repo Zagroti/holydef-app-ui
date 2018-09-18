@@ -21,6 +21,9 @@ import img11 from '../assets/img/11.jpg'
 import img12 from '../assets/img/12.jpg'
 //---------------------------------------------
 
+
+ 
+
 class CarouselComponent extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +32,11 @@ class CarouselComponent extends Component {
             currentPage: 0 ,
 
          }
+    }
+
+    navigateToData = () =>  {
+        this.props.navigation.navigate('Data');
+
     }
 
     // --- Get image when i swipe image ---
@@ -53,7 +61,7 @@ class CarouselComponent extends Component {
                     
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/01.jpg')} style={styles.backgroundImage} >
-                            <TouchableOpacity style={styles.tocuContainer}>
+                            <TouchableOpacity onPress={this.navigateToData} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>سلام بر حسین</Text>
                                 </View>

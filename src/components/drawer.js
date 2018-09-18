@@ -36,7 +36,7 @@ export default class AppHeader extends Component {
       >
       
 
-        <CarouselComponent>
+        <CarouselComponent navigation={this.props.navigation} >
           <Header style={styles.headerStyling} >
             <Left style={{flex:1}}>
               <Button transparent onPress={() => this._search()}>

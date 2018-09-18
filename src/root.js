@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator  } from 'react-navigation';
+import { StackNavigator  } from 'react-navigation';
 import { Platform } from 'react-native';
 import colors from './styles/colors';
 
@@ -9,6 +9,7 @@ import MainScreen from './components/main';
 import TestScreen from './components/test';
 import DrawerScreen from './components/drawer';
 import CarouselScreen  from './components/Carousel';
+import DataScreen  from './components/data';
 
 
 
@@ -30,17 +31,18 @@ const defaultNavigationOptions = {
 
   
 
-  const RootStack = createStackNavigator({
+  const RootStack = StackNavigator({
 
     Main : {screen : MainScreen},
     Test : {screen : TestScreen},
     Drawer : {screen : DrawerScreen},
     Carousel : {screen : CarouselScreen},
+    Data : {screen : DataScreen},
 
 },
 {
     //  initialRouteName : 'Auth',
-    initialRouteName : 'Drawer',
+    initialRouteName : 'Main',
     headerMode: 'none'
 
 }) 
