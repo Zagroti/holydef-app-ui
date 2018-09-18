@@ -1,9 +1,12 @@
 import React , {Component} from 'react';
 import { View, Text , TouchableOpacity, StyleSheet , ImageBackground, Platform} from 'react-native';
 import Carousel from "react-native-carousel-control";
+// --- styling of components --- --- --- ---
 import colors from '../styles/colors';
 import normalize from '../styles/normalizeText';
 
+
+// ---------- background images --------------
 import img01 from '../assets/img/01.jpg'
 import img02 from '../assets/img/02.jpg'
 import img03 from '../assets/img/03.jpg'
@@ -16,32 +19,31 @@ import img09 from '../assets/img/09.jpg'
 import img10 from '../assets/img/10.jpg'
 import img11 from '../assets/img/11.jpg'
 import img12 from '../assets/img/12.jpg'
+//---------------------------------------------
 
 class CarouselComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
             sourceFile: img01,
-            currentPage: 1 ,
+            currentPage: 0 ,
 
          }
     }
 
-
+    // --- Get image when i swipe image ---
     handleOnPageChange(position) {
-        //alert(position + 1); 
-        this.setState({currentPage:position});
-
-            if(position ===0)
-                this.setState({currentPage:position, sourceFile : img01});
+   
+                 if(position ===0)
+                    this.setState({currentPage:position, sourceFile : img01});
             else if(position ===1)
-                this.setState({currentPage:position, sourceFile : img02});
+                    this.setState({currentPage:position, sourceFile : img02});
             else if(position ===2)
-                this.setState({currentPage:position, sourceFile : img03});
+                    this.setState({currentPage:position, sourceFile : img03});
             else if(position ===3)
-                this.setState({currentPage:position, sourceFile : img04});
- 
+                    this.setState({currentPage:position, sourceFile : img04});
     }
+
     render() { 
         return ( 
 

@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Text, ImageBackground , StyleSheet, View } from 'react-native'
+import { Text, ImageBackground , StyleSheet, Platform } from 'react-native'
 import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container } from 'native-base'
 import SideBar from './SideBar'
 import CarouselComponent from './Carousel';
 import LinderUnderMenu from './lineUnderMenu';
+import normalize from '../styles/normalizeText';
+
 
 
 
@@ -35,16 +37,18 @@ export default class AppHeader extends Component {
       
 
         <CarouselComponent>
-          <Header style={{ backgroundColor: 'transparent', border:0, borderColor: 'transparent',   }} >
-            <Left>
+          <Header style={styles.headerStyling} >
+            <Left style={{flex:1}}>
               <Button transparent onPress={() => this._search()}>
                       <Icon name='search' />
               </Button>
             </Left>
-            <Body>
-              <Title>HolyDef</Title>
+            <Body style={{flex:1}}>
+              <Button transparent  >
+                  <Title style={styles.titleStyle} >دفاع مقدس</Title>
+              </Button>
             </Body>
-            <Right>
+            <Right style={{flex:1}}>
               <Button transparent onPress={() => this.openDrawer()}>
                       <Icon name='menu' />
               </Button>
@@ -72,6 +76,18 @@ const styles = StyleSheet.create({
       height: '100%', 
       flex:1,
 
+  },
+
+  headerStyling:{
+    backgroundColor: 'transparent',
+    shadowOffset: {height: 0, width: 0}, 
+    shadowOpacity: 0,
+    elevation: 0, 
+    borderColor: 'transparent',
+  },
+  titleStyle:{
+    fontFamily: 'IRANSans',
+    fontSize: Platform.OS === 'ios' ? normalize(18) : normalize(20), 
   },
 })
 
