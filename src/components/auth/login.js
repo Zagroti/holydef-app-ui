@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text , StyleSheet, ImageBackground } from 'react-native';
 
+import Logo from './logo';
+
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -10,7 +13,12 @@ class Login extends Component {
         return ( 
 
             <ImageBackground source={require('../../assets/img/login.png')} style={ styles.backgroundImage } >
-                <Text> Login page is OK</Text>
+
+                    <Logo />
+                    <View >
+
+                    </View>
+               
             </ImageBackground>
          );
     }
@@ -20,6 +28,7 @@ class Login extends Component {
 const styles = StyleSheet.create({
     container:{
         padding: 20,
+          
 
     },
     backgroundImage: {
