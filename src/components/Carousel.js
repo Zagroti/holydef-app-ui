@@ -34,8 +34,9 @@ class CarouselComponent extends Component {
          }
     }
 
-    navigateToData = () =>  {
-        this.props.navigation.navigate('Data');
+    navigateToData = (www) => { 
+       console.log(www);
+        this.props.navigation.navigate('Data', {DataId: www});
 
     }
 
@@ -55,13 +56,13 @@ class CarouselComponent extends Component {
     render() { 
         return ( 
 
-            <ImageBackground source= {this.state.sourceFile} blurRadius={4} style={{ width:'100%', height:'100%', }}>
+            <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%', }}>
                  {this.props.children}
                 <Carousel swipeThreshold={0.1}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
                     
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/01.jpg')} style={styles.backgroundImage} >
-                            <TouchableOpacity onPress={this.navigateToData} style={styles.tocuContainer}>
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'02')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>سلام بر حسین</Text>
                                 </View>

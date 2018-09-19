@@ -10,6 +10,7 @@ import TestScreen from './components/test';
 import DrawerScreen from './components/drawer';
 import CarouselScreen  from './components/Carousel';
 import DataScreen  from './components/data';
+import LoginScreen  from './components/auth/login';
 
 
 
@@ -33,16 +34,19 @@ const defaultNavigationOptions = {
 
   const RootStack = StackNavigator({
 
+    Login : { screen : LoginScreen},
+
     Main : {screen : MainScreen},
-    Test : {screen : TestScreen},
-    Drawer : {screen : DrawerScreen},
     Carousel : {screen : CarouselScreen},
     Data : {screen : DataScreen},
+
+    Test : {screen : TestScreen},
+    Drawer : {screen : DrawerScreen},
 
 },
 {
     //  initialRouteName : 'Auth',
-    initialRouteName : 'Main',
+    initialRouteName : 'Login',
     headerMode: 'none'
 
 }) 

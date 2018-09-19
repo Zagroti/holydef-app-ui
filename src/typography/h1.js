@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     color: colors.default,
     fontFamily: 'IRANSans', 
     marginBottom: 5, 
+    textAlign: 'right', 
   },
 })
 
