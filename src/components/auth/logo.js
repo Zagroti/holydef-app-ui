@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text , StyleSheet, Image } from 'react-native';
 
+
 class Logo extends Component {
     constructor(props) {
         super(props);
@@ -11,8 +12,9 @@ class Logo extends Component {
 
             <View>
                 <View style={styles.logoContainer}>
-                <Image source={require('../../assets/img/logo.png')}  style={{width: 250, height: 250}} />
+                    <Image source={require('../../assets/img/logo.png')}  style={{width: 250, height: 250}} />
                 </View>
+
             </View>
          );
     }
@@ -26,8 +28,7 @@ const styles = StyleSheet.create({
     },
     backgroundImage: {
         width: '100%',
-        height: '100%', 
-        flex:1,
+        height: '100%',     
   
     },
 
@@ -37,9 +38,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'red',
         alignSelf: 'center',
         justifyContent: 'center',
-        top:100,
-
-
     }
 
 });
