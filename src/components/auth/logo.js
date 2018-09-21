@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text , StyleSheet } from 'react-native';
+import { View, Text , StyleSheet, Image } from 'react-native';
 
 class Logo extends Component {
     constructor(props) {
@@ -10,7 +10,9 @@ class Logo extends Component {
         return ( 
 
             <View>
-                <View style={styles.logoContainer}></View>
+                <View style={styles.logoContainer}>
+                <Image source={require('../../assets/img/logo.png')}  style={{width: 250, height: 250}} />
+                </View>
             </View>
          );
     }
