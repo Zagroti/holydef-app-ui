@@ -5,10 +5,11 @@ const palegrey = '#EEE'
 const white = '#FFF'
 const green = '#3ceaaa'
 const gold = '#ffd700'
-const silver = '#f2f2f2'
+const silver = '#ccc'
 const bronze = '#cd7f32'
 const red = '#96201E'
 const blue = '#2874a6'
+const darkBlue = '#21618C'
 const buttonBlue = '#5fb8e6'
 
 const brand = '#6259b2'
@@ -44,6 +45,7 @@ export default {
   bronze,
   red,
   blue,
+  darkBlue,
   buttonBlue,
   black,
 

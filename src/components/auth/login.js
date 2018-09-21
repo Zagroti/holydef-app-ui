@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { View , StyleSheet, ImageBackground, TextInput , TouchableOpacity, Text} from 'react-native';
+import { View , StyleSheet, ImageBackground , TouchableOpacity, Text , Platform, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
+import { Icon } from 'native-base';
 import colors from '../../styles/colors';
+import normalize from '../../styles/normalizeText';
+import TextGroup from '../textgroup/text-field-group';
 
-import Logo from './logo';
+
+ import Logo from './logo';
 
 
 class Login extends Component {
@@ -10,52 +14,97 @@ class Login extends Component {
         super(props);
         this.state = {  }
     }
-    render() { 
-        return ( 
 
-            <ImageBackground source={require('../../assets/img/login.png')} style={ styles.backgroundImage } >
+
+    onPressSending = async () => {
+        this.setState({ isLoading: true })
+
+    }
+    render() { 
+
+        const { errors, isLoading } = this.state
+
+
+        return ( 
+            <KeyboardAvoidingView
+            style={styles.container}
+            behavior="padding"
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}
+          >
+
+            <ImageBackground source={require('../../assets/img/main-bg.jpg')} style={ styles.backgroundImage } >
 
                  
-                <View style={styles.container}>
+                <View style={styles.containerForm}>
                
                     <View style={styles.formControler}>
                         <Logo />
                     </View>
 
                     <View style={styles.formControler}>
-                        <TextInput>لطفا جهت ورود به برنامه شماره همراه خود را وارد نماپید.</TextInput>
+                        <Text styl={styles.txtTitle}>لطفا جهت ورود به برنامه شماره همراه خود را وارد نماپید.</Text>
                   
                     </View>
 
                     <View style={styles.formControler}>
-                        <TextInput>wewewe</TextInput>
-                        <TextInput>wewewe</TextInput>
-                        <TextInput>wewewe</TextInput>
-                        <TextInput>wewewe</TextInput>
-                        <TextInput>wewewe</TextInput>
-                        <TextInput>wewewe</TextInput>
+                      
+                      <View style={styles.txtContainer}>  
+                        <TextGroup 
+                                        label="تلفن همراه"
+                                        placeholder="+98 912 345 6789"
+                                        keyboardType='numeric'
+                                         />
+                                        
+                      </View>
+                      
                     </View>
 
                     <View style={styles.formControler}>
-                        <TouchableOpacity style={styles.btnContainer}>
-                            <Text style={styles.btnText}>Login</Text>
+                        <TouchableOpacity style={styles.btnContainer}  onPress={this.onPressSending} >
+
+                                       
+                                                {isLoading ? (
+
+                                                    <View style={styles.loadingBox}>
+                                                        <ActivityIndicator color="white" />
+                                                    </View>
+
+                                                ) : (
+                                                    <View style={styles.loadingBox}>
+                                                        <Icon name='arrow-back' />
+                                                    </View>
+                                                )}
+
+                                                 <Text style={styles.btnText}>ورود</Text>
+                                              
+
+
+                           
                         </TouchableOpacity>
                     </View>
                 </View>
                 
                
             </ImageBackground>
+            </KeyboardAvoidingView>
          );
     }
 }
 
 
 const styles = StyleSheet.create({
-    container:{
-        padding: 20,
-        flex:1
-          
+    container:{ 
+        flex:1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+         
 
+    },
+    containerForm:{
+        flex:1,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding:20,
     },
     backgroundImage: {
         width: '100%',
@@ -64,21 +113,62 @@ const styles = StyleSheet.create({
         backgroundColor:colors.gold,
   
     },
-    formControler:{
-        backgroundColor: colors.red,
-        padding:10, 
+    formControler:{ 
+        padding:10,
+        alignSelf: 'center',
+        alignItems: 'center', 
     },
     btnContainer:{ 
+        flexDirection: 'row',
         backgroundColor: colors.blue,
         height:60,
+        width:400,
         borderRadius: 50,
         justifyContent: 'center',
     },
     btnText:{
+        flex:2,
         textAlign: 'center',
         alignSelf: 'center',
+        fontFamily: 'IRANSans',
+        fontSize: normalize(20),
 
-    }
+    },
+    txtTitle:{
+        textAlign:'center',
+        fontFamily: 'IRANSans',
+        fontSize: normalize(20),
+    },
+    txtContainer:{
+        borderRadius:10,
+        borderWidth: 3,
+        borderColor: colors.silver,
+        paddingHorizontal: 30,
+        paddingBottom: 10,
+        width:300,
+      
+
+    },
+
+    buttonLogin: {
+        height:60,
+        backgroundColor: colors.white,
+        borderRadius: 30,
+        justifyContent: 'center',
+        alignItems: 'center',
+       
+
+      },
+      loadingBox:{
+          
+          width:60,
+          height:60,
+          backgroundColor : colors.darkBlue,
+          borderRadius:100,
+          justifyContent: 'center',
+          alignItems: 'center',
+
+      }
 
 });
  
