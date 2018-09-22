@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View , StyleSheet, ImageBackground , TouchableOpacity, Text , Platform,TextInput, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
 import { Icon } from 'native-base';
+import UserAgent from 'react-native-user-agent';
+
 import colors from '../../styles/colors';
 import normalize from '../../styles/normalizeText';
 import TextGroup from '../textgroup/text-field-group';
@@ -12,12 +14,53 @@ import TextGroup from '../textgroup/text-field-group';
 class Activity extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { Activekey:'' }
     }
 
 
     onPressSending = async () => {
+        // get Mobile number from login page in navigate
+        const {navigation} = this.props;
+        let MOBILE =  navigation.getParam('phoneNumber', 'It is Null');
+        let AGENT = UserAgent.getUserAgent();
+
+        console.log(MOBILE + this.state.Activekey + "agent: " + AGENT);
+
         this.setState({ isLoading: true })
+
+        const formdata = new FormData();
+        formdata.append('mobile', MOBILE, 'code', this.state.Activekey, );
+
+        try {
+        const data = {
+                    method: 'POST',
+                    headers: { 
+                    
+                    "agent": AGENT,
+                    "Accept":"application/json",
+                    "uuid":"uuid",
+                    },
+                    
+                    body: formdata
+                }
+
+            let response = await fetch('http://api.holydef.ir/api/v1/auth/otp/verify', data);
+            let responseJson = await response.json();
+                // TODO check later and clear any consol log
+                console.log(data)
+                console.log(responseJson) 
+                console.log(responseJson.error) 
+                this.setState({ isLoading: false,  errors: responseJson.error  })
+                
+                if(responseJson.error === undefined ){
+                    this.props.navigation.navigate('Activity');
+                }
+
+            } catch(error) {
+                console.error(error);
+            }
+
+
 
     }
     render() { 
@@ -56,6 +99,7 @@ class Activity extends Component {
                                             keyboardType='numeric'
                                             style={{ borderBottomWidth: 0,fontSize:30, textAlign:'center', letterSpacing: 10 }}
                                             maxLength={4}
+                                            onChangeText={(Activekey) => this.setState({Activekey})}
                                              />
                                         
                       </View>

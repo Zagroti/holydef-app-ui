@@ -18,15 +18,7 @@ class Login extends Component {
 
     onPressSending = async () => {
         this.setState({ isLoading: true })
-        console.log(this.state.mobile)
-        this.getAuth();
-       // this.props.navigation.navigate('Activity');
-       // this.setState({ isLoading: false })
 
-    }
-
-
-    getAuth =  async () => {
         const formdata = new FormData();
         formdata.append('mobile', this.state.mobile);
 
@@ -50,14 +42,19 @@ class Login extends Component {
                 this.setState({ isLoading: false,  errors: responseJson.error  })
                 
                 if(responseJson.error === undefined ){
-                    this.props.navigation.navigate('Activity');
+                    this.props.navigation.navigate('Activity', { phoneNumber: this.state.mobile});
                 }
 
             } catch(error) {
                 console.error(error);
-        
             }
-        }
+
+       // this.props.navigation.navigate('Activity');
+       // this.setState({ isLoading: false })
+
+    }
+
+ 
 
 
 
