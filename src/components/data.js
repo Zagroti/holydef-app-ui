@@ -63,24 +63,6 @@ class Data extends Component {
 //         console.log(this.state.imageFile + " State is this ");
 //     }
 
-
- 
-
-    renderItem = ({item})=>{
-
-        const htmlContent = `<p><a href="http://jsdf.co">&hearts; nice job!</a></p>`;
-
-        return(               
-                    <HTMLView
-                      value={htmlContent}
-                      stylesheet={styles}
-                    />
-
-
-
-         
-        )
-         }
    
          componentDidMount(){
             this.setState({ isLoading: true })

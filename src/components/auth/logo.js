@@ -13,7 +13,7 @@ class Logo extends Component {
             <View>
                 <View style={styles.logoContainer}>
                     <Image source={require('../../assets/img/logotype.png')}  style={{width: 200, height: 100,  resizeMode: 'contain', alignItems:'center'}} />
-                    <Image source={require('../../assets/img/logo.png')}  style={{width: 200, height: 200}} />
+                    <Image source={require('../../assets/img/logo.png')}  style={{width: 140, height: 140, alignSelf:'center'}} />
                 </View>
 
             </View>

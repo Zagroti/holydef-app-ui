@@ -53,8 +53,8 @@ const defaultNavigationOptions = {
 
 },
 {
-    initialRouteName : 'Login',
-    //initialRouteName : 'Main',
+    // initialRouteName : 'Login',
+    initialRouteName : 'Main',
     headerMode: 'none'
 
 }) 

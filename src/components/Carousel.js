@@ -75,14 +75,14 @@ class CarouselComponent extends Component {
 
             <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%', }}>
                  {this.props.children}
-                <Carousel swipeThreshold={0.1}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
+                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
                      
                      {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/01.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'1')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                    <Text style={styles.textStyling}>تاریخ دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -93,7 +93,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/02.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'2')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                    <Text style={styles.textStyling}>عملیات ها</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -104,7 +104,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/03.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'3')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>سرداران دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -115,7 +115,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/04.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'4')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>ستاد مشترک دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -126,7 +126,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/05.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'5')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>دفاع مقدس در آیینه هنر</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -137,7 +137,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/06.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'6')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>دستاوردهای دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -148,7 +148,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/07.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'7')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>ناگفته های دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -159,7 +159,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/08.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'8')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>جغرافیا دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -170,7 +170,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/09.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'9')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>نقش مردم در دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -181,7 +181,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/10.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'10')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>بانک مقالات و پایان نامه ها</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -192,7 +192,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/11.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'11')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>آزادگان و جانبازان</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -203,7 +203,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/12.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'12')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                <Text style={styles.textStyling}>گاه شمار دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -224,24 +224,24 @@ class CarouselComponent extends Component {
 const styles  = StyleSheet.create({
 
  container:{
-     backgroundColor: colors.themeBackground,
-     flex: 1, 
-     width:'100%' ,
+     backgroundColor: 'transparent',
+     width:'90%',
+     height:'80%',
+     alignSelf: 'center',
+     borderWidth: 10  ,
+     borderColor: '#fff',
 
  },
  tocuContainer:{
      backgroundColor: 'transparent', 
      justifyContent: 'flex-end', 
      width: '100%',
-     height: '90%',
+     height: '100%',
      
  },
  backgroundImage: {
     width: '100%',
-    height: '100%',
-    flex:1, 
-    borderWidth: 3  ,
-    borderColor: '#fff',
+    height: '100%',  
 
 },
 viewTextContainer:{

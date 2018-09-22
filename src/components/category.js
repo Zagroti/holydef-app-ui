@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet , Platform, TouchableOpacity,FlatList, Image, ImageBackground,  } from 'react-native';
+import { View , Text, StyleSheet , ActivityIndicator, TouchableOpacity,FlatList, Image, ImageBackground,  } from 'react-native';
 import Button from './touchable/button';
 //
 //
@@ -77,7 +77,6 @@ class category extends Component {
             
                 <TouchableOpacity onPress={ () => this._openViewPage(item.id, item.cat_id)} style={styles.boxContainer}>
                     <View style={styles.BoxLeft}>
-                      
                            <H1>{item.title}</H1>
                            <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>{item.short_description}</H2>
                     </View>
@@ -91,6 +90,7 @@ class category extends Component {
          }
    
          componentDidMount(){
+            this.setState({ isLoading: true })
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
 
@@ -100,7 +100,9 @@ class category extends Component {
              .then((response) => response.json())
              .then((responseJson) => {
                    this.setState({dataSource: responseJson.data});
-                   console.log(responseJson.data);
+                   //console.log(responseJson.data);
+                   this.setState({ isLoading: false })
+
              })
              .catch((error) => {
                    console.log(error);
@@ -122,29 +124,30 @@ class category extends Component {
 
                 <LinderUnderMenu />
 
-            <View style={styles.dataContainer}>
+                <View style={styles.dataContainer}>
 
-                {/* <View style={styles.boxContainer}>
-                    <View style={styles.BoxLeft}>
-                      
-                           <H1>Title of Text</H1>
-                           <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>I found that because i was using a full width button I found that because i was using a full width button</H2>
+                {isLoading ? (
+
+                    <View style={styles.loadingBox}>
+                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
+                        <ActivityIndicator color="white" />
+                    
                     </View>
-                    <View style={styles.boxRight}>
-                        <Image source={require('../assets/img/tm.jpg')} style={{width: 100, height: 100}} />
-                    </View>
-                </View> */}
 
-                <FlatList
-                        data= {this.state.dataSource}
-                        renderItem={this.renderItem}
-                        />
+                    ) : (
+                        <FlatList
+                            data= {this.state.dataSource}
+                            renderItem={this.renderItem} 
+                            keyExtractor={(item, index) => index}
+                            />
 
-            </View>
+                    )}
+
+
+
+
+                </View>
       
-
-
-       
             </ImageBackground>
          );
     }
@@ -169,8 +172,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white, 
         marginBottom: 20,
 
-
-
     },
     BoxLeft:{ 
         flex:1,
@@ -192,15 +193,17 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         borderRadius: 2,
       },
-      name: {
-        fontFamily: 'Verdana',
-        fontSize: 18
-
-      },
-      email: {
-        color: 'red'
-      }
-    
+      loadingBox:{
+        flexDirection: 'row',
+        width:200,
+        height:60,
+        backgroundColor : colors.silver,
+        borderRadius:100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        paddingHorizontal: 20,
+    }
 
 })
  

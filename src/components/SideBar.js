@@ -16,33 +16,43 @@ export default class SideBar extends Component {
 
                             </View>
                       </ImageBackground>
+
                       <TouchableOpacity style={styles.buttonContainer}>
                             <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>درباره ما</Text>
+                                <Text style={styles.textContainer}>wwww</Text>
                                 <Icon name='heart' style={{color:colors.themeBackground}} />
                             </View>
                       </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.buttonContainer}>
+                                       <TouchableOpacity style={styles.buttonContainer}>
                             <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>درباره ما</Text>
+                                <Text style={styles.textContainer}>wwww</Text>
                                 <Icon name='heart' style={{color:colors.themeBackground}} />
                             </View>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.buttonContainer}>
+                                       <TouchableOpacity style={styles.buttonContainer}>
                             <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>درباره ما</Text>
+                                <Text style={styles.textContainer}>wwww</Text>
                                 <Icon name='heart' style={{color:colors.themeBackground}} />
                             </View>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.buttonContainer}>
+
+                                       <TouchableOpacity style={styles.buttonContainer}>
                             <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>درباره ما</Text>
+                                <Text style={styles.textContainer}>wwww</Text>
                                 <Icon name='heart' style={{color:colors.themeBackground}} />
                             </View>
-                    </TouchableOpacity>
+                      </TouchableOpacity>
+
+                                       <TouchableOpacity style={styles.buttonContainer}>
+                            <View style={styles.itemsContainer}>
+                                <Text style={styles.textContainer}>wwww</Text>
+                                <Icon name='heart' style={{color:colors.themeBackground}} />
+                            </View>
+                      </TouchableOpacity>
+
           
                      
 
