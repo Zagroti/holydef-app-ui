@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View , StyleSheet, ImageBackground , TouchableOpacity, Text , Platform,TextInput, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
 import { Icon } from 'native-base';
-import UserAgent from 'react-native-user-agent';
+import UserAgent from 'react-native-user-agent'; 
+import uuid from 'react-native-uuid';
 
 import colors from '../../styles/colors';
 import normalize from '../../styles/normalizeText';
@@ -23,8 +24,11 @@ class Activity extends Component {
         const {navigation} = this.props;
         let MOBILE =  navigation.getParam('phoneNumber', 'It is Null');
         let AGENT = UserAgent.getUserAgent();
+        let UUID = uuid.v1();
+         
+        console.log(UUID);
 
-        console.log(MOBILE + this.state.Activekey + "agent: " + AGENT);
+        console.log(MOBILE + this.state.Activekey + "Agent Aras: " + AGENT + "UUID: " + UUID);
 
         this.setState({ isLoading: true })
 
@@ -38,7 +42,7 @@ class Activity extends Component {
                     
                     "agent": AGENT,
                     "Accept":"application/json",
-                    "uuid":"uuid",
+                    "uuid": UUID,
                     },
                     
                     body: formdata
