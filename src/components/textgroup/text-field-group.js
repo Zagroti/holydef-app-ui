@@ -31,7 +31,7 @@ const TextFieldGroup = (
     label,
     value,
     placeholder,
-    keyboard,
+    keyboardType,
     onChangeText,
     onChange,
     error,
@@ -51,7 +51,7 @@ const TextFieldGroup = (
       style={[styles.inputBox, !value && styles.empty, style, { fontSize }]}
       value={value}
       placeholder={placeholder}
-      keyboardType={keyboard}
+      keyboardType={keyboardType}
       placeholderTextColor="rgba(35, 36, 42, 0.3)"
       onChangeText={onChangeText}
       onChange={onChange}

@@ -5,12 +5,17 @@ import colors from './styles/colors';
 
 
 
+import LoginScreen  from './components/auth/login';
+import ActivityScreen  from './components/auth/activity';
+
 import MainScreen from './components/main';
-import TestScreen from './components/test';
-import DrawerScreen from './components/drawer';
 import CarouselScreen  from './components/Carousel';
 import DataScreen  from './components/data';
-import LoginScreen  from './components/auth/login';
+
+import TestScreen from './components/test';
+import DrawerScreen from './components/drawer';
+
+
 
 
 
@@ -35,6 +40,7 @@ const defaultNavigationOptions = {
   const RootStack = StackNavigator({
 
     Login : { screen : LoginScreen},
+    Activity : { screen : ActivityScreen},
 
     Main : {screen : MainScreen},
     Carousel : {screen : CarouselScreen},

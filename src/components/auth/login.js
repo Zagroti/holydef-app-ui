@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , StyleSheet, ImageBackground , TouchableOpacity, Text , Platform, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
+import { View , StyleSheet, ImageBackground ,TextInput, TouchableOpacity, Text , Platform, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
 import { Icon } from 'native-base';
 import colors from '../../styles/colors';
 import normalize from '../../styles/normalizeText';
@@ -12,14 +12,55 @@ import TextGroup from '../textgroup/text-field-group';
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { mobile : '' }
     }
 
 
     onPressSending = async () => {
         this.setState({ isLoading: true })
+        console.log(this.state.mobile)
+        this.getAuth();
+       // this.props.navigation.navigate('Activity');
+       // this.setState({ isLoading: false })
 
     }
+
+
+    getAuth =  async () => {
+        const formdata = new FormData();
+        formdata.append('mobile', this.state.mobile);
+
+        try {
+        const data = {
+                    method: 'POST',
+                    headers: {
+                    "X-Debug": 1,
+                    "Accept":"application/json",
+                    },
+                    
+                    body: formdata
+                }
+
+            let response = await fetch('http://api.holydef.ir/api/v1/auth/otp/sms', data);
+            let responseJson = await response.json();
+                // TODO check later and clear any consol log
+                console.log(data)
+                console.log(responseJson) 
+                console.log(responseJson.error) 
+                this.setState({ isLoading: false,  errors: responseJson.error  })
+                
+                if(responseJson.error === undefined ){
+                    this.props.navigation.navigate('Activity');
+                }
+
+            } catch(error) {
+                console.error(error);
+        
+            }
+        }
+
+
+
     render() { 
 
         const { errors, isLoading } = this.state
@@ -49,13 +90,15 @@ class Login extends Component {
                     <View style={styles.formControler}>
                       
                       <View style={styles.txtContainer}>  
-                        <TextGroup 
-                                        label="تلفن همراه"
-                                        placeholder="+98 912 345 6789"
-                                        keyboardType='numeric'
-                                         />
+                                        <TextInput
+                                            placeholder="شماره همراه"
+                                            style={{ fontFamily: 'IRANSans', borderBottomWidth: 0,fontSize:18, textAlign:'center', letterSpacing: 10 }}
+                                            maxLength={11}
+                                            onChangeText={(mobile) => this.setState({mobile})}
+                                             />
                                         
                       </View>
+                      <Text>{errors}</Text>
                       
                     </View>
 
