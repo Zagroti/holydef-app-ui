@@ -4,7 +4,9 @@ holydef.ir
 
 # React Native UUID
 
-```   npm install react-native-uuid --save
+```  
+ npm install react-native-uuid --save
+ 
 ```
 
 ```
@@ -16,7 +18,9 @@ let testUUID = uuid.v1();
 
 
 
-``` npm install buffer --save
+``` 
+npm install buffer --save
+
 ```
 
 
