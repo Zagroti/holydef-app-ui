@@ -52,7 +52,7 @@ const defaultNavigationOptions = {
 },
 {
     //  initialRouteName : 'Auth',
-    initialRouteName : 'Login',
+    initialRouteName : 'Data',
     headerMode: 'none'
 
 }) 

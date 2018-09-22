@@ -33,7 +33,7 @@ class Activity extends Component {
         this.setState({ isLoading: true })
 
         const formdata = new FormData();
-        formdata.append('mobile', MOBILE, 'code', this.state.Activekey, );
+        formdata.append('mobile', MOBILE, 'code', this.state.Activekey );
 
         try {
         const data = {

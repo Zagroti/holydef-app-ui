@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet , Platform, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View , Text, StyleSheet , Platform, TouchableOpacity,FlatList, Image, ImageBackground,  } from 'react-native';
 import Button from './touchable/button';
 //
 //
@@ -14,6 +14,7 @@ import { H1, H2 } from '../typography/';
 // import component
 //
 import Header from './header';
+import ajax from './FetchData';
 
 
 // ---------- background images --------------
@@ -37,10 +38,10 @@ import img12 from '../assets/img/12.jpg'
 class Data extends Component {
     constructor(props) {
         super(props);
-        this.state = { imageFile:img01 }
+        this.state = {dataSource:[], imageFile:img01,  }
     }
 
-
+ 
 
     gotopage = () => {
         this.props.navigation.navigate('Main');
@@ -59,9 +60,49 @@ else if(imageId =='02')
         this.setState({ imageFile : img02});
         console.log(this.state.imageFile + " State is this ");
     }
+
+
+ 
+
+    renderItem = ({item})=>{
+        return(
+            
+            
+                <TouchableOpacity style={styles.boxContainer}>
+                    <View style={styles.BoxLeft}>
+                      
+                           <H1>{item.title}</H1>
+                           <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>{item.description}</H2>
+                    </View>
+                    <View style={styles.boxRight}>
+                        <Image source={{uri: item.image}} style={{width: 100, height: 100}} />
+                    </View>
+                </TouchableOpacity>
+
+         
+        )
+         }
+   
+         componentDidMount(){
+             let catId = "1"
+             const url = 'http://api.holydef.ir/api/v1/article/' + catId;
+             fetch(url)
+             .then((response) => response.json())
+             .then((responseJson) => {
+                   this.setState({dataSource: responseJson.data});
+                   console.log(responseJson.data);
+             })
+             .catch((error) => {
+                   console.log(error);
+             })
+   
+         }
+  
+    
+
     render() { 
 
-
+        const { errors, isLoading } = this.state
 
         return ( 
 
@@ -73,7 +114,7 @@ else if(imageId =='02')
 
             <View style={styles.dataContainer}>
 
-                <View style={styles.boxContainer}>
+                {/* <View style={styles.boxContainer}>
                     <View style={styles.BoxLeft}>
                       
                            <H1>Title of Text</H1>
@@ -82,21 +123,18 @@ else if(imageId =='02')
                     <View style={styles.boxRight}>
                         <Image source={require('../assets/img/tm.jpg')} style={{width: 100, height: 100}} />
                     </View>
-                </View>
+                </View> */}
 
-                <View style={styles.boxContainer}>
-                    <View style={styles.BoxLeft}>
-                      
-                           <H1>Title of Text</H1>
-                           <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>I found that because i was using a full width button I found that because i was using a full width button</H2>
-                    </View>
-                    <View style={styles.boxRight}>
-                        <Image source={require('../assets/img/tm.jpg')} style={{width: 100, height: 100}} />
-                    </View>
-                </View>
+                <FlatList
+                        data= {this.state.dataSource}
+                        renderItem={this.renderItem}
+                        />
 
             </View>
-          
+      
+
+
+       
             </ImageBackground>
          );
     }
@@ -139,6 +177,19 @@ const styles = StyleSheet.create({
         height: 100,
 
     },
+    flatview: {
+        justifyContent: 'center',
+        paddingTop: 30,
+        borderRadius: 2,
+      },
+      name: {
+        fontFamily: 'Verdana',
+        fontSize: 18
+
+      },
+      email: {
+        color: 'red'
+      }
     
 
 })
