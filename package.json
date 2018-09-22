@@ -12,6 +12,7 @@
     "react": "16.5.0",
     "react-native": "0.57.0",
     "react-native-carousel-control": "^2.0.1",
+    "react-native-htmlview": "^0.13.0",
     "react-native-user-agent": "^1.0.1",
     "react-native-uuid": "^1.4.9",
     "react-native-vector-icons": "^5.0.0",

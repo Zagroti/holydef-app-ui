@@ -36,7 +36,7 @@ class CarouselComponent extends Component {
 
     navigateToData = (www) => { 
        console.log(www);
-        this.props.navigation.navigate('Data', {DataId: www});
+        this.props.navigation.navigate('Category', {DataId: www});
 
     }
 
@@ -45,12 +45,29 @@ class CarouselComponent extends Component {
    
                  if(position ===0)
                     this.setState({currentPage:position, sourceFile : img01});
-            else if(position ===1)
+                    else if(position ===1)
                     this.setState({currentPage:position, sourceFile : img02});
-            else if(position ===2)
+                    else if(position ===2)
                     this.setState({currentPage:position, sourceFile : img03});
-            else if(position ===3)
+                    else if(position ===3)
                     this.setState({currentPage:position, sourceFile : img04});
+                    else if(position ===4)
+                    this.setState({currentPage:position, sourceFile : img05});
+                    else if(position ===5)
+                    this.setState({currentPage:position, sourceFile : img06});
+                    else if(position ===6)
+                    this.setState({currentPage:position, sourceFile : img07});
+                    else if(position ===7)
+                    this.setState({currentPage:position, sourceFile : img08});
+                    else if(position ===8)
+                    this.setState({currentPage:position, sourceFile : img09});
+                    else if(position ===9)
+                    this.setState({currentPage:position, sourceFile : img10});
+                    else if(position ===10)
+                    this.setState({currentPage:position, sourceFile : img11});
+                    else if(position ===11)
+                    this.setState({currentPage:position, sourceFile : img12});
+        
     }
 
     render() { 
@@ -59,10 +76,11 @@ class CarouselComponent extends Component {
             <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%', }}>
                  {this.props.children}
                 <Carousel swipeThreshold={0.1}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
-                    
+                     
+                     {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/01.jpg')} style={styles.backgroundImage} >
-                            <TouchableOpacity onPress={this.navigateToData.bind(this,'02')} style={styles.tocuContainer}>
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'1')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>سلام بر حسین</Text>
                                 </View>
@@ -70,10 +88,10 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-
-                    <View style={styles.container}>
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/02.jpg')} style={styles.backgroundImage} >
-                            <TouchableOpacity style={styles.tocuContainer}>
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'2')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>سلام بر حسین</Text>
                                 </View>
@@ -81,10 +99,10 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-
-                    <View style={styles.container}>
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/03.jpg')} style={styles.backgroundImage} >
-                            <TouchableOpacity style={styles.tocuContainer}>
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'3')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>سلام بر حسین</Text>
                                 </View>
@@ -92,17 +110,108 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-
-
-                    <View style={styles.container}>
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/04.jpg')} style={styles.backgroundImage} >
-                            <TouchableOpacity style={styles.tocuContainer}>
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'4')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>سلام بر حسین</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
                     </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/05.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'5')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/06.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'6')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/07.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'7')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/08.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'8')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/09.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'9')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/10.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'10')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/11.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'11')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                         {/*--------------- Items of category --------------- */}
+                                         <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/12.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'12')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>سلام بر حسین</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+
+
+
 
               
 

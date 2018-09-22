@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet , Platform,ActivityIndicator, ImageBackground,ScrollView , Image } from 'react-native';
+import { View , Text, StyleSheet , Platform, TouchableOpacity,FlatList, Image, ImageBackground,  } from 'react-native';
 import Button from './touchable/button';
-import HTMLView from 'react-native-htmlview';
-
 //
 //
 //
 import colors from '../styles/colors';
 import normalize from '../styles/normalizeText';
 import LinderUnderMenu from './lineUnderMenu';
-import { H1, H2 } from '../typography/';
+import { H1, H2 } from '../typography';
 
 
 //
@@ -37,7 +35,7 @@ import img12 from '../assets/img/12.jpg'
 
  
 
-class Data extends Component {
+class category extends Component {
     constructor(props) {
         super(props);
         this.state = {dataSource:[], imageFile:img01,  }
@@ -64,41 +62,45 @@ class Data extends Component {
 //     }
 
 
+    _openViewPage(id,catId){
+        console.log(id);
+        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId});
+
+    }
+
+
  
 
     renderItem = ({item})=>{
-
-        const htmlContent = `<p><a href="http://jsdf.co">&hearts; nice job!</a></p>`;
-
-        return(               
-                    <HTMLView
-                      value={htmlContent}
-                      stylesheet={styles}
-                    />
-
-
+        return(
+            
+            
+                <TouchableOpacity onPress={ () => this._openViewPage(item.id, item.cat_id)} style={styles.boxContainer}>
+                    <View style={styles.BoxLeft}>
+                      
+                           <H1>{item.title}</H1>
+                           <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>{item.short_description}</H2>
+                    </View>
+                    <View style={styles.boxRight}>
+                        <Image source={{uri: item.image}} style={{width: 100, height: 100}} />
+                    </View>
+                </TouchableOpacity>
 
          
         )
          }
    
          componentDidMount(){
-            this.setState({ isLoading: true })
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
 
-             let catId = navigation.getParam('categoryId', 'Its Null');
-             let articleId = navigation.getParam('articleId', 'Its Null');
-
-            // console.log( " catid: "+ catId + " article id: "+ articleId); // TODO delete later
-
-             const url = 'http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId;
+             let catId = navigation.getParam('DataId', 'Its Null');
+             const url = 'http://api.holydef.ir/api/v1/article/' + catId;
              fetch(url)
              .then((response) => response.json())
              .then((responseJson) => {
                    this.setState({dataSource: responseJson.data});
-                   //console.log(this.state.dataSource.description);
-                   this.setState({ isLoading: false })
+                   console.log(responseJson.data);
              })
              .catch((error) => {
                    console.log(error);
@@ -111,7 +113,6 @@ class Data extends Component {
     render() { 
 
         const { errors, isLoading } = this.state
-        const htmlContent = this.state.dataSource.description;
 
         return ( 
 
@@ -121,29 +122,26 @@ class Data extends Component {
 
                 <LinderUnderMenu />
 
-        
+            <View style={styles.dataContainer}>
 
-                {isLoading ? (
-
-                    <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
-                        <ActivityIndicator color="white" />
-                       
+                {/* <View style={styles.boxContainer}>
+                    <View style={styles.BoxLeft}>
+                      
+                           <H1>Title of Text</H1>
+                           <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>I found that because i was using a full width button I found that because i was using a full width button</H2>
                     </View>
+                    <View style={styles.boxRight}>
+                        <Image source={require('../assets/img/tm.jpg')} style={{width: 100, height: 100}} />
+                    </View>
+                </View> */}
 
-                    ) : (
-                        <View style={{padding:20}}>
-                            <ScrollView style={styles.dataContainer}>
-                                <H1>{this.state.dataSource.title}</H1>
-                                <Image source={{uri: this.state.dataSource.image}} style={{ height: 400}} />
-                                    <HTMLView
-                                    value={htmlContent}
-                                    stylesheet={styles}
-                                    />
-                            </ScrollView>
-                        </View>
-                   
-                    )}
+                <FlatList
+                        data= {this.state.dataSource}
+                        renderItem={this.renderItem}
+                        />
+
+            </View>
+      
 
 
        
@@ -162,8 +160,6 @@ const styles = StyleSheet.create({
     },
     dataContainer:{
         padding: 10,
-        backgroundColor:colors.white,
-
     },
     boxContainer:{
         flexDirection: 'row',
@@ -191,19 +187,21 @@ const styles = StyleSheet.create({
         height: 100,
 
     },
-    loadingBox:{
-        flexDirection: 'row',
-        width:200,
-        height:60,
-        backgroundColor : colors.silver,
-        borderRadius:100,
+    flatview: {
         justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-        paddingHorizontal: 20,
-    }
+        paddingTop: 30,
+        borderRadius: 2,
+      },
+      name: {
+        fontFamily: 'Verdana',
+        fontSize: 18
+
+      },
+      email: {
+        color: 'red'
+      }
     
 
 })
  
-export default Data;
+export default category;

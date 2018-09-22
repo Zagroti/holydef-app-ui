@@ -10,6 +10,7 @@ import ActivityScreen  from './components/auth/activity';
 
 import MainScreen from './components/main';
 import CarouselScreen  from './components/Carousel';
+import CategoryScreen  from './components/category';
 import DataScreen  from './components/data';
 
 import TestScreen from './components/test';
@@ -44,6 +45,7 @@ const defaultNavigationOptions = {
 
     Main : {screen : MainScreen},
     Carousel : {screen : CarouselScreen},
+    Category : {screen : CategoryScreen},
     Data : {screen : DataScreen},
 
     Test : {screen : TestScreen},
@@ -51,8 +53,8 @@ const defaultNavigationOptions = {
 
 },
 {
-    //  initialRouteName : 'Auth',
-    initialRouteName : 'Data',
+    initialRouteName : 'Login',
+    //initialRouteName : 'Main',
     headerMode: 'none'
 
 }) 

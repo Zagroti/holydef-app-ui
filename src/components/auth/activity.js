@@ -34,7 +34,8 @@ class Activity extends Component {
 
         const formdata = new FormData();
         formdata.append('mobile', MOBILE, 'code', this.state.Activekey );
-
+        
+        this.props.navigation.navigate('Main');
         try {
         const data = {
                     method: 'POST',
@@ -57,7 +58,7 @@ class Activity extends Component {
                 this.setState({ isLoading: false,  errors: responseJson.error  })
                 
                 if(responseJson.error === undefined ){
-                    this.props.navigation.navigate('Activity');
+                    this.props.navigation.navigate('Main');
                 }
 
             } catch(error) {
