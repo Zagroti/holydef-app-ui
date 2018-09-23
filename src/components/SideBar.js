@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Platform, ImageBackground, Image } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Platform, ImageBackground, Image, BackAndroid } from 'react-native';
 import {  Content,  Icon, Button, Card, CardItem } from 'native-base';
 import colors from '../styles/colors';
 
@@ -17,41 +17,16 @@ export default class SideBar extends Component {
                             </View>
                       </ImageBackground>
 
-                      <TouchableOpacity style={styles.buttonContainer}>
+                 
+
+                      <TouchableOpacity style={styles.buttonContainer} onPress={ () => BackAndroid.exitApp()}>
                             <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>wwww</Text>
-                                <Icon name='heart' style={{color:colors.themeBackground}} />
+                                <Text style={styles.textContainer}>خروج از برنامه</Text>
+                                <Icon name='exit' style={{color:colors.themeBackground}} />
                             </View>
                       </TouchableOpacity>
 
-                                       <TouchableOpacity style={styles.buttonContainer}>
-                            <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>wwww</Text>
-                                <Icon name='heart' style={{color:colors.themeBackground}} />
-                            </View>
-                      </TouchableOpacity>
-
-                                       <TouchableOpacity style={styles.buttonContainer}>
-                            <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>wwww</Text>
-                                <Icon name='heart' style={{color:colors.themeBackground}} />
-                            </View>
-                      </TouchableOpacity>
-
-
-                                       <TouchableOpacity style={styles.buttonContainer}>
-                            <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>wwww</Text>
-                                <Icon name='heart' style={{color:colors.themeBackground}} />
-                            </View>
-                      </TouchableOpacity>
-
-                                       <TouchableOpacity style={styles.buttonContainer}>
-                            <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>wwww</Text>
-                                <Icon name='heart' style={{color:colors.themeBackground}} />
-                            </View>
-                      </TouchableOpacity>
+         
 
           
                      
