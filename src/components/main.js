@@ -23,11 +23,12 @@ export default class Main extends Component {
   }
 
   _search() {
-    alert("Search is woring");
+    this.props.navigation.navigate('Search');
+
   }
   render() {
     return (
-      <ImageBackground source={require('../assets/img/gradient.png')}  style={styles.backgroundImage} >
+      <ImageBackground blurRadius={30} source={require('../assets/img/08.jpg')}  style={styles.backgroundImage} >
         <Drawer
         side="right"
         ref={(ref) => { this.drawer = ref; }}
@@ -36,7 +37,7 @@ export default class Main extends Component {
       >
       
 
-        <CarouselComponent navigation={this.props.navigation} >
+        <CarouselComponent navigation={this.props.navigation}   >
           <Header style={styles.headerStyling} >
             <Left style={{flex:1}}>
               <Button transparent onPress={() => this._search()}>

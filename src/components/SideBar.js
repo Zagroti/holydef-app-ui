@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Platform, ImageBackground } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Platform, ImageBackground, Image } from 'react-native';
 import {  Content,  Icon, Button, Card, CardItem } from 'native-base';
 import colors from '../styles/colors';
 
@@ -13,7 +13,7 @@ export default class SideBar extends Component {
        
                       <ImageBackground source={require('../assets/img/gradient.png')} style={styles.backgroundImage} >
                             <View style={styles.avatarContainer}>
-
+                                <Image source={require('../assets/img/user.png')} style={{height:80, width:80, alignSelf:'center', justifyContent:'center' }}  />
                             </View>
                       </ImageBackground>
 
@@ -107,6 +107,7 @@ const styles= StyleSheet.create({
         height:140,
         width:140,
         borderRadius: 100, 
+        justifyContent:'center',
 
     },
 });

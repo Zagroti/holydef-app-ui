@@ -34,9 +34,9 @@ class CarouselComponent extends Component {
          }
     }
 
-    navigateToData = (www) => { 
-       console.log(www);
-        this.props.navigation.navigate('Category', {DataId: www});
+    navigateToData = (id) => { 
+       console.log(id);
+        this.props.navigation.navigate('Category', {DataId: id});
 
     }
 
@@ -73,9 +73,9 @@ class CarouselComponent extends Component {
     render() { 
         return ( 
 
-            <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%', }}>
+            <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%',}}>
                  {this.props.children}
-                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
+                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,flexDirection:'row-reverse'  }}>
                      
                      {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>
@@ -203,7 +203,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/12.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'12')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                <Text style={styles.textStyling}>گاه شمار دفاع مقدس</Text>
+                                    <Text style={styles.textStyling}>گاه شمار دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
@@ -224,12 +224,12 @@ class CarouselComponent extends Component {
 const styles  = StyleSheet.create({
 
  container:{
-     backgroundColor: 'transparent',
+     backgroundColor: '#fff',
      width:'90%',
      height:'80%',
      alignSelf: 'center',
      borderWidth: 10  ,
-     borderColor: '#fff',
+     borderColor: '#fdfdfd',
 
  },
  tocuContainer:{
@@ -237,7 +237,12 @@ const styles  = StyleSheet.create({
      justifyContent: 'flex-end', 
      width: '100%',
      height: '100%',
-     
+     borderWidth: 10  ,
+     borderLeftColor:'#e5e7ec',
+     borderRightColor:'#dfe1e7',
+     borderTopColor:'#d6dbe3',
+     borderBottomColor:'#f0f2f7',
+     //borderColor: '#e5e7ec',
  },
  backgroundImage: {
     width: '100%',
@@ -246,7 +251,7 @@ const styles  = StyleSheet.create({
 },
 viewTextContainer:{
     backgroundColor:colors.white,
-    width:'70%',
+    width:'80%',
     height:50,
     borderRadius: 40,
     alignSelf: 'center', 

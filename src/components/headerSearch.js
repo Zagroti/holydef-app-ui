@@ -7,7 +7,7 @@ import normalize from '../styles/normalizeText';
 
 
 
-class Header extends Component {
+class HeaderSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -27,12 +27,8 @@ class Header extends Component {
         return ( 
 
             <View style={styles.container}>
-              <View>
-                <TouchableOpacity transparent >
-                        <Icon name='search' />
-                </TouchableOpacity>
-              </View>
-              <View><Text style={styles.titleStyling}>دفاع مقدس</Text></View>
+         
+              <View><Text style={styles.titleStyling}>جستجو در مطالب</Text></View>
               <View>
                 <TouchableOpacity transparent onPress={this.goBackTo} >
                         <Icon name='arrow-forward' />
@@ -63,4 +59,4 @@ const styles = StyleSheet.create({
     }
 })
  
-export default Header;
+export default HeaderSearch;

@@ -12,6 +12,7 @@ import MainScreen from './components/main';
 import CarouselScreen  from './components/Carousel';
 import CategoryScreen  from './components/category';
 import DataScreen  from './components/data';
+import SearchScreen  from './components/search';
 
 import TestScreen from './components/test';
 import DrawerScreen from './components/drawer';
@@ -47,6 +48,7 @@ const defaultNavigationOptions = {
     Carousel : {screen : CarouselScreen},
     Category : {screen : CategoryScreen},
     Data : {screen : DataScreen},
+    Search : {screen : SearchScreen},
 
     Test : {screen : TestScreen},
     Drawer : {screen : DrawerScreen},

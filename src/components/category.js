@@ -138,7 +138,9 @@ class category extends Component {
                         <FlatList
                             data= {this.state.dataSource}
                             renderItem={this.renderItem} 
-                            keyExtractor={(item, index) => index}
+                            keyExtractor = { (item, index) => index.toString() }
+                            style={{marginBottom:100}}
+
                             />
 
                     )}
@@ -179,7 +181,7 @@ const styles = StyleSheet.create({
         justifyContent:'flex-end',
         textAlign: 'center', 
         alignContent:'center',
-        padding:5
+        paddingRight: 10,
         
     },
     boxRight:{

@@ -11,6 +11,7 @@ const red = '#96201E'
 const blue = '#2874a6'
 const darkBlue = '#21618C'
 const buttonBlue = '#5fb8e6'
+const danger = '#EC7063'
 
 const brand = '#6259b2'
 const pillButton = '#8089FF'
@@ -48,6 +49,7 @@ export default {
   darkBlue,
   buttonBlue,
   black,
+  danger,
 
   brand,
   pillButton,

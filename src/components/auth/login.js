@@ -95,7 +95,15 @@ class Login extends Component {
                                              />
                                         
                       </View>
-                      <Text>{errors}</Text>
+                    {errors  ? (
+                      <View style={styles.errorBox}>
+                        <Text>{errors}</Text>
+                        </View>
+                        ) : (
+                        <Text state={{padding: 10}}>{errors}</Text>
+   
+                        )}
+                     
                       
                     </View>
 
@@ -162,7 +170,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: colors.blue,
         height:60,
-        width:'80%',
+        width:'90%',
         borderRadius: 50,
         justifyContent: 'center',
     },
@@ -208,7 +216,22 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
           alignItems: 'center',
 
+      },
+      errorBox:{
+          backgroundColor: colors.danger,
+          marginTop: 10,
+          borderRadius: 30,
+          height:50,
+          textAlign:'center',
+          justifyContent:'center',
+          paddingHorizontal:20,
+           
+           
+
+
+
       }
+
 
 });
  
