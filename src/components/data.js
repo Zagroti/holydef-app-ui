@@ -97,14 +97,13 @@ class Data extends Component {
                     <View style={styles.loadingBox}>
                         <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
                         <ActivityIndicator color="white" />
-                       
                     </View>
 
                     ) : (
                         <View style={{padding:20, marginBottom:100 }}>
                             <ScrollView style={styles.dataContainer}>
-                                <H1>{this.state.dataSource.title}</H1>
-                                <Image source={{uri: this.state.dataSource.image}} style={{ height: 400}} />
+                                <Text style={{fontSize:16, fontFamily:'IRANSans_Bold'}}>{this.state.dataSource.title}</Text>
+                                <Image source={{uri: this.state.dataSource.image}} style={{ resizeMode: 'contain', height: 250 }} />
                                     <HTMLView
                                     value={htmlContent}
                                     stylesheet={styles}
@@ -174,10 +173,12 @@ const styles = StyleSheet.create({
     },
     p:{
         fontFamily: 'IRANSans',
+        color:'red'
     },
-    h1:{
+    h3:{
         color:'red',
         fontFamily: 'IRANSans',
+        
     }
 
 })

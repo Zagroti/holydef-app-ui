@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , StyleSheet, ImageBackground ,TextInput, TouchableOpacity, Text , Platform, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
+import { View , StyleSheet,AsyncStorage , ImageBackground ,TextInput, TouchableOpacity, Text , Platform, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
 import { Icon } from 'native-base';
 import colors from '../../styles/colors';
 import normalize from '../../styles/normalizeText';
@@ -14,6 +14,15 @@ class Login extends Component {
         super(props);
         this.state = { mobile : '' }
     }
+
+
+    setValueLocally=()=>{
+
+        AsyncStorage.setItem('phoneNumber', this.state.mobile);
+       // alert("Value Stored Successfully.")
+     
+      }
+
 
 
     onPressSending = async () => {
@@ -40,7 +49,7 @@ class Login extends Component {
                 console.log(responseJson) 
                 console.log(responseJson.error) 
                 this.setState({ isLoading: false,  errors: responseJson.error  })
-                
+                this.setValueLocally(); // save phnoe number in local storage
                 if(responseJson.error === undefined ){
                     this.props.navigation.navigate('Activity', { phoneNumber: this.state.mobile});
                 }
@@ -64,48 +73,46 @@ class Login extends Component {
 
 
         return ( 
-            <KeyboardAvoidingView
-            style={styles.container}
-            behavior="padding"
-            keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}
-          >
+        
+            <KeyboardAvoidingView behavior="padding" style={styles.container}  keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}>
 
             <ImageBackground source={require('../../assets/img/main-bg.jpg')} style={ styles.backgroundImage } >
 
-                 
+       
                 <View style={styles.containerForm}>
                
-                    <View style={styles.formControler}>
+                    {/* <View style={styles.formControler}> */}
                         <Logo />
-                    </View>
+                    {/* </View> */}
 
-                    <View style={styles.formControler}>
+                    {/* <View style={styles.formControler}> */}
                         <Text styl={styles.txtTitle}>لطفا جهت ورود به برنامه شماره همراه خود را وارد نماپید.</Text>
                   
-                    </View>
+                    {/* </View> */}
 
-                    <View style={styles.formControler}>
+                    {/* <View style={styles.formControler}> */}
                       
-                      <View style={styles.txtContainer}>  
-                                        <TextInput
-                                            placeholder="شماره همراه"
-                                            style={{ fontFamily: 'IRANSans', borderBottomWidth: 0,fontSize:18, textAlign:'center', letterSpacing: 10 }}
-                                            maxLength={11}
-                                            onChangeText={(mobile) => this.setState({mobile})}
-                                             />
-                                        
-                      </View>
-                    {errors  ? (
-                      <View style={styles.errorBox}>
-                        <Text>{errors}</Text>
+                        <View style={styles.txtContainer}>  
+                                            <TextInput
+                                                placeholder="شماره تلفن همراه"
+                                                style={{ color:'#333', borderBottomWidth: 0,fontSize:16, textAlign:'center',justifyContent:'center',alignItems:'center',paddingTop:5, letterSpacing: 10 }}
+                                                maxLength={11}
+                                                keyboardType='numeric'
+                                                onChangeText={(mobile) => this.setState({mobile})}
+                                                />
+                                            
                         </View>
+                        {errors  ? (
+                            <View style={styles.errorBox}>
+                                <Text>{errors}</Text>
+                            </View>
                         ) : (
-                        <Text state={{padding: 10}}>{errors}</Text>
+                            <Text state={{padding: 10}}>{errors}</Text>
    
                         )}
                      
                       
-                    </View>
+                    {/* </View> */}
 
                     <View style={styles.formControler}>
                         <TouchableOpacity style={styles.btnContainer}  onPress={this.onPressSending} >
@@ -114,19 +121,16 @@ class Login extends Component {
                                                 {isLoading ? (
 
                                                     <View style={styles.loadingBox}>
-                                                        <ActivityIndicator color="white" />
+                                                        <ActivityIndicator color={colors.gold} />
                                                     </View>
 
                                                 ) : (
                                                     <View style={styles.loadingBox}>
-                                                        <Icon name='arrow-back' />
+                                                        <Icon name='arrow-back' style={{color:colors.gold}} />
                                                     </View>
                                                 )}
 
                                                  <Text style={styles.btnText}>ورود</Text>
-                                              
-
-
                            
                         </TouchableOpacity>
                     </View>
@@ -134,7 +138,9 @@ class Login extends Component {
                 
                
             </ImageBackground>
-            </KeyboardAvoidingView>
+
+             </KeyboardAvoidingView>
+           
          );
     }
 }
@@ -142,17 +148,14 @@ class Login extends Component {
 
 const styles = StyleSheet.create({
     container:{ 
-        flex:1,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-         
+        flex:1, 
+        alignItems: 'center', 
 
     },
     containerForm:{
         flex:1,
         justifyContent: 'space-between',
-        alignItems: 'center',
-        padding:20,
+        alignItems: 'center', 
     },
     backgroundImage: {
         width: '100%',
@@ -168,11 +171,11 @@ const styles = StyleSheet.create({
     },
     btnContainer:{ 
         flexDirection: 'row',
-        backgroundColor: colors.blue,
+        backgroundColor: colors.black,
         height:60,
         width:'90%',
         borderRadius: 50,
-        justifyContent: 'center',
+        justifyContent: 'center', 
     },
     btnText:{
         flex:2,
@@ -180,20 +183,21 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontFamily: 'IRANSans',
         fontSize: normalize(20),
+        color:colors.gold,
 
     },
     txtTitle:{
         textAlign:'center',
         fontFamily: 'IRANSans',
-        fontSize: normalize(20),
+        fontSize: normalize(20), 
     },
     txtContainer:{
         borderRadius:10,
         borderWidth: 3,
         borderColor: colors.silver,
-        paddingHorizontal: 30,
-        paddingBottom: 10,
+        paddingHorizontal: 30, 
         width:300,
+        justifyContent:'center', 
       
 
     },
@@ -211,7 +215,7 @@ const styles = StyleSheet.create({
           
           width:60,
           height:60,
-          backgroundColor : colors.darkBlue,
+          backgroundColor : colors.blackLow,
           borderRadius:100,
           justifyContent: 'center',
           alignItems: 'center',

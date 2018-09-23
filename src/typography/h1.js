@@ -5,10 +5,10 @@ import normalize from '../styles/normalizeText'
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: Platform.OS === 'ios' ? normalize(14) : normalize(16),
+    fontSize: Platform.OS === 'ios' ? normalize(12) : normalize(14),
     color: colors.default,
     fontFamily: 'IRANSans', 
-    marginBottom: 5, 
+    marginBottom: 3, 
     textAlign: 'right', 
   },
 })

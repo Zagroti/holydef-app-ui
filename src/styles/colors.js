@@ -1,10 +1,11 @@
 const black = '#333333'
+const blackLow = '#222222'
 const grey = '#dddedd'
 const lightgrey = '#999'
 const palegrey = '#EEE'
 const white = '#FFF'
 const green = '#3ceaaa'
-const gold = '#ffd700'
+const gold = '#d2b48c'
 const silver = '#ccc'
 const bronze = '#cd7f32'
 const red = '#96201E'
@@ -49,6 +50,7 @@ export default {
   darkBlue,
   buttonBlue,
   black,
+  blackLow,
   danger,
 
   brand,

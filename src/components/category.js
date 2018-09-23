@@ -81,7 +81,7 @@ class category extends Component {
                            <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>{item.short_description}</H2>
                     </View>
                     <View style={styles.boxRight}>
-                        <Image source={{uri: item.image}} style={{width: 100, height: 100}} />
+                        <Image source={{uri: item.image}}  style={{width: 100, height: 100 }} />
                     </View>
                 </TouchableOpacity>
 
@@ -127,7 +127,6 @@ class category extends Component {
                 <View style={styles.dataContainer}>
 
                 {isLoading ? (
-
                     <View style={styles.loadingBox}>
                         <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
                         <ActivityIndicator color="white" />
@@ -164,7 +163,7 @@ const styles = StyleSheet.create({
         
     },
     dataContainer:{
-        padding: 10,
+        paddingHorizontal: 15,
     },
     boxContainer:{
         flexDirection: 'row',
@@ -172,7 +171,14 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         alignContent: 'flex-start',
         backgroundColor: colors.white, 
-        marginBottom: 20,
+        marginBottom: 12,
+        elevation: 2,
+
+
+
+        shadowOffset:{  width: 10,  height: 10,  },
+shadowColor: 'black',
+shadowOpacity: 1.0,
 
     },
     BoxLeft:{ 
@@ -181,7 +187,8 @@ const styles = StyleSheet.create({
         justifyContent:'flex-end',
         textAlign: 'center', 
         alignContent:'center',
-        paddingRight: 10,
+        paddingHorizontal: 10,
+        paddingTop:5
         
     },
     boxRight:{

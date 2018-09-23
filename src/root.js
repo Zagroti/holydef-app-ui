@@ -1,10 +1,11 @@
 import React from 'react';
 import { StackNavigator  } from 'react-navigation';
-import { Platform } from 'react-native';
+import { Platform, AsyncStorage } from 'react-native';
 import colors from './styles/colors';
 
 
 
+import SplashScreen  from './components/splash';
 import LoginScreen  from './components/auth/login';
 import ActivityScreen  from './components/auth/activity';
 
@@ -16,6 +17,7 @@ import SearchScreen  from './components/search';
 
 import TestScreen from './components/test';
 import DrawerScreen from './components/drawer';
+import StorageScreen from './components/storage';
 
 
 
@@ -35,12 +37,12 @@ const defaultNavigationOptions = {
     headerTintColor: colors.white,
   }
 
-
-
+ 
   
 
   const RootStack = StackNavigator({
 
+    Splash : { screen : SplashScreen},
     Login : { screen : LoginScreen},
     Activity : { screen : ActivityScreen},
 
@@ -52,11 +54,12 @@ const defaultNavigationOptions = {
 
     Test : {screen : TestScreen},
     Drawer : {screen : DrawerScreen},
+    Storage : {screen : StorageScreen},
 
 },
 {
-    // initialRouteName : 'Login',
-    initialRouteName : 'Main',
+    // initialRouteName : 'Storage',
+    initialRouteName : 'Splash',
     headerMode: 'none'
 
 }) 
@@ -67,17 +70,21 @@ const defaultNavigationOptions = {
 //
 
 export default class Root  extends React.Component{
+ 
+
 
     // componentDidMount() {
     //     if (Platform.OS !== 'ios') SplashAuto.hide();
     //     console.disableYellowBox = true
     //   }
 
+  
+
 
     render(){
         return(
 
-            <RootStack />
+            <RootStack  />
         );
     }
 }

@@ -74,20 +74,16 @@ class Activity extends Component {
 
 
         return ( 
-            <KeyboardAvoidingView
-            style={styles.container}
-            behavior="padding"
-            keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}
-          >
+            <KeyboardAvoidingView behavior="padding" style={styles.container}  keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : -300}>
 
             <ImageBackground source={require('../../assets/img/main-bg.jpg')} style={ styles.backgroundImage } >
 
                  
                 <View style={styles.containerForm}>
                
-                    <View style={styles.formControler}>
+                    {/* <View style={styles.formControler}> */}
                         <Logo />
-                    </View>
+                    {/* </View> */}
 
                     <View style={styles.formControler}>
                         <Text styl={styles.txtTitle}>لطفا کد فعال سازی خود را وارد کنید</Text>
@@ -118,12 +114,12 @@ class Activity extends Component {
                                                 {isLoading ? (
 
                                                     <View style={styles.loadingBox}>
-                                                        <ActivityIndicator color="white" />
+                                                        <ActivityIndicator color={colors.gold} />
                                                     </View>
 
                                                 ) : (
                                                     <View style={styles.loadingBox}>
-                                                        <Icon name='md-checkmark' />
+                                                        <Icon name='md-checkmark' style={{color: colors.gold}} />
                                                     </View>
                                                 )}
 
@@ -153,10 +149,9 @@ const styles = StyleSheet.create({
 
     },
     containerForm:{
-        flex:1,
+        flex:2,
         justifyContent: 'space-between',
-        alignItems: 'center',
-        padding:20,
+        alignItems: 'center', 
     },
     backgroundImage: {
         width: '100%',
@@ -166,13 +161,14 @@ const styles = StyleSheet.create({
   
     },
     formControler:{ 
-        padding:10,
+        padding:5,
         alignSelf: 'center',
         alignItems: 'center', 
+        paddingBottom:20,
     },
     btnContainer:{ 
         flexDirection: 'row',
-        backgroundColor: colors.blue,
+        backgroundColor: colors.black,
         height:60,
         width:'80%',
         borderRadius: 50,
@@ -184,6 +180,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontFamily: 'IRANSans',
         fontSize: normalize(20),
+        color:colors.gold,
 
     },
     txtTitle:{
@@ -215,7 +212,7 @@ const styles = StyleSheet.create({
           
           width:60,
           height:60,
-          backgroundColor : colors.darkBlue,
+          backgroundColor : colors.blackLow,
           borderRadius:100,
           justifyContent: 'center',
           alignItems: 'center',
