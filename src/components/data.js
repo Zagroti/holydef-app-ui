@@ -15,7 +15,7 @@ import { H1, H2 } from '../typography/';
 //
 // import component
 //
-import Header from './header';
+import Header from './headerData';
 import ajax from './category';
 
 
@@ -173,12 +173,10 @@ const styles = StyleSheet.create({
     },
     p:{
         fontFamily: 'IRANSans',
-        color:'red'
     },
     h3:{
-        color:'red',
         fontFamily: 'IRANSans',
-        
+
     }
 
 })
