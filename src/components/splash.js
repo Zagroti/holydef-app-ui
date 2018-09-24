@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text , AsyncStorage, ImageBackground, StyleSheet } from 'react-native';
+import colors from '../styles/colors';
 
-import Logo from './auth/logo';
+import Logo from './auth/logoSplash';
 class Splash extends Component {
     constructor(props) {
         super(props);
@@ -34,9 +35,9 @@ class Splash extends Component {
     render() { 
         return ( 
 
-            <ImageBackground source={require('../assets/img/main-bg.jpg')} style={ styles.backgroundImage } >
-               <Logo />
-            </ImageBackground>
+            <View style={styles.backGround}>
+                <Logo />
+            </View>
          );
     }
 }
@@ -44,22 +45,16 @@ class Splash extends Component {
 
 
 const styles = StyleSheet.create({
-    container:{ 
-        flex:1, 
-        alignItems: 'center', 
+   
 
-    },
-    containerForm:{
+    backGround:{
+        backgroundColor: '#444',
         flex:1,
-        justifyContent: 'space-between',
-        alignItems: 'center', 
-    },
-    backgroundImage: {
-        width: '100%',
-        height: '100%', 
-        flex:1, 
-  
-    },
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+
+    }
 
 })
  

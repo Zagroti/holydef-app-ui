@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View , Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View , Text, StyleSheet, TouchableOpacity, Platform , Image} from 'react-native';
 import { Icon } from 'native-base';
 
 import colors from '../styles/colors';
@@ -32,7 +32,9 @@ class Header extends Component {
                         <Icon name='search' />
                 </TouchableOpacity>
               </View>
-              <View><Text style={styles.titleStyling}>دفاع مقدس</Text></View>
+                <View>
+                    <Image source={require('../assets/img/logotype.png')}  style={{width: 120, height: 100,  resizeMode: 'contain', alignItems:'center'}} />  
+                </View>
               <View>
                 <TouchableOpacity transparent onPress={this.goBackTo} >
                         <Icon name='arrow-forward' />

@@ -75,7 +75,7 @@ class CarouselComponent extends Component {
 
             <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%',}}>
                  {this.props.children}
-                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,flexDirection:'row-reverse'  }}>
+                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
                      
                      {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>

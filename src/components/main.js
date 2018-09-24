@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, ImageBackground , StyleSheet, Platform } from 'react-native'
+import { Text, ImageBackground , StyleSheet, Platform , Image} from 'react-native'
 import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container } from 'native-base'
 import SideBar from './SideBar'
 import CarouselComponent from './Carousel';
@@ -46,7 +46,7 @@ export default class Main extends Component {
             </Left>
             <Body style={{flex:1}}>
               <Button transparent  >
-                  <Title style={styles.titleStyle} >دفاع مقدس</Title>
+              <Image source={require('../assets/img/logotypew.png')}  style={{width: 120, height: 100,  resizeMode: 'contain', alignItems:'center'}} />  
               </Button>
             </Body>
             <Right style={{flex:1}}>

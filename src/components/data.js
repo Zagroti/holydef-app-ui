@@ -32,6 +32,7 @@ import img09 from '../assets/img/09.jpg'
 import img10 from '../assets/img/10.jpg'
 import img11 from '../assets/img/11.jpg'
 import img12 from '../assets/img/12.jpg'
+import imageBackground from '../assets/img/main-bg.jpg'
 //---------------------------------------------
 
 
@@ -84,7 +85,7 @@ class Data extends Component {
 
         return ( 
 
-            <ImageBackground source = {this.state.imageFile} blurRadius={30} style={styles.container}>
+            <ImageBackground source = {imageBackground} blurRadius={10} style={styles.container}>
 
                 <Header navigation={this.props.navigation} />
 
@@ -126,7 +127,10 @@ class Data extends Component {
 const styles = StyleSheet.create({
 
     container:{
-        flex:1, 
+        width: '100%',
+        height: '100%', 
+        flex:1,
+        backgroundColor:colors.gold,
         
     },
     dataContainer:{
