@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text , AsyncStorage, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text , AsyncStorage, ImageBackground, StyleSheet, Platform } from 'react-native';
 import colors from '../styles/colors';
+import SplashScreen from 'react-native-splash-screen';
 
 import Logo from './auth/logoSplash';
-class Splash extends Component {
+
+
+
+export default class Splash extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -26,7 +30,8 @@ class Splash extends Component {
         }
       };
       componentWillMount() {
-
+        if (Platform.OS !== 'ios')
+        SplashScreen.hide();
         this._loadInitialState().done();
       }
 
@@ -36,8 +41,9 @@ class Splash extends Component {
         return ( 
 
             <View style={styles.backGround}>
-                <Logo />
+               
             </View>
+             
          );
     }
 }
@@ -56,6 +62,4 @@ const styles = StyleSheet.create({
 
     }
 
-})
- 
-export default Splash;
+}) 

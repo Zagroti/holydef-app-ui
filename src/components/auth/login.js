@@ -161,13 +161,13 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%', 
         flex:1,
-        backgroundColor:colors.gold,
   
     },
     formControler:{ 
         padding:10,
         alignSelf: 'center',
         alignItems: 'center', 
+        marginBottom: 30
     },
     btnContainer:{ 
         flexDirection: 'row',

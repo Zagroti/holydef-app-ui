@@ -2,7 +2,7 @@ import React from 'react';
 import { StackNavigator  } from 'react-navigation';
 import { Platform, AsyncStorage } from 'react-native';
 import colors from './styles/colors';
-
+import SplashAuto from 'react-native-splash-screen';
 
 
 import SplashScreen  from './components/splash';
@@ -73,10 +73,10 @@ export default class Root  extends React.Component{
  
 
 
-    // componentDidMount() {
-    //     if (Platform.OS !== 'ios') SplashAuto.hide();
-    //     console.disableYellowBox = true
-    //   }
+    componentDidMount() {
+        if (Platform.OS !== 'ios') SplashAuto.hide();
+        console.disableYellowBox = true
+      }
 
   
 
@@ -84,6 +84,7 @@ export default class Root  extends React.Component{
     render(){
         return(
 
+             
             <RootStack  />
         );
     }
