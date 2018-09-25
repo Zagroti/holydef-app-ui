@@ -3,6 +3,7 @@ package com.holydef;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.brentvatne.react.ReactVideoPackage; 
 import org.devio.rn.splashscreen.SplashScreenReactPackage; 
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -24,9 +25,10 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
+          new MainReactPackage(), 
             new SplashScreenReactPackage(), 
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
+            new ReactVideoPackage()
       );
     }
 

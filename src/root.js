@@ -20,6 +20,9 @@ import DrawerScreen from './components/drawer';
 import StorageScreen from './components/storage';
 
 
+import VideoScreen from './components/videoPlayer';
+
+
 
 
 
@@ -56,10 +59,12 @@ const defaultNavigationOptions = {
     Drawer :   {screen : DrawerScreen},
     Storage :  {screen : StorageScreen},
 
+    Video :    {screen : VideoScreen},
+
 },
 {
-    // initialRouteName : 'Storage',
-    initialRouteName : 'Splash',
+    initialRouteName : 'Video',
+    // initialRouteName : 'Splash',
     headerMode: 'none'
 
 }) 
