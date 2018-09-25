@@ -21,6 +21,7 @@ import StorageScreen from './components/storage';
 
 
 import VideoScreen from './components/videoPlayer';
+import SoundScreen from './components/soundPlayer';
 
 
 
@@ -60,11 +61,12 @@ const defaultNavigationOptions = {
     Storage :  {screen : StorageScreen},
 
     Video :    {screen : VideoScreen},
+    Sound :    {screen : SoundScreen},
 
 },
 {
-    // initialRouteName : 'Video',
-    initialRouteName : 'Splash',
+    initialRouteName : 'Sound',
+    // initialRouteName : 'Splash',
     headerMode: 'none'
 
 }) 
