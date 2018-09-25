@@ -16,7 +16,11 @@ class HeaderSearch extends Component {
     goBackTo =() =>{ 
         this.props.navigation.goBack();
     }
+    _openViewPage(id,catId){
+        console.log(id);
+        this.props.navigation.navigate('Video', {articleId:id, categoryId: catId});
 
+    }
 
     render() { 
 
@@ -40,7 +44,7 @@ class HeaderSearch extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={this.goBackTo} >
+                    <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id)} >
                         <Icon style={{color: '#fff'}} name='videocam' />
                     </TouchableOpacity>
                 </View>

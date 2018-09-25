@@ -63,8 +63,8 @@ const defaultNavigationOptions = {
 
 },
 {
-    initialRouteName : 'Video',
-    // initialRouteName : 'Splash',
+    // initialRouteName : 'Video',
+    initialRouteName : 'Splash',
     headerMode: 'none'
 
 }) 

@@ -87,7 +87,7 @@ class Data extends Component {
 
             <ImageBackground source = {imageBackground} blurRadius={10} style={styles.container}>
 
-                <Header navigation={this.props.navigation} />
+                <Header navigation={this.props.navigation} catid={2} id={1} />
 
                 <LinderUnderMenu />
 
