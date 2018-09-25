@@ -10,4 +10,4 @@
         android:drawable="@mipmap/cy_400px"
         android:gravity="center" />
 
-</layer-list>
+ </layer-list>
