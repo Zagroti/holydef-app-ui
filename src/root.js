@@ -42,19 +42,19 @@ const defaultNavigationOptions = {
 
   const RootStack = StackNavigator({
 
-    Splash : { screen : SplashScreen},
-    Login : { screen : LoginScreen},
+    Splash :   { screen : SplashScreen},
+    Login :    { screen : LoginScreen},
     Activity : { screen : ActivityScreen},
 
-    Main : {screen : MainScreen},
+    Main :     {screen : MainScreen},
     Carousel : {screen : CarouselScreen},
     Category : {screen : CategoryScreen},
-    Data : {screen : DataScreen},
-    Search : {screen : SearchScreen},
+    Data :     {screen : DataScreen},
+    Search :   {screen : SearchScreen},
 
-    Test : {screen : TestScreen},
-    Drawer : {screen : DrawerScreen},
-    Storage : {screen : StorageScreen},
+    Test :     {screen : TestScreen},
+    Drawer :   {screen : DrawerScreen},
+    Storage :  {screen : StorageScreen},
 
 },
 {
@@ -77,8 +77,6 @@ export default class Root  extends React.Component{
         if (Platform.OS !== 'ios') SplashAuto.hide();
         console.disableYellowBox = true
       }
-
-  
 
 
     render(){
