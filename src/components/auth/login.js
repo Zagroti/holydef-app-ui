@@ -81,17 +81,11 @@ class Login extends Component {
        
                 <View style={styles.containerForm}>
                
-                    {/* <View style={styles.formControler}> */}
+                    {/* ---- import logo from other component ----*/}
                         <Logo />
-                    {/* </View> */}
-
-                    {/* <View style={styles.formControler}> */}
+                 
                         <Text styl={styles.txtTitle}>لطفا جهت ورود به برنامه شماره همراه خود را وارد نماپید.</Text>
                   
-                    {/* </View> */}
-
-                    {/* <View style={styles.formControler}> */}
-                      
                         <View style={styles.txtContainer}>  
                                             <TextInput
                                                 placeholder="شماره تلفن همراه"
@@ -110,9 +104,7 @@ class Login extends Component {
                             <Text state={{padding: 10}}>{errors}</Text>
    
                         )}
-                     
-                      
-                    {/* </View> */}
+ 
 
                     <View style={styles.formControler}>
                         <TouchableOpacity style={styles.btnContainer}  onPress={this.onPressSending} >

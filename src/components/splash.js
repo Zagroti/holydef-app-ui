@@ -15,7 +15,7 @@ export default class Splash extends Component {
 
 
 
-
+    // get data from local storage for chechking auth : user was signup or not
     _loadInitialState = async () => {
         try {
           let value = await AsyncStorage.getItem('phoneNumber');
@@ -29,9 +29,11 @@ export default class Splash extends Component {
                this.props.navigation.navigate('Login')
         }
       };
+
       componentWillMount() {
         if (Platform.OS !== 'ios')
         SplashScreen.hide();
+
         this._loadInitialState().done();
       }
 
@@ -40,10 +42,7 @@ export default class Splash extends Component {
     render() { 
         return ( 
 
-            <View style={styles.backGround}>
-               
-            </View>
-             
+            <View style={styles.backGround}></View>
          );
     }
 }
@@ -51,7 +50,6 @@ export default class Splash extends Component {
 
 
 const styles = StyleSheet.create({
-   
 
     backGround:{
         backgroundColor: '#444',
