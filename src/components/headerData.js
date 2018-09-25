@@ -31,22 +31,22 @@ class HeaderSearch extends Component {
             <Left style={{flexDirection:'row'}}>
                 <View style={{paddingLeft:2}}>
                     <TouchableOpacity transparent onPress={this.goBackTo} >
-                        <Icon name='share' />
+                        <Icon style={{color: '#fff'}} name='share' />
                     </TouchableOpacity>
                 </View>
                 <View style={{paddingLeft:15}}>
                     <TouchableOpacity transparent onPress={this.goBackTo} >
-                        <Icon name='heart' />
+                        <Icon style={{color: '#fff'}} name='heart' />
                     </TouchableOpacity>
                 </View>
                 <View style={{paddingLeft:15}}>
                     <TouchableOpacity transparent onPress={this.goBackTo} >
-                        <Icon name='videocam' />
+                        <Icon style={{color: '#fff'}} name='videocam' />
                     </TouchableOpacity>
                 </View>
                 <View style={{paddingLeft:15}}>
                     <TouchableOpacity transparent onPress={this.goBackTo} >
-                        <Icon name='volume-up' />
+                        <Icon style={{color: '#fff'}} name='volume-up' />
                     </TouchableOpacity>
                 </View>
             </Left>
@@ -54,7 +54,7 @@ class HeaderSearch extends Component {
               <View><Text style={styles.titleStyling}>  </Text></View>
               <View>
                 <TouchableOpacity transparent onPress={this.goBackTo} >
-                    <Icon name='arrow-forward'   />
+                    <Icon style={{color: '#fff'}} name='arrow-forward'   />
                 </TouchableOpacity>
               </View>
             </View>

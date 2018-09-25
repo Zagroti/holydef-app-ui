@@ -29,15 +29,15 @@ class Header extends Component {
             <View style={styles.container}>
               <View>
                 <TouchableOpacity transparent >
-                        <Icon name='search' />
+                        <Icon style={{color: '#fff'}} name='search' />
                 </TouchableOpacity>
               </View>
                 <View>
-                    <Image source={require('../assets/img/logotype.png')}  style={{width: 120, height: 100,  resizeMode: 'contain', alignItems:'center'}} />  
+                    <Image source={require('../assets/img/logotypew.png')}  style={{width: 120, height: 100,  resizeMode: 'contain', alignItems:'center'}} />  
                 </View>
               <View>
                 <TouchableOpacity transparent onPress={this.goBackTo} >
-                        <Icon name='arrow-forward' />
+                        <Icon style={{color: '#fff'}} name='arrow-forward' />
                 </TouchableOpacity>
               </View>
             </View>
