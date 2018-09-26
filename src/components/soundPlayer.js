@@ -5,16 +5,15 @@ import Header from './headerVideoPlayer';
 
 import colors from '../styles/colors';
 
-const VIMEO_ID = '179859217';
 
-export default class App extends Component {
+export default class SoundPlayer extends Component {
   constructor() {
     super();
 
     this.state = {
       video: { width: undefined, height: undefined, duration: undefined },
       thumbnailUrl: undefined,
-      videoUrl: undefined, autoplay: false, 
+      soundurl: undefined, autoplay: false, 
     };
   }
 
@@ -28,11 +27,11 @@ export default class App extends Component {
       .then(res => res.json())
       .then((responseJson) => {this.setState({
 
-        videoUrl: responseJson.data.video,
+        soundurl: responseJson.data.audio,
         thumbnailUrl: responseJson.data.image,
         autoplay: true,
       })
-      console.log("fetch is data : "+ this.state.videoUrl); // TODO later delete it
+      console.log("fetch is data : "+ this.state.soundurl); // TODO later delete it
       this.setState({ isLoading: false })
     }
       )
@@ -58,9 +57,18 @@ export default class App extends Component {
        </View>
        <View style={styles.two}>
 
-                   <VideoPlayer
+            {isLoading ? (
+
+                    <View style={styles.loadingBox}>
+                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
+                        <ActivityIndicator color="white" />
+                    </View>
+
+                    ) : (
+                        <VideoPlayer
                         endWithThumbnail
-                        video={{ uri: 'http://www.noiseaddicts.com/samples_1w72b820/4170.mp3' }}
+                        thumbnail={{ uri: this.state.thumbnailUrl }}
+                        video={{ uri: this.state.soundurl }}
                         videoWidth={this.state.video.width}
                         videoHeight={this.state.video.height}  
                         duration={this.state.video.duration}
@@ -70,6 +78,7 @@ export default class App extends Component {
 
                         ref={r => this.player = r}
                         />
+                )}
    
        </View>
 

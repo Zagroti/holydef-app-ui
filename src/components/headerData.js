@@ -22,6 +22,12 @@ class HeaderSearch extends Component {
 
     }
 
+    _openSound(id,catId){
+        console.log(id);
+        this.props.navigation.navigate('Sound', {articleId:id, categoryId: catId});
+
+    }
+
     render() { 
 
 
@@ -49,7 +55,7 @@ class HeaderSearch extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={this.goBackTo} >
+                    <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id)} >
                         <Icon style={{color: '#fff'}} name='volume-up' />
                     </TouchableOpacity>
                 </View>

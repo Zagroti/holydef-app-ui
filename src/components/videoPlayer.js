@@ -5,7 +5,6 @@ import Header from './headerVideoPlayer';
 
 import colors from '../styles/colors';
 
-const VIMEO_ID = '179859217';
 
 export default class App extends Component {
   constructor() {

@@ -65,8 +65,8 @@ const defaultNavigationOptions = {
 
 },
 {
-    initialRouteName : 'Sound',
-    // initialRouteName : 'Splash',
+    // initialRouteName : 'Sound',
+    initialRouteName : 'Splash',
     headerMode: 'none'
 
 }) 
