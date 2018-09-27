@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: colors.black,
         height:60,
-        width:'90%',
+        width:'80%',
         borderRadius: 50,
         justifyContent: 'center', 
     },

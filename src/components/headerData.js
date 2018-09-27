@@ -16,7 +16,7 @@ class HeaderSearch extends Component {
         this.props.navigation.goBack();
     }
     _openViewPage(id,catId){
-        console.log(id);
+        console.log("cat id and : " + id + catId);
         this.props.navigation.navigate('Video', {articleId:id, categoryId: catId});
 
     }

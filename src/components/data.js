@@ -45,7 +45,7 @@ import imageBackground from '../assets/img/main-bg.jpg'
 class Data extends Component {
     constructor(props) {
         super(props);
-        this.state = {dataSource:[], imageFile:img01,visible: false  }
+        this.state = {dataSource:[], imageFile:img01,visible: false, catIdState: null, IdSate: null   }
     }
 
  
@@ -61,8 +61,9 @@ class Data extends Component {
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
 
-             let catId = navigation.getParam('categoryId', 'Its Null');
-             let articleId = navigation.getParam('articleId', 'Its Null');
+             let catId = navigation.getParam('categoryId', 'It is Null');
+             let articleId = navigation.getParam('articleId', 'It is Null');
+               
 
             // console.log( " catid: "+ catId + " article id: "+ articleId); // TODO delete later
 
@@ -73,11 +74,13 @@ class Data extends Component {
                    this.setState({dataSource: responseJson.data});
                    //console.log(this.state.dataSource.description);
                    this.setState({ isLoading: false })
+                   this.setState({catIdState: catId , IdSate: articleId});
+                   console.log(this.state.catIdState + " is state") // TODO later delet it
              })
              .catch((error) => {
                    console.log(error);
              })
-   
+      
          }
   
          onCancel() {
@@ -114,7 +117,7 @@ class Data extends Component {
 
             <ImageBackground source = {imageBackground} blurRadius={10} style={styles.container}>
 
-                <Header navigation={this.props.navigation} catid={2} id={1} />
+                <Header navigation={this.props.navigation} catid={this.state.catIdState} id={this.state.IdSate} />
 
                 <LinderUnderMenu />
 
