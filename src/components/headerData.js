@@ -3,8 +3,7 @@ import { View , Text, StyleSheet, TouchableOpacity, Platform } from 'react-nativ
 import { Icon , Left} from 'native-base';
 
 import colors from '../styles/colors';
-import normalize from '../styles/normalizeText';
-
+import normalize from '../styles/normalizeText'; 
 
 
 class HeaderSearch extends Component {
@@ -39,11 +38,11 @@ class HeaderSearch extends Component {
             <View style={styles.container}>
      
             <Left style={{flexDirection:'row'}}>
-                <View style={{paddingLeft:2}}>
+                {/* <View style={{paddingLeft:2}}>
                     <TouchableOpacity transparent onPress={this.goBackTo} >
                         <Icon style={{color: '#fff'}} name='share' />
                     </TouchableOpacity>
-                </View>
+                </View> */}
                 <View style={{paddingLeft:15}}>
                     <TouchableOpacity transparent onPress={this.goBackTo} >
                         <Icon style={{color: '#fff'}} name='heart' />

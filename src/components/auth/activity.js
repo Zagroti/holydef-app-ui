@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     txtContainer:{
         borderRadius:10,
         borderWidth: 3,
-        borderColor: colors.silver,
+        borderColor: colors.blackLow,
         paddingHorizontal: 30,
         paddingBottom: 10,
         width:300,

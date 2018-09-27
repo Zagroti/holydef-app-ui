@@ -185,8 +185,8 @@ const styles = StyleSheet.create({
     },
     txtContainer:{
         borderRadius:10,
-        borderWidth: 3,
-        borderColor: colors.silver,
+        borderWidth: 2,
+        borderColor: colors.blackLow,
         paddingHorizontal: 30, 
         width:300,
         justifyContent:'center', 

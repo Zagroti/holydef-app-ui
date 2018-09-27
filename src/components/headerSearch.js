@@ -31,7 +31,7 @@ class HeaderSearch extends Component {
               <View><Text style={styles.titleStyling}>جستجو در مطالب</Text></View>
               <View>
                 <TouchableOpacity transparent onPress={this.goBackTo} >
-                        <Icon name='arrow-forward' />
+                        <Icon style={{color: '#fff'}} name='arrow-forward' />
                 </TouchableOpacity>
               </View>
             </View>
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     
     },
     titleStyling:{
+        color:colors.white,
         fontFamily: 'IRANSans', 
         fontSize: Platform.os === 'ios' ? normalize(18) : normalize(20),
 

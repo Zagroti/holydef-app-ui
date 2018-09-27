@@ -3,10 +3,11 @@ package com.holydef;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.zmxv.RNSound.RNSoundPackage;
-import com.tanguyantoine.react.MusicControl;
-import fm.indiecast.rnaudiostreamer.RNAudioStreamerPackage;
-import rnsoundplayer.RNSoundPlayerPackage;
+import cl.json.RNSharePackage;
+// import com.zmxv.RNSound.RNSoundPackage;
+// import com.tanguyantoine.react.MusicControl;
+// import fm.indiecast.rnaudiostreamer.RNAudioStreamerPackage;
+// import rnsoundplayer.RNSoundPlayerPackage;
 import com.brentvatne.react.ReactVideoPackage; 
 import org.devio.rn.splashscreen.SplashScreenReactPackage; 
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -30,13 +31,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new MusicControl(),
-            new RNAudioStreamerPackage(),
-            new RNSoundPlayerPackage(), 
+            new RNSharePackage(),
+            // new MusicControl(),
+            // new RNAudioStreamerPackage(),
+            // new RNSoundPlayerPackage(), 
             new SplashScreenReactPackage(), 
             new VectorIconsPackage(),
-            new ReactVideoPackage(),
-            new RNSoundPackage()
+            new ReactVideoPackage()
+            // new RNSoundPackage()
       );
     }
 

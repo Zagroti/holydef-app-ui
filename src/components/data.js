@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet , Platform,ActivityIndicator, ImageBackground,ScrollView , Image } from 'react-native';
+import { View , Text, StyleSheet , Platform,ActivityIndicator, ImageBackground,ScrollView , Image, TouchableOpacity,   Clipboard,
+    ToastAndroid,
+    AlertIOS
+     } from 'react-native';
 import Button from './touchable/button';
 import HTMLView from 'react-native-htmlview';
+import Share, {ShareSheet} from 'react-native-share';
 
 //
 //
@@ -41,7 +45,7 @@ import imageBackground from '../assets/img/main-bg.jpg'
 class Data extends Component {
     constructor(props) {
         super(props);
-        this.state = {dataSource:[], imageFile:img01,  }
+        this.state = {dataSource:[], imageFile:img01,visible: false  }
     }
 
  
@@ -76,9 +80,32 @@ class Data extends Component {
    
          }
   
-    
+         onCancel() {
+            console.log("CANCEL")
+            this.setState({visible:false});
+          }
+          onOpen() {
+            console.log("OPEN")
+            this.setState({visible:true});
+          }
 
     render() { 
+
+
+        // let shareOptions = {
+        //     title: "Shear option",
+        //     message: "Hola mundo",
+        //     url: "http://facebook.github.io/react-native/",
+        //     subject: "Share Link" //  for email
+        //   };
+      
+        //   let shareImageBase64 = {
+        //     title: "React Native",
+        //     message: "Hola mundo",
+        //     url: REACT_ICON,
+        //     subject: "Share Link" //  for email
+        //   };
+
 
         const { errors, isLoading } = this.state
         const htmlContent = this.state.dataSource.description;
@@ -91,6 +118,9 @@ class Data extends Component {
 
                 <LinderUnderMenu />
 
+                {/* <TouchableOpacity onPress={this.onOpen.bind(this)}>
+                    <Text>Share</Text>
+                </TouchableOpacity> */}
         
 
                 {isLoading ? (
@@ -116,7 +146,78 @@ class Data extends Component {
                     )}
 
 
-       
+                    {/* <ShareSheet visible={this.state.visible} onCancel={this.onCancel.bind(this)}>
+                        <Button iconSrc={{ uri: TWITTER_ICON }}
+                                onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                Share.shareSingle(Object.assign(shareOptions, {
+                                "social": "twitter"
+                                }));
+                            },300);
+                            }}>Twitter</Button>
+                        <Button iconSrc={{ uri: FACEBOOK_ICON }}
+                                onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                Share.shareSingle(Object.assign(shareOptions, {
+                                "social": "facebook"
+                                }));
+                            },300);
+                            }}>Facebook</Button>
+                        <Button iconSrc={{ uri: WHATSAPP_ICON }}
+                                onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                Share.shareSingle(Object.assign(shareOptions, {
+                                "social": "whatsapp"
+                                }));
+                            },300);
+                            }}>Whatsapp</Button>
+                        <Button iconSrc={{ uri: GOOGLE_PLUS_ICON }}
+                                onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                Share.shareSingle(Object.assign(shareOptions, {
+                                "social": "googleplus"
+                                }));
+                            },300);
+                            }}>Google +</Button>
+                        <Button iconSrc={{ uri: EMAIL_ICON }}
+                                onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                Share.shareSingle(Object.assign(shareOptions, {
+                                "social": "email"
+                                }));
+                            },300);
+                            }}>Email</Button>
+                        <Button
+                            iconSrc={{ uri: CLIPBOARD_ICON }}
+                            onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                if(typeof shareOptions["url"] !== undefined) {
+                                Clipboard.setString(shareOptions["url"]);
+                                if (Platform.OS === "android") {
+                                    ToastAndroid.show('Link copiado al portapapeles', ToastAndroid.SHORT);
+                                } else if (Platform.OS === "ios") {
+                                    AlertIOS.alert('Link copiado al portapapeles');
+                                }
+                                }
+                            },300);
+                            }}>Copy Link</Button>
+                        <Button iconSrc={{ uri: MORE_ICON }}
+                            onPress={()=>{
+                            this.onCancel();
+                            setTimeout(() => {
+                                Share.open(shareOptions)
+                            },300);
+                            }}>More</Button>
+                        </ShareSheet> */}
+
+
+
             </ImageBackground>
          );
     }
@@ -181,8 +282,15 @@ const styles = StyleSheet.create({
     h3:{
         fontFamily: 'IRANSans',
 
-    }
+    },
+    instructions: {
+        marginTop: 20,
+        marginBottom: 20,
+      },
 
 })
  
+
+
+
 export default Data;
