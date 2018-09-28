@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet , ActivityIndicator, TouchableOpacity,FlatList, Image, ImageBackground, TextInput  } from 'react-native';
+import { View , Text, StyleSheet , ActivityIndicator,Keyboard, TouchableOpacity,FlatList, Image, ImageBackground, TextInput  } from 'react-native';
 import Button from './touchable/button';
 import { Icon } from 'native-base';
 //
@@ -91,6 +91,8 @@ class Search extends Component {
              .then((responseJson) => {
                    this.setState({dataSource: responseJson.data});
                    console.log("resulat :"+this.state.dataSource.length);
+                   Keyboard.dismiss()
+
                    if(this.state.dataSource == ''){
                        console.log("not found!");
                        this.setState({notFound: true});
@@ -126,56 +128,59 @@ class Search extends Component {
 
                 <View style={styles.dataContainer}>
 
-                <View style={styles.searchBox}>
-                    <View style={styles.searchBoxLeft}>
-                    
-                    <View>
-                        <TouchableOpacity transparent onPress={this._SearchArticle} >
-                                <Icon name='search' />
-                        </TouchableOpacity>
-                    </View>
-                    
-                    </View>
-                    <View style={styles.searchBoxRight}>
-                        <TextInput style={{fontFamily:'IRANSans', textAlign:'right', }} onChangeText= { (val)=> this.setState({TextSearch: val})}  placeholder="جستجو..."/>
-                    </View>
-                    
-                </View>
+                        <View style={styles.searchBox}>
+                            <View style={styles.searchBoxLeft}>
+                            
+                            <View>
+                                <TouchableOpacity transparent onPress={this._SearchArticle} >
+                                        <Icon name='search' />
+                                </TouchableOpacity>
+                            </View>
+                            
+                            </View>
+                            <View style={styles.searchBoxRight}>
+                                <TextInput style={{fontFamily:'IRANSans', textAlign:'right', }} onChangeText= { (val)=> this.setState({TextSearch: val})}  placeholder="جستجو..."/>
+                            </View>
+                            
+                        </View>
 
-                            {isLoading ? (
+                           
+                           <View style={styles.dataUnderSearch}>
+                                {isLoading ? (
 
-                                <View style={styles.loadingBox}>
-                                    <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
-                                    <ActivityIndicator color="white" />
-                                </View>
+                                        <View style={styles.loadingBox}>
+                                            <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
+                                            <ActivityIndicator color="white" />
+                                        </View>
 
-                                ) : (
-                                    
-                                    <FlatList
-                                        data= {this.state.dataSource}
-                                        renderItem={this.renderItem} 
-                                        keyExtractor = { (item, index) => index.toString() }
-                                        style={{marginBottom:100}}
+                                        ) : (
+                                            
+                                            <FlatList
+                                                data= {this.state.dataSource}
+                                                renderItem={this.renderItem} 
+                                                keyExtractor = { (item, index) => index.toString() }
+                                                style={{marginBottom:100}}
 
-                                        />
+                                                />
 
-                                )}
-                                    {/* ---- whne dont found anything will be show error  ---- */}
-                                 {notFound ? (
+                                        )}
+                                            {/* ---- whne dont found anything will be show error  ---- */}
+                                        {notFound ? (
 
-                                    <View style={styles.loadingBox}>
-                                        <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}>موردی یافت نشد</Text>
-                                    </View>
+                                            <View style={styles.loadingBox}>
+                                                <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}>موردی یافت نشد</Text>
+                                            </View>
 
-                                    ) : (
-                                        <FlatList
-                                            data= {this.state.dataSource}
-                                            renderItem={this.renderItem} 
-                                            keyExtractor = { (item, index) => index.toString() }
-                                            style={{marginBottom:100}}
+                                            ) : (
+                                                <FlatList
+                                                    data= {this.state.dataSource}
+                                                    renderItem={this.renderItem} 
+                                                    keyExtractor = { (item, index) => index.toString() }
+                                                    style={{marginBottom:100}}
 
-                                            />
-                                    )}
+                                                    />
+                                            )}
+                           </View>
 
                 </View>
       
@@ -193,7 +198,8 @@ const styles = StyleSheet.create({
         
     },
     dataContainer:{
-        padding: 10,
+        paddingHorizontal: 15,
+        marginBottom: 50,
     },
     boxContainer:{
         flexDirection: 'row',
@@ -201,7 +207,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         alignContent: 'flex-start',
         backgroundColor: colors.white, 
-        marginBottom: 20,
+        marginBottom: 12,
+        elevation: 2,
+        shadowOffset:{  width: 10,  height: 10,  },
+        shadowColor: 'black',
+        shadowOpacity: 1.0,
 
     },
     BoxLeft:{ 
@@ -255,6 +265,10 @@ const styles = StyleSheet.create({
         width:50,
         flex:1,
         paddingHorizontal:10
+    },
+    dataUnderSearch:{
+        paddingVertical: 10,
+       
     }
 
 })

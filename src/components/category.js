@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
     },
     dataContainer:{
         paddingHorizontal: 15,
+        
     },
     boxContainer:{
         flexDirection: 'row',
@@ -173,12 +174,9 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white, 
         marginBottom: 12,
         elevation: 2,
-
-
-
         shadowOffset:{  width: 10,  height: 10,  },
-shadowColor: 'black',
-shadowOpacity: 1.0,
+        shadowColor: 'black',
+        shadowOpacity: 1.0,
 
     },
     BoxLeft:{ 
