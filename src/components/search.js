@@ -39,7 +39,7 @@ import img12 from '../assets/img/12.jpg'
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = {dataSource:[], imageFile:img01,  }
+        this.state = {dataSource:[], imageFile:img01, TextSearch:'w'}
     }
 
  
@@ -79,18 +79,23 @@ class Search extends Component {
         )
          }
    
-         componentDidMount(){
-            this.setState({ isLoading: true })
+         _SearchArticle =() => {
+            this.setState({ isLoading: true, notFound:false })
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
 
              let catId = navigation.getParam('DataId', 'Its Null');
-             const url = 'http://api.holydef.ir/api/v1/article/' + catId;
+             const url = 'http://api.holydef.ir/api/v1/search?search=' + this.state.TextSearch;
              fetch(url)
              .then((response) => response.json())
              .then((responseJson) => {
                    this.setState({dataSource: responseJson.data});
-                   //console.log(responseJson.data);
+                   console.log("resulat :"+this.state.dataSource.length);
+                   if(this.state.dataSource == ''){
+                       console.log("not found!");
+                       this.setState({notFound: true});
+
+                   }
                    this.setState({ isLoading: false })
 
              })
@@ -98,13 +103,18 @@ class Search extends Component {
                    console.log(error);
              })
    
+          //  alert(this.state.TextSearch);
+
          }
   
+         handleTextChanged(text){
+             this.setState({TextSearch:  {text}})
+         }
     
 
     render() { 
 
-        const { errors, isLoading } = this.state
+        const { errors, isLoading, notFound } = this.state
 
         return ( 
 
@@ -120,39 +130,52 @@ class Search extends Component {
                     <View style={styles.searchBoxLeft}>
                     
                     <View>
-                        <TouchableOpacity transparent >
+                        <TouchableOpacity transparent onPress={this._SearchArticle} >
                                 <Icon name='search' />
                         </TouchableOpacity>
                     </View>
                     
                     </View>
                     <View style={styles.searchBoxRight}>
-                        <TextInput style={{fontFamily:'IRANSans', textAlign:'right', }}  placeholder="جستجو..."/>
+                        <TextInput style={{fontFamily:'IRANSans', textAlign:'right', }} onChangeText= { (val)=> this.setState({TextSearch: val})}  placeholder="جستجو..."/>
                     </View>
                     
                 </View>
 
-                {isLoading ? (
+                            {isLoading ? (
 
-                    <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
-                        <ActivityIndicator color="white" />
-                    
-                    </View>
+                                <View style={styles.loadingBox}>
+                                    <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
+                                    <ActivityIndicator color="white" />
+                                </View>
 
-                    ) : (
-                        <FlatList
-                            data= {this.state.dataSource}
-                            renderItem={this.renderItem} 
-                            keyExtractor = { (item, index) => index.toString() }
-                            style={{marginBottom:100}}
+                                ) : (
+                                    
+                                    <FlatList
+                                        data= {this.state.dataSource}
+                                        renderItem={this.renderItem} 
+                                        keyExtractor = { (item, index) => index.toString() }
+                                        style={{marginBottom:100}}
 
-                            />
+                                        />
 
-                    )}
+                                )}
+                                    {/* ---- whne dont found anything will be show error  ---- */}
+                                 {notFound ? (
 
+                                    <View style={styles.loadingBox}>
+                                        <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}>موردی یافت نشد</Text>
+                                    </View>
 
+                                    ) : (
+                                        <FlatList
+                                            data= {this.state.dataSource}
+                                            renderItem={this.renderItem} 
+                                            keyExtractor = { (item, index) => index.toString() }
+                                            style={{marginBottom:100}}
 
+                                            />
+                                    )}
 
                 </View>
       
