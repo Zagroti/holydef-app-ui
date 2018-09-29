@@ -4,6 +4,7 @@ import { Platform, AsyncStorage } from 'react-native';
 import colors from './styles/colors';
 import SplashAuto from 'react-native-splash-screen';
 
+import { Search, SideBar, Main , AboutUs} from './components/index';
 
 import SplashScreen  from './components/splash';
 import LoginScreen  from './components/auth/login';
@@ -17,6 +18,7 @@ import SearchScreen  from './components/search';
 
 import TestScreen from './components/test';
 import DrawerScreen from './components/drawer';
+// import SidbarScreen from './components/SideBar';
 import StorageScreen from './components/storage';
 
 
@@ -50,18 +52,21 @@ const defaultNavigationOptions = {
     Login :    { screen : LoginScreen},
     Activity : { screen : ActivityScreen},
 
-    Main :     {screen : MainScreen},
+    Main :     {screen : Main},
     Carousel : {screen : CarouselScreen},
     Category : {screen : CategoryScreen},
     Data :     {screen : DataScreen},
-    Search :   {screen : SearchScreen},
+    Search :   {screen : Search},
 
     Test :     {screen : TestScreen},
     Drawer :   {screen : DrawerScreen},
+    SideBar :   {screen : SideBar},
     Storage :  {screen : StorageScreen},
 
     Video :    {screen : VideoScreen},
     Sound :    {screen : SoundScreen},
+
+    AboutUs :    {screen : AboutUs},
 
 },
 {

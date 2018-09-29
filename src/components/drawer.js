@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, ImageBackground , StyleSheet, Platform } from 'react-native'
 import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container } from 'native-base'
-import SideBar from './SideBar'
+import {SideBar} from './SideBar'
 import CarouselComponent from './Carousel';
 import LinderUnderMenu from './lineUnderMenu';
 import normalize from '../styles/normalizeText';
@@ -26,12 +26,13 @@ export default class AppHeader extends Component {
     alert("Search is woring");
   }
   render() {
+    const {navigation} = this.props;
     return (
       <ImageBackground source={require('../assets/img/gradient.png')}  style={styles.backgroundImage} >
         <Drawer
         side="right"
         ref={(ref) => { this.drawer = ref; }}
-        content={<SideBar />}
+        content={<SideBar navigation={this.props.navigation}/>}
         onClose={() => this.closeDrawer()}
       >
       

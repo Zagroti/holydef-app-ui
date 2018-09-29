@@ -6,18 +6,22 @@ import colors from '../styles/colors';
 
 import normalize  from '../styles/normalizeText';
 
-export default class SideBar extends Component {
+ class SideBar extends Component {
 
-
+    constructor(props) {
+        super(props)
+        
+      }
     gotoHome  (){
         //const {navigation} = this.props;
-        this.props.navigation.navigate('Main')
+        // this.props.navigation.navigate('Main')
     }
 
+    closeDrawer() {
+        
+      }
   render() {
    
-
-
     
     return (
           <Content style={{backgroundColor:'#fff'}} >
@@ -30,7 +34,7 @@ export default class SideBar extends Component {
 
                  
 
-                      <TouchableOpacity style={styles.buttonContainer} >
+                      <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigate('Main'); this.props.closeDrawer();}} >
                             <View style={styles.itemsContainer}>
                                 <Text style={styles.textContainer}>صفحه اول</Text>
                                 <Icon name='home' style={{color:colors.themeBackground}} />
@@ -38,14 +42,14 @@ export default class SideBar extends Component {
                       </TouchableOpacity>
 
 
-                      <TouchableOpacity style={styles.buttonContainer} >
+                      <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigate('AboutUs');this.props.closeDrawer();}} >
                             <View style={styles.itemsContainer}>
                                 <Text style={styles.textContainer}>درباره ما</Text>
                                 <Icon name='information-circle' style={{color:colors.themeBackground}} />
                             </View>
                       </TouchableOpacity>
 
-                                            <TouchableOpacity style={styles.buttonContainer} >
+                      <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigate('Search');this.props.closeDrawer();}}>
                             <View style={styles.itemsContainer}>
                                 <Text style={styles.textContainer}>جستجو </Text>
                                 <Icon name='search' style={{color:colors.themeBackground}} />
@@ -54,7 +58,7 @@ export default class SideBar extends Component {
 
 
 
-                                            <TouchableOpacity style={styles.buttonContainer} onPress={ () => BackAndroid.exitApp()}>
+                       <TouchableOpacity style={styles.buttonContainer} onPress={ () => BackAndroid.exitApp()}>
                             <View style={styles.itemsContainer}>
                                 <Text style={styles.textContainer}>خروج از برنامه</Text>
                                 <Icon name='exit' style={{color:colors.themeBackground}} />
@@ -79,7 +83,7 @@ const styles= StyleSheet.create({
         flex:1,
         flexDirection: 'row',
         backgroundColor:'#fff',
-        padding: 20,
+        padding: 15,
         textAlign: 'right', 
         right:0,
         borderWidth: 0.5,
@@ -122,4 +126,4 @@ const styles= StyleSheet.create({
     },
 });
 
-module.exports = SideBar;
+export  {SideBar};

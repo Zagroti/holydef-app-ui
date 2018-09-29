@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, ImageBackground , StyleSheet, Platform , Image} from 'react-native'
 import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container } from 'native-base'
-import SideBar from './SideBar'
+import {SideBar} from './SideBar'
 import CarouselComponent from './Carousel';
 import LinderUnderMenu from './lineUnderMenu';
 import normalize from '../styles/normalizeText';
@@ -10,29 +10,32 @@ import normalize from '../styles/normalizeText';
 
 
 
-export default class Main extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
+  class Main extends Component  {
+    constructor(props) {
+      super(props)
+      this.state = { }
+    }
   closeDrawer() {
-    this.drawer._root.close()
+    this.drawer._root.close() 
   }
   openDrawer() {
     this.drawer._root.open()
   }
+
 
   _search() {
     this.props.navigation.navigate('Search');
 
   }
   render() {
+
+    const {navigate} = this.props.navigation;
     return (
       <ImageBackground blurRadius={30} source={require('../assets/img/08.jpg')}  style={styles.backgroundImage} >
         <Drawer
         side="right"
         ref={(ref) => { this.drawer = ref; }}
-        content={<SideBar />}
+        content={<SideBar navigate={navigate} closeDrawer={()=>this.closeDrawer()}/>}
         onClose={() => this.closeDrawer()}
       >
       
@@ -93,5 +96,4 @@ const styles = StyleSheet.create({
 })
 
 
-
-module.exports = Main
+ export {Main}
