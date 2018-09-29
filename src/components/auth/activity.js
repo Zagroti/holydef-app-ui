@@ -67,9 +67,16 @@ class Activity extends Component {
                 let responseJson = await response.json();
                     // TODO check later and clear any consol log
                     console.log(data)
-                    console.log(responseJson.data.token)
-                    this.setState({Activekey:responseJson.data.token});
-                    this.setValueLocally();
+                    console.log(response)
+
+                    if(response.status == 200){
+                       this.setState({Activekey:responseJson.data.token});
+                       this.setValueLocally();
+                    }else{
+
+                        this.setState({errors : response.error})
+                    }
+                    
 
                     console.log(responseJson.error) 
                     this.setState({ isLoading: false,  errors: responseJson.error  })
@@ -83,6 +90,7 @@ class Activity extends Component {
                 }
             }
             else{
+                this.setState({errors:'لطفا کد فعال سازی را وارد نمایید'})
                 console.log("Pleas insert active code");
             }
 
@@ -107,7 +115,7 @@ class Activity extends Component {
                     {/* </View> */}
 
                     <View style={styles.formControler}>
-                        <Text styl={styles.txtTitle}>لطفا کد فعال سازی خود را وارد کنید</Text>
+                        <Text style={styles.txtTitle}>لطفا کد فعال سازی خود را وارد کنید</Text>
                   
                     </View>
 
@@ -125,6 +133,17 @@ class Activity extends Component {
                                              />
                                         
                       </View>
+
+                      {errors  ? (
+                            <View style={styles.errorBox}>
+                                <Text style={styles.txtTitle}>{errors}</Text>
+                            </View>
+                        ) : (
+                            <Text state={{padding: 10}}>{errors}</Text>
+   
+                        )}
+
+
                       
                     </View>
 
@@ -207,7 +226,7 @@ const styles = StyleSheet.create({
     txtTitle:{
         textAlign:'center',
         fontFamily: 'IRANSans',
-        fontSize: normalize(20),
+        fontSize: normalize(16),
     },
     txtContainer:{
         borderRadius:10,
@@ -238,7 +257,17 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
           alignItems: 'center',
 
-      }
+      },
+      errorBox:{
+        backgroundColor: colors.danger,
+        marginTop: 10,
+        borderRadius: 30,
+        height:50,
+        textAlign:'center',
+        justifyContent:'center',
+        paddingHorizontal:20,
+        
+    }
 
 });
  

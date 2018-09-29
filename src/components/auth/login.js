@@ -84,7 +84,7 @@ class Login extends Component {
                     {/* ---- import logo from other component ----*/}
                         <Logo />
                  
-                        <Text styl={styles.txtTitle}>لطفا جهت ورود به برنامه شماره همراه خود را وارد نماپید.</Text>
+                        <Text style={styles.txtTitle}>لطفا جهت ورود به برنامه شماره همراه خود را وارد نمایید.</Text>
                   
                         <View style={styles.txtContainer}>  
                                             <TextInput
@@ -98,7 +98,7 @@ class Login extends Component {
                         </View>
                         {errors  ? (
                             <View style={styles.errorBox}>
-                                <Text>{errors}</Text>
+                                <Text style={styles.txtTitle}>{errors}</Text>
                             </View>
                         ) : (
                             <Text state={{padding: 10}}>{errors}</Text>
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     txtTitle:{
         textAlign:'center',
         fontFamily: 'IRANSans',
-        fontSize: normalize(20), 
+        fontSize: normalize(16), 
     },
     txtContainer:{
         borderRadius:10,
@@ -221,11 +221,7 @@ const styles = StyleSheet.create({
           textAlign:'center',
           justifyContent:'center',
           paddingHorizontal:20,
-           
-           
-
-
-
+          
       }
 
 
