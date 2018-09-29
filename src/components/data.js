@@ -45,7 +45,7 @@ import imageBackground from '../assets/img/main-bg.jpg'
 class Data extends Component {
     constructor(props) {
         super(props);
-        this.state = {dataSource:[], imageFile:img01,visible: false, catIdState: null, IdSate: null   }
+        this.state = {dataSource:[], imageFile:img01,visible: false, catIdState: null, IdSate: null, Token:null   }
     }
 
  
@@ -82,7 +82,7 @@ class Data extends Component {
                    this.setState({dataSource: responseJson.data});
                    //console.log(this.state.dataSource.description);
                    this.setState({ isLoading: false })
-                   this.setState({catIdState: catId , IdSate: articleId});
+                   this.setState({catIdState: catId , IdSate: articleId, Token:Token});
                    console.log(this.state.catIdState + " is state") // TODO later delet it
              })
              .catch((error) => {
@@ -112,7 +112,7 @@ class Data extends Component {
 
             <ImageBackground source = {imageBackground} blurRadius={10} style={styles.container}>
 
-                <Header navigation={this.props.navigation} catid={this.state.catIdState} id={this.state.IdSate} />
+                <Header navigation={this.props.navigation} catid={this.state.catIdState} id={this.state.IdSate} Token={this.state.Token}/>
 
                 <LinderUnderMenu />
 

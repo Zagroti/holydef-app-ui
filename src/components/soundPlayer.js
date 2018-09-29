@@ -20,10 +20,19 @@ export default class SoundPlayer extends Component {
   componentDidMount() {
     this.setState({ isLoading: true })
     const {navigation} = this.props;
+    // -------- get parametr from navigation in other component
      let catId = navigation.getParam('categoryId', 'Its Null');
      let articleId = navigation.getParam('articleId', 'Its Null');
+     let Token = navigation.getParam('Token', 'Token is Null');
 
-     global.fetch('http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId)
+     const data={
+       method: 'GET',
+       headers:{
+                "Authorization": Token,
+                "Accept":"application/json", 
+       }
+     }
+     global.fetch('http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId, data)
       .then(res => res.json())
       .then((responseJson) => {this.setState({
 

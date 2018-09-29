@@ -13,7 +13,7 @@ import normalize from '../styles/normalizeText';
   class Main extends Component  {
     constructor(props) {
       super(props)
-      this.state = { token: null}
+      this.state = { Token: null}
     }
   closeDrawer() {
     this.drawer._root.close() 
@@ -23,8 +23,8 @@ import normalize from '../styles/normalizeText';
   }
 
 
-  _search() {
-    this.props.navigation.navigate('Search');
+  _search(Token) {
+    this.props.navigation.navigate('Search',{Token:Token});
 
   }
 
@@ -35,8 +35,8 @@ import normalize from '../styles/normalizeText';
           try {
             let value = await AsyncStorage.getItem('ACTIVITYCODE'); // Get Token from localStrage
       
-              this.setState({token: value }) // Start loadin . . . && token set in state .
-              console.log("Token Is: " + this.state.token);
+              this.setState({Token: value }) // Start loadin . . . && token set in state .
+              console.log("Token Is: " + this.state.Token);
 
           } catch (error) {
                 console.log(error); 
@@ -61,7 +61,7 @@ import normalize from '../styles/normalizeText';
         <CarouselComponent navigation={this.props.navigation}    >
           <Header style={styles.headerStyling} >
             <Left style={{flex:1}}>
-              <Button transparent onPress={() => this._search()}>
+              <Button transparent onPress={ () => this._search(this.state.Token)}>
                       <Icon name='search' />
               </Button>
             </Left>

@@ -15,15 +15,15 @@ class HeaderSearch extends Component {
     goBackTo =() =>{ 
         this.props.navigation.goBack();
     }
-    _openViewPage(id,catId){
+    _openViewPage(id,catId, Token){
         console.log("cat id and : " + id + catId);
-        this.props.navigation.navigate('Video', {articleId:id, categoryId: catId});
+        this.props.navigation.navigate('Video', {articleId:id, categoryId: catId, Token:Token});
 
     }
 
-    _openSound(id,catId){
+    _openSound(id,catId, Token){
         console.log(id);
-        this.props.navigation.navigate('Sound', {articleId:id, categoryId: catId});
+        this.props.navigation.navigate('Sound', {articleId:id, categoryId: catId, Token:Token});
 
     }
 
@@ -49,12 +49,12 @@ class HeaderSearch extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id)} >
+                    <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token)} >
                         <Icon style={{color: '#fff'}} name='videocam' />
                     </TouchableOpacity>
                 </View>
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id)} >
+                    <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id, this.props.Token)} >
                         <Icon style={{color: '#fff'}} name='volume-up' />
                     </TouchableOpacity>
                 </View>

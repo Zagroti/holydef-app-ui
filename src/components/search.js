@@ -82,15 +82,22 @@ class Search extends Component {
          _SearchArticle =() => {
             this.setState({ isLoading: true, notFound:false })
             const {navigation} = this.props;
-            //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
-
-             let catId = navigation.getParam('DataId', 'Its Null');
+            let Token =  navigation.getParam('Token', 'Token is Null');
+           // let catId = navigation.getParam('DataId', 'It is Null');
+                console.log("search token: " + Token);
+           const data={
+                method:'GET',
+                headers:{
+                "Authorization": Token,
+                "Accept":"application/json", 
+                }
+          }
              const url = 'http://api.holydef.ir/api/v1/search?search=' + this.state.TextSearch;
-             fetch(url)
+             fetch(url,data)
              .then((response) => response.json())
              .then((responseJson) => {
                    this.setState({dataSource: responseJson.data});
-                   console.log("resulat :"+this.state.dataSource.length);
+                   //console.log("resulat :"+this.state.dataSource.length);
                    Keyboard.dismiss()
 
                    if(this.state.dataSource == ''){
