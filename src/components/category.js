@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet , ActivityIndicator, TouchableOpacity,FlatList, Image, ImageBackground,  } from 'react-native';
+import { View , Text, StyleSheet , ActivityIndicator, TouchableOpacity,FlatList, Image, ImageBackground, AsyncStorage  } from 'react-native';
 import Button from './touchable/button';
 //
 //
@@ -38,7 +38,7 @@ import img12 from '../assets/img/12.jpg'
 class category extends Component {
     constructor(props) {
         super(props);
-        this.state = {dataSource:[], imageFile:img01,  }
+        this.state = {dataSource:[], imageFile:img01, token:null  }
     }
 
  
@@ -48,23 +48,53 @@ class category extends Component {
 
         
     }
-//     componentDidMount(){
-//         const {navigation} = this.props;
-//         let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
-       
-        
+ 
+    _loadInitialState = async () => {
+        try {
+          let value = await AsyncStorage.getItem('ACTIVITYCODE'); // Get Token from localStrage
+     
+            this.setState({ isLoading: true, token: value }) // Start loadin . . . && token set in state .
+            const {navigation} = this.props;
+            //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
+            console.log(this.state.token);
 
-//         if(imageId =='01')
-//         this.setState({ imageFile : img01});
-// else if(imageId =='02')
-//         this.setState({ imageFile : img02});
-//         console.log(this.state.imageFile + " State is this ");
-//     }
+            const data = {
+                method: 'GET',
+                headers: { 
+                
+                    "Authorization": this.state.token,
+                    "Accept":"application/json", 
+                },
+                
+              
+            }
+
+             let catId = navigation.getParam('DataId', 'It is Null');
+             const url = 'http://api.holydef.ir/api/v1/article/' + catId;
+             fetch(url, data)
+             .then((response) => response.json())
+             .then((responseJson) => {
+                   this.setState({dataSource: responseJson.data});
+                   //console.log(responseJson.data);
+                   this.setState({ isLoading: false })
+
+             })
+             .catch((error) => {
+                   console.log(error);
+             })
 
 
-    _openViewPage(id,catId){
-        console.log(id);
-        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId});
+
+        } catch (error) {
+               console.log(error);
+               
+        }
+      };
+
+
+    _openViewPage(id,catId,Token){
+        console.log(Token);
+        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token});
 
     }
 
@@ -75,7 +105,7 @@ class category extends Component {
         return(
             
             
-                <TouchableOpacity onPress={ () => this._openViewPage(item.id, item.cat_id)} style={styles.boxContainer}>
+                <TouchableOpacity onPress={ () => this._openViewPage(item.id, item.cat_id,this.state.token)} style={styles.boxContainer}>
                     <View style={styles.BoxLeft}>
                            <H1>{item.title}</H1>
                            <H2 style={{flexWrap: 'wrap', textAlign: 'right',}}>{item.short_description}</H2>
@@ -90,24 +120,8 @@ class category extends Component {
          }
    
          componentDidMount(){
-            this.setState({ isLoading: true })
-            const {navigation} = this.props;
-            //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
 
-             let catId = navigation.getParam('DataId', 'Its Null');
-             const url = 'http://api.holydef.ir/api/v1/article/' + catId;
-             fetch(url)
-             .then((response) => response.json())
-             .then((responseJson) => {
-                   this.setState({dataSource: responseJson.data});
-                   //console.log(responseJson.data);
-                   this.setState({ isLoading: false })
-
-             })
-             .catch((error) => {
-                   console.log(error);
-             })
-   
+            this._loadInitialState().done(); // get Token and fetch data from API
          }
   
     

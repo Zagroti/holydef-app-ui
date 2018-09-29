@@ -49,7 +49,7 @@ class Login extends Component {
                 console.log(responseJson) 
                 console.log(responseJson.error) 
                 this.setState({ isLoading: false,  errors: responseJson.error  })
-                this.setValueLocally(); // save phnoe number in local storage
+               // this.setValueLocally(); // save phnoe number in local storage
                 if(responseJson.error === undefined ){
                     this.props.navigation.navigate('Activity', { phoneNumber: this.state.mobile});
                 }

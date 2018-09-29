@@ -29,7 +29,7 @@ class CarouselComponent extends Component {
         super(props);
         this.state = { 
             sourceFile: img01,
-            currentPage: 0 ,
+            currentPage: 0 , 
 
          }
     }
@@ -70,6 +70,7 @@ class CarouselComponent extends Component {
         
     }
 
+ 
     render() { 
         return ( 
 

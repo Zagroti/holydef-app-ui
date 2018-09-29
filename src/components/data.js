@@ -63,12 +63,20 @@ class Data extends Component {
 
              let catId = navigation.getParam('categoryId', 'It is Null');
              let articleId = navigation.getParam('articleId', 'It is Null');
+             let Token = navigation.getParam('Token', 'It is Null');
                
 
             // console.log( " catid: "+ catId + " article id: "+ articleId); // TODO delete later
+            const data= {
+                method: 'GET',
+                headers: {
+                    "Authorization": Token,
+                    "Accept":"application/json", 
+                }
+            }
 
              const url = 'http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId;
-             fetch(url)
+             fetch(url,data)
              .then((response) => response.json())
              .then((responseJson) => {
                    this.setState({dataSource: responseJson.data});
@@ -95,20 +103,7 @@ class Data extends Component {
     render() { 
 
 
-        // let shareOptions = {
-        //     title: "Shear option",
-        //     message: "Hola mundo",
-        //     url: "http://facebook.github.io/react-native/",
-        //     subject: "Share Link" //  for email
-        //   };
-      
-        //   let shareImageBase64 = {
-        //     title: "React Native",
-        //     message: "Hola mundo",
-        //     url: REACT_ICON,
-        //     subject: "Share Link" //  for email
-        //   };
-
+ 
 
         const { errors, isLoading } = this.state
         const htmlContent = this.state.dataSource.description;

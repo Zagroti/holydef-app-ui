@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Text, ImageBackground , StyleSheet, Platform , Image} from 'react-native'
-import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container } from 'native-base'
+import { Text, ImageBackground , StyleSheet, Platform , Image , AsyncStorage } from 'react-native'
+import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container  } from 'native-base'
 import {SideBar} from './SideBar'
 import CarouselComponent from './Carousel';
 import LinderUnderMenu from './lineUnderMenu';
@@ -13,7 +13,7 @@ import normalize from '../styles/normalizeText';
   class Main extends Component  {
     constructor(props) {
       super(props)
-      this.state = { }
+      this.state = { token: null}
     }
   closeDrawer() {
     this.drawer._root.close() 
@@ -27,6 +27,24 @@ import normalize from '../styles/normalizeText';
     this.props.navigation.navigate('Search');
 
   }
+
+
+
+  componentWillMount = async () => {
+
+          try {
+            let value = await AsyncStorage.getItem('ACTIVITYCODE'); // Get Token from localStrage
+      
+              this.setState({token: value }) // Start loadin . . . && token set in state .
+              console.log("Token Is: " + this.state.token);
+
+          } catch (error) {
+                console.log(error); 
+          }
+  };
+
+
+
   render() {
 
     const {navigate} = this.props.navigation;
@@ -40,7 +58,7 @@ import normalize from '../styles/normalizeText';
       >
       
 
-        <CarouselComponent navigation={this.props.navigation}   >
+        <CarouselComponent navigation={this.props.navigation}    >
           <Header style={styles.headerStyling} >
             <Left style={{flex:1}}>
               <Button transparent onPress={() => this._search()}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , StyleSheet, ImageBackground , TouchableOpacity, Text , Platform,TextInput, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
+import { View , StyleSheet,AsyncStorage , ImageBackground , TouchableOpacity, Text , Platform,TextInput, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
 import { Icon } from 'native-base';
 // import UserAgent from 'react-native-user-agent'; 
 import uuid from 'react-native-uuid';
@@ -17,7 +17,13 @@ class Activity extends Component {
         super(props);
         this.state = { Activekey:'' }
     }
+    setValueLocally=()=>{
 
+        AsyncStorage.setItem('ACTIVITYCODE', this.state.Activekey);
+       // alert("Value Stored Successfully.")
+       console.log(this.state.Activekey)
+     
+      }
 
     onPressSending = async () => {
         // get Mobile number from login page in navigate
@@ -28,41 +34,56 @@ class Activity extends Component {
          
         console.log(UUID);
 
-        console.log(MOBILE + this.state.Activekey + "Agent Aras: " + AGENT + "UUID: " + UUID);
+        console.log(MOBILE + " Activecode:" + this.state.Activekey + " Agent Aras: " + AGENT + "UUID: " + UUID);
 
         this.setState({ isLoading: true })
 
         const formdata = new FormData();
-        formdata.append('mobile', MOBILE, 'code', this.state.Activekey );
+        formdata.append('mobile', MOBILE);
+        formdata.append('code', this.state.Activekey);
 
-        this.props.navigation.navigate('Main');
-        try {
-        const data = {
-                    method: 'POST',
-                    headers: { 
+
+        // bodyFormData.append('title', this.state.orderForm.title.value);
+        // bodyFormData.append('short_description', this.state.orderForm.short_description.value);
+        // bodyFormData.append('description', this.state.orderForm.description.value);
+
+
+
+       // this.props.navigation.navigate('Main');
+    if(this.state.Activekey != ''){        try {
+            const data = {
+                        method: 'POST',
+                        headers: { 
+                        
+                            "agent": AGENT,
+                            "Accept":"application/json",
+                            "uuid": UUID,
+                        },
+                        
+                        body: formdata
+                    }
+
+                let response = await fetch('http://api.holydef.ir/api/v1/auth/otp/verify', data);
+                let responseJson = await response.json();
+                    // TODO check later and clear any consol log
+                    console.log(data)
+                    console.log(responseJson.data.token)
+                    this.setState({Activekey:responseJson.data.token});
+                    this.setValueLocally();
+
+                    console.log(responseJson.error) 
+                    this.setState({ isLoading: false,  errors: responseJson.error  })
                     
-                    "agent": AGENT,
-                    "Accept":"application/json",
-                    "uuid": UUID,
-                    },
-                    
-                    body: formdata
-                }
+                    if(responseJson.error === undefined ){
+                        this.props.navigation.navigate('Main');
+                    }
 
-            let response = await fetch('http://api.holydef.ir/api/v1/auth/otp/verify', data);
-            let responseJson = await response.json();
-                // TODO check later and clear any consol log
-                console.log(data)
-                console.log(responseJson) 
-                console.log(responseJson.error) 
-                this.setState({ isLoading: false,  errors: responseJson.error  })
-                
-                if(responseJson.error === undefined ){
-                    this.props.navigation.navigate('Main');
+                } catch(error) {
+                    console.error(error);
                 }
-
-            } catch(error) {
-                console.error(error);
+            }
+            else{
+                console.log("Pleas insert active code");
             }
 
 
