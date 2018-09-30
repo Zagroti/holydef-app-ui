@@ -6,7 +6,6 @@ import colors from '../styles/colors';
 import normalize from '../styles/normalizeText';
 
 
-
 class HeaderSearch extends Component {
     constructor(props) {
         super(props);
@@ -19,9 +18,6 @@ class HeaderSearch extends Component {
 
 
     render() { 
-
-
-
 
       
         return ( 

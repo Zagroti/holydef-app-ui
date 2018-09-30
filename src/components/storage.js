@@ -21,7 +21,6 @@ componentDidMount(){
      
       }
 
-
       getValueLocally=()=>{
 
         AsyncStorage.getItem('phoneNumber').then((value) => this.setState({ getValue : value }))
