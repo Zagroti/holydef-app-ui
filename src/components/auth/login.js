@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , StyleSheet,AsyncStorage , ImageBackground ,TextInput, TouchableOpacity, Text , Platform, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
+import { View , StyleSheet,AsyncStorage , ImageBackground ,TextInput, TouchableOpacity, Text , Platform,Keyboard, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
 import { Icon } from 'native-base';
 import colors from '../../styles/colors';
 import normalize from '../../styles/normalizeText';
@@ -27,7 +27,7 @@ class Login extends Component {
 
     onPressSending = async () => {
         this.setState({ isLoading: true })
-
+        Keyboard.dismiss();
         const formdata = new FormData();
         formdata.append('mobile', this.state.mobile);
 
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     txtTitle:{
         textAlign:'center',
         fontFamily: 'IRANSans',
-        fontSize: normalize(16), 
+        fontSize: normalize(14), 
     },
     txtContainer:{
         borderRadius:10,

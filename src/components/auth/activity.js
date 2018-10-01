@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , StyleSheet,AsyncStorage , ImageBackground , TouchableOpacity, Text , Platform,TextInput, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
+import { View , StyleSheet,AsyncStorage , ImageBackground , TouchableOpacity, Text ,Keyboard, Platform,TextInput, KeyboardAvoidingView , ActivityIndicator   } from 'react-native';
 import { Icon } from 'native-base';
 // import UserAgent from 'react-native-user-agent'; 
 import uuid from 'react-native-uuid';
@@ -26,6 +26,7 @@ class Activity extends Component {
       }
 
     onPressSending = async () => {
+        Keyboard.dismiss();
         // get Mobile number from login page in navigate
         const {navigation} = this.props;
         let MOBILE =  navigation.getParam('phoneNumber', 'It is Null');
@@ -50,7 +51,8 @@ class Activity extends Component {
 
 
        // this.props.navigation.navigate('Main');
-    if(this.state.Activekey != ''){        try {
+    if(this.state.Activekey != ''){        
+        try {
             const data = {
                         method: 'POST',
                         headers: { 
