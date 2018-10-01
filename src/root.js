@@ -4,7 +4,7 @@ import { Platform, AsyncStorage } from 'react-native';
 import colors from './styles/colors';
 import SplashAuto from 'react-native-splash-screen';
 
-import { Search, SideBar, Main , AboutUs} from './components/index';
+import { Search, SideBar, Main , AboutUs, Favorite} from './components/index';
 
 import SplashScreen  from './components/splash';
 import LoginScreen  from './components/auth/login';
@@ -67,6 +67,7 @@ const defaultNavigationOptions = {
     Sound :    {screen : SoundScreen},
 
     AboutUs :    {screen : AboutUs},
+    Favorite :    {screen : Favorite},
 
 },
 {

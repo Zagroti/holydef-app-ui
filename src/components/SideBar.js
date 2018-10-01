@@ -42,7 +42,7 @@ import normalize  from '../styles/normalizeText';
                       </TouchableOpacity>
 
 
-                      <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigate('AboutUs');this.props.closeDrawer();}} >
+                      <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigate('Favorite');this.props.closeDrawer();}} >
                             <View style={styles.itemsContainer}>
                                 <Text style={styles.textContainer}>لیست علاقمندی</Text>
                                 <Icon name='heart' style={{color:colors.themeBackground}} />

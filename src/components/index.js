@@ -3,3 +3,4 @@ export * from './SideBar';
 export * from './search';
 export * from './main';
 export * from './aboutUs';
+export * from './favorite';
