@@ -28,7 +28,7 @@ class HeaderSearch extends Component {
 
             <View style={styles.container}>
          
-              <View style={styles.boxTitle}><Text style={styles.titleStyling}>جستجو</Text></View>
+              <View style={styles.boxTitle}><Text style={styles.titleStyling}>{this.props.title}</Text></View>
               <View>
                 <TouchableOpacity transparent onPress={this.goBackTo} >
                         <Icon style={{color: '#fff'}} name='arrow-forward' />

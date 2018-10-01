@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View , Text, ImageBackground , StyleSheet} from 'react-native';
 import LinderUnderMenu from './lineUnderMenu';
-import Header from './header';
+import Header from './headerSearch';
 import colors from '../styles/colors';
 
 
@@ -16,7 +16,8 @@ class AboutUs extends Component {
     render() { 
         return ( 
             <ImageBackground source = {require('../assets/img/01.jpg')} blurRadius={30} style={styles.container}>
-                <Header navigation={this.props.navigation}/>
+                
+                <Header title="درباره ما" navigation={this.props.navigation} />
                 <LinderUnderMenu />
 
                 <View style={styles.boxContainer}>

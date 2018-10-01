@@ -130,7 +130,7 @@ class Search extends Component {
 
             <ImageBackground source = {this.state.imageFile} blurRadius={30} style={styles.container}>
 
-                <Header navigation={this.props.navigation} />
+                <Header title="جستجو" navigation={this.props.navigation} />
 
                 <LinderUnderMenu />
 

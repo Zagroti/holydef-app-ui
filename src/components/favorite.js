@@ -1,9 +1,10 @@
 import React, { Component} from 'react';
-import {  View, Text, StyleSheet , FlatList ,Image , ActivityIndicator, AsyncStorage, TouchableOpacity } from 'react-native';
+import {  View, Text, StyleSheet , FlatList ,Image , ActivityIndicator, AsyncStorage, TouchableOpacity, ImageBackground } from 'react-native';
 import colors from '../styles/colors';
 import normalize from '../styles/normalizeText';
 import { H1, H2 } from '../typography';
-
+import LinderUnderMenu from './lineUnderMenu';
+import Header from './headerSearch';
 
 class Favorite extends Component {
     constructor(props) {
@@ -82,11 +83,15 @@ class Favorite extends Component {
       
         const { errors, isLoading } = this.state
         return ( 
-            <View>
-               
+            <ImageBackground source = {require('../assets/img/01.jpg')} blurRadius={30} style={styles.container}>
+
+                <Header title="لیست علاقمندی ها" navigation={this.props.navigation} />               
+                <LinderUnderMenu />
 
 
-        {isLoading ? (
+                <View style={styles.dataContainer}>
+
+                            {isLoading ? (
                     <View style={styles.loadingBox}>
                         <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
                         <ActivityIndicator color="white" />
@@ -105,10 +110,13 @@ class Favorite extends Component {
                     )}
 
 
+                </View>
 
 
 
-            </View>
+
+
+            </ImageBackground>
          );
     }
 }
@@ -121,8 +129,7 @@ class Favorite extends Component {
 const styles = StyleSheet.create({
 
     container:{
-        flex:1, 
-        
+        flex:1,  
     },
     dataContainer:{
         paddingHorizontal: 15,
