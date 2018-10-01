@@ -27,6 +27,44 @@ class HeaderSearch extends Component {
 
     }
 
+    _setFavorite = async  (id,catId, Token) => {
+        //console.log(id);
+      //  this.props.navigation.navigate('Sound', {articleId:id, categoryId: catId, Token:Token});
+
+
+        const formdata = new FormData();
+        formdata.append('article_id', catId);
+
+
+        try {
+            const data = {
+                        method: 'POST',
+                        headers: {
+                            "Authorization": Token,
+                            "Accept":"application/json", 
+                        },
+                        
+                        body: formdata
+                    }
+    
+                let response = await fetch('http://api.holydef.ir/api/v1/article/favourite', data);
+                let responseJson = await response.json();
+                    // TODO check later and clear any consol log
+                    console.log(data)
+                    console.log(responseJson) 
+                    console.log(responseJson.error) 
+                    this.setState({ isLoading: false,  errors: responseJson.error  })
+                   // this.setValueLocally(); // save phnoe number in local storage
+          
+    
+                } catch(error) {
+                    console.error(error);
+                }
+
+                
+
+    }
+
     render() { 
 
 
@@ -44,7 +82,7 @@ class HeaderSearch extends Component {
                     </TouchableOpacity>
                 </View> */}
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={this.goBackTo} >
+                    <TouchableOpacity transparent onPress={() => this._setFavorite(this.props.catid, this.props.id, this.props.Token)} >
                         <Icon style={{color: '#fff'}} name='heart' />
                     </TouchableOpacity>
                 </View>
