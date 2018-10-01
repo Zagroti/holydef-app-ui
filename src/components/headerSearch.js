@@ -28,7 +28,7 @@ class HeaderSearch extends Component {
 
             <View style={styles.container}>
          
-              <View><Text style={styles.titleStyling}>جستجو در مطالب</Text></View>
+              <View style={styles.boxTitle}><Text style={styles.titleStyling}>جستجو</Text></View>
               <View>
                 <TouchableOpacity transparent onPress={this.goBackTo} >
                         <Icon style={{color: '#fff'}} name='arrow-forward' />
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 
     container:{
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         backgroundColor: colors.transparent,
         height: 60,
         padding: 20,
@@ -53,10 +53,12 @@ const styles = StyleSheet.create({
     },
     titleStyling:{
         color:colors.white,
-        fontFamily: 'IRANSans', 
+        fontFamily: 'iranyekanbold', 
         fontSize: Platform.os === 'ios' ? normalize(18) : normalize(20),
-
-
+    },
+    boxTitle:{
+        paddingHorizontal: 20,
+        
     }
 })
  

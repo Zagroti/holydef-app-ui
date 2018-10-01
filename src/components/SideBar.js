@@ -44,8 +44,8 @@ import normalize  from '../styles/normalizeText';
 
                       <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigate('AboutUs');this.props.closeDrawer();}} >
                             <View style={styles.itemsContainer}>
-                                <Text style={styles.textContainer}>درباره ما</Text>
-                                <Icon name='information-circle' style={{color:colors.themeBackground}} />
+                                <Text style={styles.textContainer}>لیست علاقمندی</Text>
+                                <Icon name='heart' style={{color:colors.themeBackground}} />
                             </View>
                       </TouchableOpacity>
 
@@ -56,6 +56,12 @@ import normalize  from '../styles/normalizeText';
                             </View>
                       </TouchableOpacity>
 
+                      <TouchableOpacity style={styles.buttonContainer} onPress={() => {this.props.navigate('AboutUs');this.props.closeDrawer();}} >
+                            <View style={styles.itemsContainer}>
+                                <Text style={styles.textContainer}>درباره ما</Text>
+                                <Icon name='information-circle' style={{color:colors.themeBackground}} />
+                            </View>
+                      </TouchableOpacity>
 
 
                        <TouchableOpacity style={styles.buttonContainer} onPress={ () => BackAndroid.exitApp()}>

@@ -18,8 +18,8 @@ export default class Splash extends Component {
     // get data from local storage for chechking auth : user was signup or not
     _loadInitialState = async () => {
         try {
-           //let value = await AsyncStorage.getItem('ACTIVITYCODE');
-          let value = await AsyncStorage.getItem('phoneNumber');
+           let value = await AsyncStorage.getItem('ACTIVITYCODE');
+        //   let value = await AsyncStorage.getItem('phoneNumber');
             if (value.length < 11 && value != ""){
                 this.props.navigation.navigate('Login')
             } else {

@@ -278,7 +278,10 @@ const styles = StyleSheet.create({
         fontFamily: 'IRANSans',
     },
     h3:{
-        fontFamily: 'IRANSans',
+        fontFamily: 'iranyekanbold', 
+        color: colors.black,
+        fontSize: normalize(16),
+
 
     },
     instructions: {

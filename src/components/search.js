@@ -80,6 +80,7 @@ class Search extends Component {
          }
    
          _SearchArticle =() => {
+            Keyboard.dismiss();
             this.setState({ isLoading: true, notFound:false })
             const {navigation} = this.props;
             let Token =  navigation.getParam('Token', 'Token is Null');
@@ -97,8 +98,8 @@ class Search extends Component {
              .then((response) => response.json())
              .then((responseJson) => {
                    this.setState({dataSource: responseJson.data});
-                   //console.log("resulat :"+this.state.dataSource.length);
-                   Keyboard.dismiss()
+                   console.log(this.state.dataSource);
+                  
 
                    if(this.state.dataSource == ''){
                        console.log("not found!");
@@ -179,13 +180,9 @@ class Search extends Component {
                                             </View>
 
                                             ) : (
-                                                <FlatList
-                                                    data= {this.state.dataSource}
-                                                    renderItem={this.renderItem} 
-                                                    keyExtractor = { (item, index) => index.toString() }
-                                                    style={{marginBottom:100}}
-
-                                                    />
+                                               
+                                                <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}></Text>
+                                 
                                             )}
                            </View>
 
