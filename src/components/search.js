@@ -104,7 +104,6 @@ class Search extends Component {
                    if(this.state.dataSource == ''){
                        console.log("not found!");
                        this.setState({notFound: true});
-
                    }
                    this.setState({ isLoading: false })
 

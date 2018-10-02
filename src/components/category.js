@@ -94,10 +94,13 @@ class category extends Component {
 
     _openViewPage(id,catId,Token){
         console.log(Token);
-        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token});
+        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token, onGoBack: () => this.refresh() });
 
     }
 
+    refresh(){
+        console.log("Category is Backed!")
+    }
 
  
 
@@ -142,7 +145,7 @@ class category extends Component {
 
                 {isLoading ? (
                     <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
+                        <Text style={{paddingHorizontal:10 ,fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
                         <ActivityIndicator color="white" />
                     
                     </View>

@@ -64,7 +64,7 @@ class Data extends Component {
              let catId = navigation.getParam('categoryId', 'It is Null');
              let articleId = navigation.getParam('articleId', 'It is Null');
              let Token = navigation.getParam('Token', 'It is Null');
-             
+
                console.log(articleId);
                console.log(catId);
 
@@ -126,7 +126,7 @@ class Data extends Component {
                 {isLoading ? (
 
                     <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
+                        <Text style={{paddingHorizontal:10,fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
                         <ActivityIndicator color="white" />
                     </View>
 

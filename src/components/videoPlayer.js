@@ -69,7 +69,7 @@ export default class App extends Component {
             {isLoading ? (
 
                     <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
+                        <Text style={{paddingHorizontal:10,fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
                         <ActivityIndicator color="white" />
                     </View>
 

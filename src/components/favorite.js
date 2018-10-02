@@ -40,6 +40,10 @@ class Favorite extends Component {
                 .then((responseJson) => {
                     this.setState({dataSource: responseJson.data});
                     console.log(this.state.dataSource); // TODO delete later
+                    if(this.state.dataSource == ''){
+                        console.log("not found!");
+                        this.setState({notFound: true});
+                    }
                     this.setState({ isLoading: false })
                 })
                 .catch((error) => {
@@ -51,10 +55,12 @@ class Favorite extends Component {
     // Open Data componet for showing data
     _openViewPage = (id,catId,Token) => {
       //  console.log(id);
-       this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token });
+       this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token , onGoBack: () => this.refresh()});
     }
 
-
+    refresh() {
+       this._fetchDart();
+      }
   
      renderItem = ({item})=>{
         return(
@@ -79,7 +85,7 @@ class Favorite extends Component {
     render() { 
 
       
-        const { errors, isLoading } = this.state
+        const { errors, isLoading, notFound } = this.state
         return ( 
             <ImageBackground source = {require('../assets/img/01.jpg')} blurRadius={30} style={styles.container}>
 
@@ -91,7 +97,7 @@ class Favorite extends Component {
 
                             {isLoading ? (
                     <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10}}>درحال بارگذاری</Text>
+                        <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
                         <ActivityIndicator color="white" />
                     
                     </View>
@@ -106,6 +112,14 @@ class Favorite extends Component {
                             />
 
                     )}
+
+                    {notFound ? (
+
+                        <View style={styles.loadingBox}>
+                            <Text style={{paddingHorizontal:5, fontFamily:'IRANSans'}}>مطلبی به لیست اضافه نشده است</Text>
+                        </View>
+
+                        ) : ( <Text style={{paddingHorizontal:10, fontFamily:'IRANSans'}}></Text> )}
 
 
                 </View>
@@ -166,7 +180,7 @@ const styles = StyleSheet.create({
       },
       loadingBox:{
         flexDirection: 'row',
-        width:200,
+        width:300,
         height:60,
         backgroundColor : colors.silver,
         borderRadius:100,
