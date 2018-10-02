@@ -48,8 +48,8 @@ class Favorite extends Component {
     
     // Open Data componet for showing data
     _openViewPage = (id,catId,Token) => {
-        console.log(Token);
-        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token });
+      //  console.log(id);
+       this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token });
     }
 
 

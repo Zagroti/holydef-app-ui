@@ -56,7 +56,7 @@ class Data extends Component {
         
     }
 
-         componentDidMount(){
+         componentWillMount(){
             this.setState({ isLoading: true })
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
@@ -64,7 +64,8 @@ class Data extends Component {
              let catId = navigation.getParam('categoryId', 'It is Null');
              let articleId = navigation.getParam('articleId', 'It is Null');
              let Token = navigation.getParam('Token', 'It is Null');
-               
+               console.log(articleId);
+               console.log(catId);
 
             // console.log( " catid: "+ catId + " article id: "+ articleId); // TODO delete later
             const data= {
