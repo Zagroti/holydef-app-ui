@@ -9,12 +9,16 @@ import normalize from '../styles/normalizeText';
 class HeaderSearch extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { isFavorite:true }
     }
 
-    goBackTo =() =>{ 
+    goBackTo = () => {
         this.props.navigation.goBack();
+        console.log("go back");
     }
+
+
+
     _openViewPage(id,catId, Token){
         console.log("cat id and : " + id + catId);
         this.props.navigation.navigate('Video', {articleId:id, categoryId: catId, Token:Token});
@@ -65,6 +69,29 @@ class HeaderSearch extends Component {
 
     }
 
+    componentWillMount = async () =>{
+        const {navigation} = this.props;
+
+        let catId = navigation.getParam('categoryId', 'It is Null');
+        let articleId = navigation.getParam('articleId', 'It is Null');
+        let Token = navigation.getParam('Token', 'It is Null');
+
+        const data= {
+            method: 'GET',
+            headers: {
+                "Authorization": Token,
+                "Accept":"application/json", 
+            }
+        }
+
+        let url = 'http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId ;
+        let response = await fetch(url,data)
+        .then((response) => response.json());
+        console.log(response.data.is_favourite);
+        this.setState({isFavorite: response.data.is_favourite });
+
+    }
+
     render() { 
 
 
@@ -82,9 +109,17 @@ class HeaderSearch extends Component {
                     </TouchableOpacity>
                 </View> */}
                 <View style={{paddingLeft:15}}>
+                {this.state.isFavorite ? (
                     <TouchableOpacity transparent onPress={() => this._setFavorite(this.props.catid, this.props.id, this.props.Token)} >
                         <Icon style={{color: '#fff'}} name='heart' />
                     </TouchableOpacity>
+                ) :(
+                    <TouchableOpacity transparent onPress={() => this._setFavorite(this.props.catid, this.props.id, this.props.Token)} >
+                        <Icon style={{color: '#EC7063'}} name='heart' />
+                    </TouchableOpacity>  
+                )}
+
+
                 </View>
                 <View style={{paddingLeft:15}}>
                     <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token)} >

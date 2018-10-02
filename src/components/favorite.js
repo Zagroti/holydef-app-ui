@@ -9,55 +9,51 @@ import Header from './headerSearch';
 class Favorite extends Component {
     constructor(props) {
         super(props);
-        this.state = { Token:null, dataSource:null }
+        this.state = { Token:null, dataSource:null, refreshData:false }
     }
 
 
+    componentDidMount() {
 
+        this._fetchDart(); // fetch data from API
+     }
 
-
-    componentDidMount = async () => {
+    _fetchDart = async () =>{
         let Token = await AsyncStorage.getItem('ACTIVITYCODE'); // Get Token from localStrage
 
         this.setState({ isLoading: true,  Token: Token })
         const {navigation} = this.props;
-        //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
 
-      
-       
-           
+                const data= {
+                    method: 'GET',
+                    headers: {
+                        "Authorization": Token,
+                        "Accept":"application/json", 
+                    }
+                }
 
-        // console.log( " catid: "+ catId + " article id: "+ articleId); // TODO delete later
-        const data= {
-            method: 'GET',
-            headers: {
-                "Authorization": Token,
-                "Accept":"application/json", 
-            }
+                const url = 'http://api.holydef.ir/api/v1/article/favourite';
+                fetch(url,data)
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    this.setState({dataSource: responseJson.data});
+                    console.log(this.state.dataSource); // TODO delete later
+                    this.setState({ isLoading: false })
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
         }
 
-         const url = 'http://api.holydef.ir/api/v1/article/favourite';
-         fetch(url,data)
-         .then((response) => response.json())
-         .then((responseJson) => {
-               this.setState({dataSource: responseJson.data});
-               console.log(this.state.dataSource);
-               this.setState({ isLoading: false })
-         })
-         .catch((error) => {
-               console.log(error);
-         })
-  
-     }
-
-
-     _openViewPage(id,catId,Token){
+    
+    // Open Data componet for showing data
+    _openViewPage = (id,catId,Token) => {
         console.log(Token);
-        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token});
-
+        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token });
     }
 
 
+  
      renderItem = ({item})=>{
         return(
             
@@ -111,9 +107,6 @@ class Favorite extends Component {
 
 
                 </View>
-
-
-
 
 
             </ImageBackground>
