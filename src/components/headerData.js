@@ -58,7 +58,7 @@ class HeaderSearch extends Component {
                     console.log(responseJson) 
                     console.log(responseJson.error) 
 
-                    this.setState({ isLoading: false,  errors: responseJson.error  })
+                    this.setState({ isLoading: true,  errors: responseJson.error  })
                    // this.setValueLocally(); // save phnoe number in local storage
                
     

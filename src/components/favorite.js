@@ -20,6 +20,8 @@ class Favorite extends Component {
 
     _fetchDart = async () =>{
         let Token = await AsyncStorage.getItem('ACTIVITYCODE'); // Get Token from localStrage
+        console.log("Tokein in favorit");
+        console.log(Token);
 
         this.setState({ isLoading: true,  Token: Token })
         const {navigation} = this.props;

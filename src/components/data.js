@@ -64,6 +64,7 @@ class Data extends Component {
              let catId = navigation.getParam('categoryId', 'It is Null');
              let articleId = navigation.getParam('articleId', 'It is Null');
              let Token = navigation.getParam('Token', 'It is Null');
+             
                console.log(articleId);
                console.log(catId);
 
