@@ -84,7 +84,6 @@ export default class App extends Component {
                         disableFullscreen={true}
                         autoplay= {true} // its importent after complate fetch will be wroking
                         onEnd={this.stopPlaybackPing}
-
                         ref={r => this.player = r}
                         />
 

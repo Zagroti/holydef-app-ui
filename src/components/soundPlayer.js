@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
     one:{
         flex:2,
     },
-    two:{flex:3,
+    two:{
+        flex:3,
 
     },
 
