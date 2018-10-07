@@ -1,147 +1,156 @@
-import React, { Component } from 'react';
-import { View, Text, Button , StyleSheet, ActivityIndicator } from 'react-native';
-import VideoPlayer from 'react-native-video-player';
+ 
+
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import Header from './headerVideoPlayer';
 
-import colors from '../styles/colors';
+import Video from 'react-native-video';
+import MediaControls, { PLAYER_STATES } from 'react-native-media-controls';
 
+class VideoPlayer extends Component {
+  videoPlayer;
 
-export default class App extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
-      video: { width: undefined, height: undefined, duration: undefined },
-      thumbnailUrl: undefined,
-      videoUrl: undefined, autoplay: false, 
+      currentTime: 0,
+      duration: 0,
+      isFullScreen: false,
+      isLoading: true,
+      paused: false,
+      playerState: PLAYER_STATES.PLAYING,
+      screenType:'content',
+      videoSource:''
+
     };
   }
 
-  componentDidMount() {
-    this.setState({ isLoading: true })
-    const {navigation} = this.props;
-    // get props from navigation in other component -->
-     let catId = navigation.getParam('categoryId', 'Its Null');
-     let articleId = navigation.getParam('articleId', 'Its Null');
-     let Token = navigation.getParam('Token', 'Token is null');
+        componentWillMount(){
+          const {navigation} = this.props;
+          let GetVideoURL = navigation.getParam('videoURL', 'It is Null');
+          this.setState({videoSource: GetVideoURL});
+          console.log(GetVideoURL);
 
-     const data={
-       method:'GET',
-       headers:{
-        "Authorization": Token,
-        "Accept":"application/json", 
-       }
-     }
-     global.fetch('http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId, data)
-      .then(res => res.json())
-      .then((responseJson) => {this.setState({
+        }
+        onSeek = seek => {
+          this.videoPlayer.seek(seek);
+        };
 
-        videoUrl: responseJson.data.video,
-        thumbnailUrl: responseJson.data.image,
-        autoplay: true,
-      })
-      console.log("fetch is data : "+ this.state.videoUrl); // TODO later delete it
-      this.setState({ isLoading: false })
-    }
-      )
-      .catch((error) => {
-        console.log(error);
-  })
-     
-     
-  }
+        onPaused = playerState => {
+          this.setState({
+            paused: !this.state.paused,
+            playerState,
+          });
+        };
 
-  stopPlaybackPing= () => {
-    this.props.navigation.goBack();
-  }
+        onReplay = () => {
+          this.setState({ playerState: PLAYER_STATES.PLAYING });
+          this.videoPlayer.seek(0);
+        };
 
+        onProgress = data => {
+          const { isLoading, playerState } = this.state;
+          // Video Player will continue progress even if the video already ended
+          if (!isLoading && playerState !== PLAYER_STATES.ENDED) {
+            this.setState({ currentTime: data.currentTime });
+          }
+        };
+
+        onLoad = data => this.setState({ duration: data.duration, isLoading: false });
+
+        onLoadStart = data => this.setState({ isLoading: true });
+
+        onEnd = () => this.setState({ playerState: PLAYER_STATES.ENDED });
+
+        onError = () => alert('Oh! ', error);
+
+        exitFullScreen = () => {
+          alert("Exit full screen");
+        };
+
+        enterFullScreen = () => {};
+
+        onFullScreen = () => {
+          if(this.state.screenType=='content')
+            this.setState({screenType:'cover'});
+         else
+            this.setState({screenType:'content'});
+        };
+
+        renderToolbar = () => (
+          <View >
+            {/* <Text> toolbar </Text> */}
+          </View>
+        );
+
+        onSeeking = currentTime => this.setState({ currentTime });
+        
   render() {
-
-    const { errors, isLoading } = this.state
     return (
       <View style={styles.container}>
 
-       <View style={styles.one}>
+        <View style={styles.one}>
             < Header navigation={this.props.navigation} />
        </View>
-       <View style={styles.two}>
 
-            {isLoading ? (
 
-                    <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10,fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
-                        <ActivityIndicator color="white" />
-                    </View>
-
-                    ) : (
-                        <VideoPlayer
-                        endWithThumbnail
-                        thumbnail={{ uri: this.state.thumbnailUrl }}
-                        video={{ uri: this.state.videoUrl }}
-                        videoWidth={this.state.video.width}
-                        videoHeight={this.state.video.height}  
-                        duration={this.state.video.duration}
-                        disableFullscreen={true}
-                        autoplay= {true} // its importent after complate fetch will be wroking
-                        onEnd={this.stopPlaybackPing}
-                        ref={r => this.player = r}
-                        />
-
-                )}
-   
-       </View>
-
+        <View style={{flexGrow:2, }}>
+              <Video
+                onEnd={this.onEnd}
+                onLoad={this.onLoad}
+                onLoadStart={this.onLoadStart}
+                onProgress={this.onProgress}
+                paused={this.state.paused}
+                ref={videoPlayer => (this.videoPlayer = videoPlayer)}
+                resizeMode={this.state.screenType}
+                onFullScreen={this.state.isFullScreen}
+                source={{ uri: this.state.videoSource }}  // video sorce get from props
+                style={styles.mediaPlayer}
+                volume={10}
+              />
+              <MediaControls
+                duration={this.state.duration}
+                isLoading={this.state.isLoading}
+                mainColor="#333"
+                onFullScreen={this.onFullScreen}
+                onPaused={this.onPaused}
+                onReplay={this.onReplay}
+                onSeek={this.onSeek}
+                onSeeking={this.onSeeking}
+                playerState={this.state.playerState}
+                progress={this.state.currentTime}
+                toolbar={this.renderToolbar()}
+              />
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        width:'100%',
-        height:'100%',
-        justifyContent: 'center', 
-        backgroundColor: '#333'
+  container: {
+    flex: 1,
+  },
+  toolbar: {
+    marginTop: 30,
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+  },
+  mediaPlayer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: 'black',
+  },
+  one:{
+    backgroundColor:'#333',
+    height: 60,
 
-    },
-    one:{
-        flex:2,
-    },
-    two:{flex:3,
-
-    },
-
-    loadingBox:{
-        flexDirection: 'row',
-        width:200,
-        height:60,
-        backgroundColor : colors.silver,
-        borderRadius:100,
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-        paddingHorizontal: 20,
-    },
-})
+},
+});
 
 
-
-
-
-
-
-
-
-        {/* <Button
-          onPress={() => this.player.stop()}
-          title="Stop"
-        />
-        <Button
-          onPress={() => this.player.pause()}
-          title="Pause"
-        />
-        <Button
-          onPress={() => this.player.resume()}
-          title="Resume"
-        /> */}
+export default VideoPlayer;

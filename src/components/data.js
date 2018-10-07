@@ -45,7 +45,14 @@ import imageBackground from '../assets/img/main-bg.jpg'
 class Data extends Component {
     constructor(props) {
         super(props);
-        this.state = {dataSource:[], imageFile:img01,visible: false, catIdState: null, IdSate: null, Token:null   }
+        this.state = {dataSource:[],
+            imageFile:img01,
+            visible: false, 
+            catIdState: null, 
+            IdSate: null, 
+            Token:null,
+            videoURL:''
+        }
     }
 
  
@@ -56,7 +63,7 @@ class Data extends Component {
         
     }
 
-         componentWillMount(){
+         componentWillMount= async()=>{
             this.setState({ isLoading: true })
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
@@ -84,8 +91,8 @@ class Data extends Component {
                    this.setState({dataSource: responseJson.data});
                    //console.log(this.state.dataSource.description);
                    this.setState({ isLoading: false })
-                   this.setState({catIdState: catId , IdSate: articleId, Token:Token});
-                   console.log(this.state.catIdState + " is state") // TODO later delet it
+                   this.setState({catIdState: catId , IdSate: articleId, Token:Token, videoURL:responseJson.data.video});
+                   console.log(responseJson.data.video) // TODO later delet it
              })
              .catch((error) => {
                    console.log(error);
@@ -114,7 +121,7 @@ class Data extends Component {
 
             <ImageBackground source = {imageBackground} blurRadius={10} style={styles.container}>
 
-                <Header navigation={this.props.navigation} catid={this.state.catIdState} id={this.state.IdSate} Token={this.state.Token}/>
+                <Header navigation={this.props.navigation} catid={this.state.catIdState} id={this.state.IdSate} Token={this.state.Token} video={this.state.videoURL} />
 
                 <LinderUnderMenu />
 

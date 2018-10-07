@@ -21,10 +21,12 @@ class HeaderSearch extends Component {
 
 
 
-    _openViewPage(id,catId, Token){
+    _openViewPage(id,catId, Token, video){
         console.log("cat id and : " + id + catId);
-        this.props.navigation.navigate('Video', {articleId:id, categoryId: catId, Token:Token});
-
+        if(video!= '')
+        this.props.navigation.navigate('Video', {articleId:id, categoryId: catId, Token:Token, videoURL:video});
+        else
+        console.log("در حال بارگذاری، لطفا کمی صبر کنید");
     }
 
     _openSound(id,catId, Token){
@@ -80,6 +82,7 @@ class HeaderSearch extends Component {
         let catId = navigation.getParam('categoryId', 'It is Null');
         let articleId = navigation.getParam('articleId', 'It is Null');
         let Token = navigation.getParam('Token', 'It is Null');
+        let videourl= '';
        //let ISFAVORITE = navigation.getParam('Favorite', 'It is Null');
 
         const data= {
@@ -94,7 +97,7 @@ class HeaderSearch extends Component {
         let response = await fetch(url,data)
         .then((response) => response.json());
        // console.log(response.data.is_favourite);
-        this.setState({isFavorite: response.data.is_favourite, isLoading:true });
+        this.setState({isFavorite: response.data.is_favourite, isLoading:true, videoURL:response.data.vi });
 
     }
 
@@ -133,7 +136,7 @@ class HeaderSearch extends Component {
 
                 </View>
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token)} >
+                    <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token, this.props.video)} >
                         <Icon style={{color: '#fff'}} name='videocam' />
                     </TouchableOpacity>
                 </View>
@@ -150,6 +153,7 @@ class HeaderSearch extends Component {
                     <Icon style={{color: '#fff'}} name='arrow-forward'   />
                 </TouchableOpacity>
               </View>
+              {/* <Text>{this.props.video}</Text> */}
             </View>
          );     
     }
