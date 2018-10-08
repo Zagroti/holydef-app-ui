@@ -51,7 +51,8 @@ class Data extends Component {
             catIdState: null, 
             IdSate: null, 
             Token:null,
-            videoURL:''
+            videoURL:'',
+            SoundURL:''
         }
     }
 
@@ -87,12 +88,20 @@ class Data extends Component {
              const url = 'http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId;
              fetch(url,data)
              .then((response) => response.json())
-             .then((responseJson) => {
-                   this.setState({dataSource: responseJson.data});
-                   //console.log(this.state.dataSource.description);
-                   this.setState({ isLoading: false })
-                   this.setState({catIdState: catId , IdSate: articleId, Token:Token, videoURL:responseJson.data.video});
-                   console.log(responseJson.data.video) // TODO later delet it
+             .then((responseJson) => { 
+                
+                   this.setState({
+                    dataSource: responseJson.data,
+                    isLoading: false,
+                    catIdState: catId , 
+                    IdSate: articleId, 
+                    Token:Token, 
+                    videoURL:responseJson.data.video, 
+                    SoundURL: responseJson.data.audio
+                
+                });
+
+                   console.log(responseJson.data.audio) // TODO later delet it
              })
              .catch((error) => {
                    console.log(error);
@@ -121,7 +130,14 @@ class Data extends Component {
 
             <ImageBackground source = {imageBackground} blurRadius={10} style={styles.container}>
 
-                <Header navigation={this.props.navigation} catid={this.state.catIdState} id={this.state.IdSate} Token={this.state.Token} video={this.state.videoURL} />
+                <Header navigation={this.props.navigation} 
+                        catid={this.state.catIdState} 
+                        id={this.state.IdSate} 
+                        Token={this.state.Token} 
+                        video={this.state.videoURL} 
+                        sound={this.state.SoundURL} 
+                
+                />
 
                 <LinderUnderMenu />
 

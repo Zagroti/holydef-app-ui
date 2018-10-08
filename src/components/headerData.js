@@ -136,14 +136,27 @@ class HeaderSearch extends Component {
 
                 </View>
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token, this.props.video)} >
-                        <Icon style={{color: '#fff'}} name='videocam' />
-                    </TouchableOpacity>
+                        {this.props.video ? (
+                            <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token, this.props.video)} >
+                                    <Icon style={{color: '#fff'}} name='videocam' />
+                            </TouchableOpacity>
+                        ) :(
+                            <View >
+                                <Icon style={{color: '#c5c5c5'}} name='videocam' />
+                            </View>
+                        )}
                 </View>
                 <View style={{paddingLeft:15}}>
-                    <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id, this.props.Token)} >
-                        <Icon style={{color: '#fff'}} name='volume-up' />
-                    </TouchableOpacity>
+
+                        {this.props.sound ? (
+                                <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id, this.props.Token)} >
+                                    <Icon style={{color: '#fff'}} name='volume-up' />
+                                </TouchableOpacity>
+                        ) : (
+                                <View>
+                                    <Icon style={{color: '#c5c5c5'}} name='volume-up' />
+                                </View>
+                        )}
                 </View>
             </Left>
          
