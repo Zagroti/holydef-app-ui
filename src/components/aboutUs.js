@@ -21,7 +21,8 @@ class AboutUs extends Component {
                 <LinderUnderMenu />
 
                 <View style={styles.boxContainer}>
-                    <Text style={styles.textAbout}>اپلیکیشن"از سه روز تا هشت سال" با موضوع ارزشمند دفاع مقدس کار مشترکی از شرکت خدمات نور رایانه سپهر ،شرکت زاگرت و موسسه فلق رایانه اصفهان می باشد و از جمله قابلیت های آن می توان به تنوع موضوعی  و  محتوایی آن اشاره کرد.برای کسب اطلاعات بیشتر و همکاری با شرکت نور رایانه سپهر در زمینه ایجاد و ارائه سرویس های VAS میتوانید با شماره تلفن های 88140692  تماس حاصل فرمایید.</Text>
+                    <Text style={{fontFamily:'iranyekanbold'}}>اپلیکیشن"از سه روز تا هشت سال"</Text>
+                    <Text style={styles.textAbout}>با موضوع ارزشمند دفاع مقدس کار مشترکی از شرکت خدمات نور رایانه سپهر ،شرکت زاگرت و موسسه فلق رایانه اصفهان می باشد و از جمله قابلیت های آن می توان به تنوع موضوعی  و  محتوایی آن اشاره کرد.برای کسب اطلاعات بیشتر و همکاری با شرکت نور رایانه سپهر در زمینه ایجاد و ارائه سرویس های VAS میتوانید با شماره تلفن های 88140692  تماس حاصل فرمایید.</Text>
                 </View>
             </ImageBackground>
          );
@@ -42,21 +43,21 @@ const styles = StyleSheet.create({
         
     },
     boxContainer:{
-        flex:1,
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'flex-start',
-        alignContent: 'flex-start',
+        alignItems: 'flex-end',
+        alignContent: 'flex-end',
         marginBottom: 12,
         elevation: 2,
         shadowOffset:{  width: 10,  height: 10,  },
         shadowColor: 'black',
         shadowOpacity: 1.0,
+        padding: 10,
+        textAlign: 'left'
     },
     textAbout:{
-        fontFamily: 'IRANSans',
-        paddingVertical: 10,
-        
+        fontFamily: 'IRANSans', 
+    
     }
 
 
