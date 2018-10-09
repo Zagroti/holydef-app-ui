@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, ImageBackground , StyleSheet, Platform , Image , AsyncStorage } from 'react-native'
+import { Text, ImageBackground ,View,  StyleSheet, Platform , Image , AsyncStorage } from 'react-native'
 import { Header, Left, Button, Icon, Right, Body, Title, Drawer, Container  } from 'native-base'
 import {SideBar} from './SideBar'
 import CarouselComponent from './Carousel';
@@ -56,9 +56,8 @@ import normalize from '../styles/normalizeText';
         content={<SideBar navigate={navigate} closeDrawer={()=>this.closeDrawer()}/>}
         onClose={() => this.closeDrawer()}
       >
-      
-
-        <CarouselComponent navigation={this.props.navigation}    >
+       
+        <CarouselComponent navigation={this.props.navigation}     >
           <Header style={styles.headerStyling} >
             <Left style={{flex:1}}>
               <Button transparent onPress={ () => this._search(this.state.Token)}>
@@ -81,6 +80,7 @@ import normalize from '../styles/normalizeText';
 
           
         </CarouselComponent>
+      
 
 
       </Drawer>

@@ -74,10 +74,13 @@ class CarouselComponent extends Component {
     render() { 
         return ( 
 
-            <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%',}}>
+            <ImageBackground source= {this.state.sourceFile} blurRadius={30} style={{ width:'100%', height:'100%',           }}>
                  {this.props.children}
-                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,  }}>
-                     
+               
+
+              
+                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,   }}>
+             
                      {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/01.jpg')} style={styles.backgroundImage} >
@@ -200,7 +203,7 @@ class CarouselComponent extends Component {
                     </View>
 
                                          {/*--------------- Items of category --------------- */}
-                                         <View style={styles.container}>
+                    <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/12.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'12')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
@@ -210,13 +213,10 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-
-
-
-
-              
-
                 </Carousel>
+
+                  
+
             </ImageBackground>
          );
     }
@@ -231,6 +231,7 @@ const styles  = StyleSheet.create({
      alignSelf: 'center',
      borderWidth: 10  ,
      borderColor: '#fdfdfd',
+     flexDirection: 'row-reverse'
 
  },
  tocuContainer:{
@@ -244,6 +245,7 @@ const styles  = StyleSheet.create({
      borderTopColor:'#d6dbe3',
      borderBottomColor:'#f0f2f7',
      //borderColor: '#e5e7ec',
+     
  },
  backgroundImage: {
     width: '100%',
