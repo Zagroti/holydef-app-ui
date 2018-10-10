@@ -53,7 +53,9 @@ const styles = StyleSheet.create({
         shadowColor: 'black',
         shadowOpacity: 1.0,
         padding: 10,
-        textAlign: 'left'
+        textAlign: 'left',
+        backgroundColor: colors.white,
+        
     },
     textAbout:{
         fontFamily: 'IRANSans', 
