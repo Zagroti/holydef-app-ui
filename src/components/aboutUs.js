@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View , Text, ImageBackground , StyleSheet, Image} from 'react-native';
+import { View , Text, ImageBackground , StyleSheet, Image, TouchableOpacity} from 'react-native';
 import LinderUnderMenu from './lineUnderMenu';
 import Header from './headerSearch';
 import colors from '../styles/colors';
-
+import { H1, H2 } from '../typography/';
+import normalize from '../styles/normalizeText';
 
 
 
@@ -22,8 +23,20 @@ class AboutUs extends Component {
 
                 <View style={styles.boxContainer}>
                     <Image source={require('../assets/img/logo.png')} style={styles.logBox} />
-                    <Text style={{fontFamily:'iranyekanbold', textAlign:'center'}}>اپلیکیشن"از سه روز تا هشت سال"</Text>
+                    <Text style={{
+                        fontFamily:'iranyekanbold', 
+                        height:50,
+                        width:250,
+                        alignItems:'center',
+                        alignSelf:'center',
+                        textAlign:'center',
+
+                        }}>اپلیکیشن"از سه روز تا هشت سال"</Text>
                     <Text style={styles.textAbout}>با موضوع ارزشمند دفاع مقدس کار مشترکی از شرکت خدمات نور رایانه سپهر ،شرکت زاگرت و موسسه فلق رایانه اصفهان می باشد و از جمله قابلیت های آن می توان به تنوع موضوعی  و  محتوایی آن اشاره کرد.برای کسب اطلاعات بیشتر و همکاری با شرکت نور رایانه سپهر در زمینه ایجاد و ارائه سرویس های VAS میتوانید با شماره تلفن های 88140692  تماس حاصل فرمایید.</Text>
+
+                    <TouchableOpacity style={styles.buttonBox}>
+                        <Text style={styles.btnText} >اطلاعات بیشتر</Text>
+                    </TouchableOpacity>
                 </View>
             </ImageBackground>
          );
@@ -48,7 +61,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'flex-end',
         alignContent: 'flex-end',
-        marginBottom: 12,
+        margin: 12,
         elevation: 2,
         shadowOffset:{  width: 10,  height: 10,  },
         shadowColor: 'black',
@@ -64,13 +77,36 @@ const styles = StyleSheet.create({
             alignItems:'center',
             alignSelf:'center',
             padding:30,
-            
+            marginBottom:20,
+
+
 
 
     },
     textAbout:{
-        fontFamily: 'IRANSans', 
+        fontFamily: 'IRANSans',
+        marginBottom:20,
+ 
     
+    },
+    buttonBox:{
+        flexDirection: 'row',
+        backgroundColor: colors.black,
+        height:50,
+        width:'80%',
+        borderRadius: 50,
+        justifyContent: 'center', 
+        alignSelf:'center',
+        marginBottom:20,
+
+    },
+    btnText:{
+        flex:2,
+        textAlign: 'center',
+        alignSelf: 'center',
+        fontFamily: 'IRANSans',
+        fontSize: normalize(20),
+        color:colors.gold,
     }
 
 

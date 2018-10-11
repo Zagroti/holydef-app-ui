@@ -101,7 +101,7 @@ class Data extends Component {
                 
                 });
 
-                   console.log(responseJson.data.audio) // TODO later delet it
+                   console.log(responseJson.data) // TODO later delet it
              })
              .catch((error) => {
                    console.log(error);
@@ -161,7 +161,7 @@ class Data extends Component {
                                     <HTMLView
                                     value={htmlContent}
                                     stylesheet={styles}
-                                    
+                                    style={{paddingBottom: 50}}
                                     />
                             </ScrollView>
                         </View>
@@ -302,11 +302,28 @@ const styles = StyleSheet.create({
     p:{
         fontFamily: 'IRANSans',
     },
+    h1:{
+        fontFamily: 'iranyekanbold', 
+        color: colors.black,
+        fontSize: normalize(20),
+
+    },
+    h2:{
+        fontFamily: 'iranyekanbold', 
+        color: colors.black,
+        fontSize: normalize(18),
+
+    },
     h3:{
         fontFamily: 'iranyekanbold', 
         color: colors.black,
         fontSize: normalize(16),
 
+    },
+    h4:{
+        fontFamily: 'iranyekanbold', 
+        color: colors.black,
+        fontSize: normalize(14),
 
     },
     instructions: {
