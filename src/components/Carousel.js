@@ -79,7 +79,7 @@ class CarouselComponent extends Component {
                
 
               
-                <Carousel swipeThreshold={0.2}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,   }}>
+                <Carousel swipeThreshold={0.1}  onPageChange={this.handleOnPageChange.bind(this) } currentPage={ this.state.currentPage }   pageStyle={{backgroundColor:'transparent', borderRadius: 5,   }}>
              
                      {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>

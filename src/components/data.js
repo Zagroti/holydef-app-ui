@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
         fontFamily: 'iranyekanbold', 
         color: colors.black,
         fontSize: normalize(20),
-
+        
     },
     h2:{
         fontFamily: 'iranyekanbold', 
