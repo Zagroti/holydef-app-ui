@@ -48,7 +48,34 @@ class category extends Component {
 
         
     }
+
+    _getPhotoWallpaper(id){
  
+        if(id ==0)
+        this.setState({imageFile : img01});
+        else if(id ===1)
+        this.setState({imageFile : img02});
+        else if(id ===2)
+        this.setState({imageFile : img03});
+        else if(id ===3)
+        this.setState({imageFile : img04});
+        else if(id ===4)
+        this.setState({imageFile : img05});
+        else if(id ===5)
+        this.setState({imageFile : img06});
+        else if(id ===6)
+        this.setState({imageFile : img07});
+        else if(id ===7)
+        this.setState({imageFile : img08});
+        else if(id ===8)
+        this.setState({imageFile : img09});
+        else if(id ===9)
+        this.setState({imageFile : img10});
+        else if(id ===10)
+        this.setState({imageFile : img11});
+        else if(id ===11)
+        this.setState({imageFile : img12});
+    }
     _loadInitialState = async () => {
         try {
           let value = await AsyncStorage.getItem('ACTIVITYCODE'); // Get Token from localStrage
@@ -70,6 +97,8 @@ class category extends Component {
             }
 
              let catId = navigation.getParam('DataId', 'It is Null');
+             this._getPhotoWallpaper(catId - 1);  // get photo from wallpaper
+
              const url = 'http://api.holydef.ir/api/v1/article/' + catId;
              fetch(url, data)
              .then((response) => response.json())

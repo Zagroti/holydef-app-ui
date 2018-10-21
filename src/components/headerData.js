@@ -59,7 +59,7 @@ class HeaderSearch extends Component {
                 let responseJson = await response.json();
                     // TODO check later and clear any consol log
                    // console.log(data)
-                   // console.log(responseJson) 
+                   console.log(responseJson) 
                    // console.log(responseJson.error) 
 
                     this.setState({ isLoading: true,  errors: responseJson.error  })
@@ -96,7 +96,7 @@ class HeaderSearch extends Component {
         let url = 'http://api.holydef.ir/api/v1/article/' + catId + '/'+ articleId +"/favourite" ;
         let response = await fetch(url,data)
         .then((response) => response.json());
-       // console.log(response.data.is_favourite);
+       console.log(response.data.is_favourite);
         this.setState({isFavorite: response.data.is_favourite, isLoading:true, videoURL:response.data.vi });
 
     }

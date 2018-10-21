@@ -36,7 +36,6 @@ import img09 from '../assets/img/09.jpg'
 import img10 from '../assets/img/10.jpg'
 import img11 from '../assets/img/11.jpg'
 import img12 from '../assets/img/12.jpg'
-import imageBackground from '../assets/img/main-bg.jpg'
 //---------------------------------------------
 
 
@@ -56,6 +55,34 @@ class Data extends Component {
         }
     }
 
+
+    _getPhotoWallpaper(id){
+        if(id ==0)
+        this.setState({imageFile : img01});
+        else if(id ==1)
+        this.setState({imageFile : img02});
+        else if(id ==2)
+        this.setState({imageFile : img03});
+        else if(id ==3)
+        this.setState({imageFile : img04});
+        else if(id ==4)
+        this.setState({imageFile : img05});
+        else if(id ==5)
+        this.setState({imageFile : img06});
+        else if(id ==6)
+        this.setState({imageFile : img07});
+        else if(id ==7)
+        this.setState({imageFile : img08});
+        else if(id ==8)
+        this.setState({imageFile : img09});
+        else if(id ==9)
+        this.setState({imageFile : img10});
+        else if(id ==10)
+        this.setState({imageFile : img11});
+        else if(id ==11)
+        this.setState({imageFile : img12});
+    }
+
  
 
     gotopage = () => {
@@ -64,17 +91,21 @@ class Data extends Component {
         
     }
 
-         componentWillMount= async()=>{
+
+        _fetchdata = async() =>{
+
             this.setState({ isLoading: true })
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
 
              let catId = navigation.getParam('categoryId', 'It is Null');
+             this._getPhotoWallpaper(catId - 1);
+
              let articleId = navigation.getParam('articleId', 'It is Null');
              let Token = navigation.getParam('Token', 'It is Null');
 
-               console.log(articleId);
-               console.log(catId);
+            //    console.log(articleId);
+            //    console.log(catId);
 
             // console.log( " catid: "+ catId + " article id: "+ articleId); // TODO delete later
             const data= {
@@ -106,6 +137,13 @@ class Data extends Component {
              .catch((error) => {
                    console.log(error);
              })
+
+        }
+
+         componentWillMount(){ 
+
+           this._fetchdata().done();
+
       
          }
   
@@ -128,7 +166,7 @@ class Data extends Component {
 
         return ( 
 
-            <ImageBackground source = {imageBackground} blurRadius={10} style={styles.container}>
+            <ImageBackground source = {this.state.imageFile} blurRadius={10} style={styles.container}>
 
                 <Header navigation={this.props.navigation} 
                         catid={this.state.catIdState} 
@@ -162,6 +200,7 @@ class Data extends Component {
                                     value={htmlContent}
                                     stylesheet={styles}
                                     style={{paddingBottom: 50}}
+                                    addLineBreaks={false}
                                     />
                             </ScrollView>
                         </View>
@@ -301,6 +340,9 @@ const styles = StyleSheet.create({
     },
     p:{
         fontFamily: 'IRANSans',
+        marginTop: 3,
+        marginBottom: 3
+
     },
     h1:{
         fontFamily: 'iranyekanbold', 
@@ -330,7 +372,32 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
       },
+      strong:{
+        fontFamily: 'iranyekanbold', 
+        fontSize: normalize(16),
+        color: '#111'
 
+      },
+      span:{
+          display: 'none',
+          color:'#ff0000',
+          fontFamily: 'IRANSans',
+
+      },
+      ul:{
+        fontFamily: 'IRANSans',
+
+      },
+      sub:{
+        fontFamily: 'IRANSans',
+
+      },
+      li:{
+        fontFamily: 'IRANSans',
+      },
+      div:{
+        fontFamily: 'IRANSans',
+      }
 })
  
 
