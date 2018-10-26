@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Button , StyleSheet, ActivityIndicator } from 'react-native';
+import { 
+  View, 
+  Text, 
+  Button , 
+  StyleSheet, 
+  ActivityIndicator
+
+} from 'react-native';
 import VideoPlayer from 'react-native-video-player';
 import Header from './headerVideoPlayer';
 
@@ -35,10 +42,9 @@ export default class SoundPlayer extends Component {
      global.fetch('http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId, data)
       .then(res => res.json())
       .then((responseJson) => {this.setState({
-
-        soundurl: responseJson.data.audio,
-        thumbnailUrl: responseJson.data.image,
-        autoplay: true,
+          soundurl: responseJson.data.audio,
+          thumbnailUrl: responseJson.data.image,
+          autoplay: true,
       })
       console.log("fetch is data : "+ this.state.soundurl); // TODO later delete it
       this.setState({ isLoading: false })
@@ -61,35 +67,35 @@ export default class SoundPlayer extends Component {
     return (
       <View style={styles.container}>
 
-       <View style={styles.one}>
-            < Header navigation={this.props.navigation} />
-       </View>
-       <View style={styles.two}>
+          <View style={styles.one}>
+                < Header navigation={this.props.navigation} />
+          </View>
+          <View style={styles.two}>
 
-            {isLoading ? (
+                {isLoading ? (
 
-                    <View style={styles.loadingBox}>
-                        <Text style={{paddingHorizontal:10,fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
-                        <ActivityIndicator color="white" />
-                    </View>
+                        <View style={styles.loadingBox}>
+                            <Text style={{paddingHorizontal:10,fontFamily:'IRANSans'}}>درحال بارگذاری</Text>
+                            <ActivityIndicator color="white" />
+                        </View>
 
-                    ) : (
-                        <VideoPlayer
-                        endWithThumbnail
-                        thumbnail={{ uri: this.state.thumbnailUrl }}
-                        video={{ uri: this.state.soundurl }}
-                        videoWidth={this.state.video.width}
-                        videoHeight={this.state.video.height}  
-                        duration={this.state.video.duration}
-                        disableFullscreen={true}
-                        autoplay= {true} // its importent after complate fetch will be wroking
-                        onEnd={this.stopPlaybackPing}
+                        ) : (
+                            <VideoPlayer
+                            endWithThumbnail
+                            thumbnail={{ uri: this.state.thumbnailUrl }}
+                            video={{ uri: this.state.soundurl }}
+                            videoWidth={this.state.video.width}
+                            videoHeight={this.state.video.height}  
+                            duration={this.state.video.duration}
+                            disableFullscreen={true}
+                            autoplay= {true} // its importent after complate fetch will be wroking
+                            onEnd={this.stopPlaybackPing}
 
-                        ref={r => this.player = r}
-                        />
-                )}
-   
-       </View>
+                            ref={r => this.player = r}
+                            />
+                    )}
+      
+          </View>
 
       </View>
     );
