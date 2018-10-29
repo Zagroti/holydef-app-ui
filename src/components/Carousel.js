@@ -119,7 +119,7 @@ class CarouselComponent extends Component {
                         <ImageBackground source={require('../assets/img/04.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'4')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
-                                <Text style={styles.textStyling}>ستاد مشترک دفاع مقدس</Text>
+                                <Text style={styles.textStyling}>دانستنی های دفاع مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
