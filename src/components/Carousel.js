@@ -93,7 +93,7 @@ class CarouselComponent extends Component {
                     </View>
 
                                          {/*--------------- Items of category --------------- */}
-                                         <View style={styles.container}>
+                    <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/02.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'2')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
@@ -104,7 +104,7 @@ class CarouselComponent extends Component {
                     </View>
 
                                          {/*--------------- Items of category --------------- */}
-                                         <View style={styles.container}>
+                    <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/03.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'3')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
@@ -115,7 +115,7 @@ class CarouselComponent extends Component {
                     </View>
 
                                          {/*--------------- Items of category --------------- */}
-                                         <View style={styles.container}>
+                    <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/04.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'4')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
