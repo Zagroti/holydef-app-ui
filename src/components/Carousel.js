@@ -169,7 +169,8 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-                                         {/*--------------- Items of category --------------- */}
+                    {/*--------------- Items of category --------------- */}
+                    
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/09.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'9')} style={styles.tocuContainer}>
@@ -180,7 +181,7 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-                                         {/*--------------- Items of category --------------- */}
+                    {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/10.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'10')} style={styles.tocuContainer}>
@@ -191,7 +192,7 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-                                         {/*--------------- Items of category --------------- */}
+                    {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/11.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'11')} style={styles.tocuContainer}>
@@ -202,7 +203,7 @@ class CarouselComponent extends Component {
                         </ImageBackground>
                     </View>
 
-                                         {/*--------------- Items of category --------------- */}
+                    {/*--------------- Items of category --------------- */}
                     <View style={styles.container}>
                         <ImageBackground source={require('../assets/img/12.jpg')} style={styles.backgroundImage} >
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'12')} style={styles.tocuContainer}>
