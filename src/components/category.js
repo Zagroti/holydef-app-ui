@@ -117,7 +117,6 @@ class category extends Component {
                    this.setState({dataSource: responseJson.data});
                    //console.log(responseJson.data);
                    this.setState({ isLoading: false })
-
              })
              .catch((error) => {
                    console.log(error);
@@ -133,13 +132,14 @@ class category extends Component {
 
 
     _openViewPage(id,catId,Token){
-        console.log(Token);
+        console.log(Token); // TO DO later
         this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token: Token, onGoBack: () => this.refresh() });
 
     }
 
     refresh(){
         console.log("Category is Backed!")
+        // TO DO for refreshing page whne is backed
     }
 
  
