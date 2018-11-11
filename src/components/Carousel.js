@@ -19,6 +19,7 @@ import img09 from '../assets/img/09.jpg'
 import img10 from '../assets/img/10.jpg'
 import img11 from '../assets/img/11.jpg'
 import img12 from '../assets/img/12.jpg'
+import img13 from '../assets/img/13.jpg'
 //---------------------------------------------
 
 
@@ -67,6 +68,8 @@ class CarouselComponent extends Component {
                     this.setState({currentPage:position, sourceFile : img11});
                     else if(position ===11)
                     this.setState({currentPage:position, sourceFile : img12});
+                    else if(position ===12)
+                    this.setState({currentPage:position, sourceFile : img13});
         
     }
 
@@ -209,6 +212,17 @@ class CarouselComponent extends Component {
                             <TouchableOpacity onPress={this.navigateToData.bind(this,'12')} style={styles.tocuContainer}>
                                 <View style={styles.viewTextContainer}>
                                     <Text style={styles.textStyling}>گاه شمار دفاع مقدس</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </ImageBackground>
+                    </View>
+
+                                        {/*--------------- Items of category --------------- */}
+                                        <View style={styles.container}>
+                        <ImageBackground source={require('../assets/img/13.jpg')} style={styles.backgroundImage} >
+                            <TouchableOpacity onPress={this.navigateToData.bind(this,'13')} style={styles.tocuContainer}>
+                                <View style={styles.viewTextContainer}>
+                                    <Text style={styles.textStyling}>   مقدس</Text>
                                 </View>
                             </TouchableOpacity>
                         </ImageBackground>
