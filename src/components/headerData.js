@@ -119,7 +119,7 @@ class HeaderSearch extends Component {
                      <View>
                                     {this.state.isFavorite ? (
                                     <TouchableOpacity transparent onPress={() => {this._setFavorite(this.props.catid, this.props.id, this.props.Token); this.setState({isFavorite:false})}} >
-                                        <Icon style={{color: '#EC7063'}} name='heart' />
+                                        <Icon style={{color: transparent}} name='heart' />
                                     </TouchableOpacity>
                                 ) :(
                                     <TouchableOpacity transparent onPress={() => {this._setFavorite(this.props.catid, this.props.id, this.props.Token); this.setState({isFavorite:true})}} >
@@ -142,7 +142,7 @@ class HeaderSearch extends Component {
                             </TouchableOpacity>
                         ) :(
                             <View >
-                                <Icon style={{color: '#c5c5c5'}} name='videocam' />
+                                <Icon style={{color: 'transparent'}} name='videocam' />
                             </View>
                         )}
                 </View>
@@ -154,7 +154,7 @@ class HeaderSearch extends Component {
                                 </TouchableOpacity>
                         ) : (
                                 <View>
-                                    <Icon style={{color: '#c5c5c5'}} name='volume-up' />
+                                    <Icon style={{color: 'transparent'}} name='volume-up' />
                                 </View>
                         )}
                 </View>

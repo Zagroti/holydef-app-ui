@@ -1,5 +1,5 @@
 import React from 'react';
-import { StackNavigator  } from 'react-navigation';
+import { StackNavigator , SwitchNavigator } from 'react-navigation';
 import { Platform, AsyncStorage } from 'react-native';
 import colors from './styles/colors';
 import SplashAuto from 'react-native-splash-screen';
@@ -52,6 +52,15 @@ const defaultNavigationOptions = {
     Login :    { screen : LoginScreen},
     Activity : { screen : ActivityScreen},
 
+},
+{ 
+    initialRouteName : 'Splash',
+    headerMode: 'none'
+
+}) 
+
+const MainStack = StackNavigator({
+
     Main :     {screen : Main},
     Carousel : {screen : CarouselScreen},
     Category : {screen : CategoryScreen},
@@ -70,13 +79,22 @@ const defaultNavigationOptions = {
     Favorite :    {screen : Favorite},
 
 },
-{
-    // initialRouteName : 'Search',
-    initialRouteName : 'Splash',
+{ 
+    initialRouteName : 'Main',
     headerMode: 'none'
 
 }) 
 
+
+
+const Rootcall = SwitchNavigator({
+    Auth:{
+        screen: RootStack
+    },
+    MainRoot:{
+        screen: MainStack
+    }
+})
 
 //
 // export App from root stack
@@ -96,7 +114,7 @@ export default class Root  extends React.Component{
         return(
 
              
-            <RootStack  />
+            <Rootcall  />
         );
     }
 }
