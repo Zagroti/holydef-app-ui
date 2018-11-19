@@ -94,6 +94,8 @@ const Rootcall = SwitchNavigator({
     MainRoot:{
         screen: MainStack
     }
+},{
+    initialRouteName : 'MainRoot',   
 })
 
 //

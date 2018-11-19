@@ -14,6 +14,7 @@ import normalize from '../styles/normalizeText';
     constructor(props) {
       super(props)
       this.state = { Token: null}
+      // this.state = { Token: null}  TODO later its corect
     }
   closeDrawer() {
     this.drawer._root.close() 
@@ -27,11 +28,17 @@ import normalize from '../styles/normalizeText';
     this.props.navigation.navigate('Search',{Token:Token});
 
   }
+  setValueLocally=()=>{
 
+    AsyncStorage.setItem('ACTIVITYCODE', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJhZ2VudCI6ImFuZHJvaWQifQ.bKdIewog9Hue7YxsEz6GeFMFhnWLL3RiBBwSl52pHMM');
+   // alert("Value Stored Successfully.")
+   console.log(this.state.Activekey)
+ 
+  }
 
 
   componentWillMount = async () => {
-
+    this.setValueLocally(); // Its make fake token ----> Deleted later
           try {
             let value = await AsyncStorage.getItem('ACTIVITYCODE'); // Get Token from localStrage
       
