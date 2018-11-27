@@ -164,8 +164,10 @@ class Data extends Component {
  
 
         const { errors, isLoading } = this.state
-        const htmlContent = this.state.dataSource.description;
-
+        let htmlContent = this.state.dataSource.description;
+        if(htmlContent === null)
+        htmlContent = ''
+        console.log(htmlContent)
         return ( 
 
             <ImageBackground source = {this.state.imageFile} blurRadius={10} style={styles.container}>
@@ -198,12 +200,15 @@ class Data extends Component {
                             <ScrollView style={styles.dataContainer}>
                                 <Text style={{fontSize:16, fontFamily:'IRANSans_Bold'}}>{this.state.dataSource.title}</Text>
                                 <Image source={{uri: this.state.dataSource.image}} style={{ resizeMode: 'contain', height: 250 }} />
-                                    <HTMLView
-                                    value={htmlContent}
-                                    stylesheet={styles}
-                                    style={{paddingBottom: 50}}
-                                    addLineBreaks={false}
-                                    />
+                                    
+                             
+                                        <HTMLView
+                                        value={htmlContent}
+                                        stylesheet={styles}
+                                        style={{paddingBottom: 50}}
+                                        addLineBreaks={false}
+                                        />
+                             
                             </ScrollView>
                         </View>
                    
