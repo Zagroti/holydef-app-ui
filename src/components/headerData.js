@@ -13,7 +13,7 @@ class HeaderSearch extends Component {
     }
 
     goBackTo = () => {
-        this.props.navigation.state.params.onGoBack();
+       // this.props.navigation.state.params.onGoBack();
         
         this.props.navigation.goBack();
         console.log("go back");

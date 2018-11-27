@@ -54,10 +54,15 @@ class Search extends Component {
 
     _openViewPage(id,catId){
         console.log(id);
-        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId});
+        const {navigation} = this.props;
+        let TokenId =  navigation.getParam('Token', 'Token is Null');
+        this.props.navigation.navigate('Data', {articleId:id, categoryId: catId, Token:TokenId});
 
     }
 
+    componentWillMount(){
+ 
+    }
 
  
 
@@ -80,6 +85,7 @@ class Search extends Component {
          }
    
          _SearchArticle =() => {
+             console.log("search!")
             Keyboard.dismiss();
             this.setState({ isLoading: true, notFound:false })
             const {navigation} = this.props;

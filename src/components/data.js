@@ -86,6 +86,7 @@ class Data extends Component {
  
 
     gotopage = () => {
+        console.log("Back button press!")
         this.props.navigation.navigate('Main');
 
         
@@ -104,10 +105,11 @@ class Data extends Component {
              let articleId = navigation.getParam('articleId', 'It is Null');
              let Token = navigation.getParam('Token', 'It is Null');
 
-            //    console.log(articleId);
-            //    console.log(catId);
+               console.log(articleId);
+               console.log(catId);
 
             // console.log( " catid: "+ catId + " article id: "+ articleId); // TODO delete later
+            console.log(Token)
             const data= {
                 method: 'GET',
                 headers: {
@@ -117,10 +119,10 @@ class Data extends Component {
             }
 
              const url = 'http://api.holydef.ir/api/v1/article/' + catId +"/"+ articleId;
-             fetch(url,data)
+            await fetch(url,data)
              .then((response) => response.json())
              .then((responseJson) => { 
-                
+                console.log(responseJson)
                    this.setState({
                     dataSource: responseJson.data,
                     isLoading: false,
