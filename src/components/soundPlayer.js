@@ -28,8 +28,8 @@ export default class SoundPlayer extends Component {
     this.setState({ isLoading: true })
     const {navigation} = this.props;
     // -------- get parametr from navigation in other component
-     let catId = navigation.getParam('categoryId', 'Its Null');
-     let articleId = navigation.getParam('articleId', 'Its Null');
+     let catId = navigation.getParam('articleId', 'Its Null'); 
+     let articleId = navigation.getParam('categoryId', 'Its Null');
      let Token = navigation.getParam('Token', 'Token is Null');
 
      const data={
