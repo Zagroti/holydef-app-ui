@@ -1,7 +1,7 @@
  
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Header from './headerVideoPlayer';
 
 import Video from 'react-native-af-video-player'; 
