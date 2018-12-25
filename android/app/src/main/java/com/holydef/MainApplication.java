@@ -3,18 +3,17 @@ package com.holydef;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import cl.json.RNSharePackage;
-// import com.zmxv.RNSound.RNSoundPackage;
-// import com.tanguyantoine.react.MusicControl;
-// import fm.indiecast.rnaudiostreamer.RNAudioStreamerPackage;
-// import rnsoundplayer.RNSoundPlayerPackage;
-import com.brentvatne.react.ReactVideoPackage; 
+import com.brentvatne.react.ReactVideoPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.github.yamill.orientation.OrientationPackage;
+import com.corbt.keepawake.KCKeepAwakePackage;
+import cl.json.RNSharePackage; 
 import org.devio.rn.splashscreen.SplashScreenReactPackage; 
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
-import com.facebook.soloader.SoLoader;
+import com.facebook.soloader.SoLoader; 
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,14 +30,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactVideoPackage(),
+            new LinearGradientPackage(),
+            new OrientationPackage(),
+            new KCKeepAwakePackage(),
             new RNSharePackage(),
-            // new MusicControl(),
-            // new RNAudioStreamerPackage(),
-            // new RNSoundPlayerPackage(), 
             new SplashScreenReactPackage(), 
-            new VectorIconsPackage(),
-            new ReactVideoPackage()
-            // new RNSoundPackage()
+            new VectorIconsPackage()
       );
     }
 
