@@ -122,7 +122,7 @@ class Data extends Component {
             await fetch(url,data)
              .then((response) => response.json())
              .then((responseJson) => { 
-                console.log(responseJson)
+                //console.log(responseJson)
                    this.setState({
                     dataSource: responseJson.data,
                     isLoading: false,
@@ -134,7 +134,7 @@ class Data extends Component {
                 
                 });
 
-                   console.log(responseJson.data) // TODO later delet it
+                   //console.log(responseJson.data) // TODO later delet it
              })
              .catch((error) => {
                    console.log(error);
@@ -167,7 +167,7 @@ class Data extends Component {
         let htmlContent = this.state.dataSource.description;
         if(htmlContent === null)
         htmlContent = ''
-        console.log(htmlContent)
+        //console.log(htmlContent)
         return ( 
 
             <ImageBackground source = {this.state.imageFile} blurRadius={10} style={styles.container}>
