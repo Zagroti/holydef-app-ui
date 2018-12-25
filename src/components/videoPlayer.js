@@ -15,7 +15,6 @@ class VideoPlayer extends Component {
     this.state = {
       isFullScreen: false,
       isLoading: true,
-      paused: false, 
       screenType:'content',
       videoSource:''
 
@@ -27,13 +26,13 @@ class VideoPlayer extends Component {
     const {navigation} = this.props;
     let GetVideoURL = navigation.getParam('videoURL', 'It is Null');
     this.setState({videoSource: GetVideoURL});
-    console.log(GetVideoURL);
+   // console.log(GetVideoURL);
 
   }
 
   onFullScreen(status) {
    // return true or flase when video player is fullscreen or not
-    console.log(status)
+   // console.log(status)
     this.setState({
       isFullScreen: status
     })
@@ -74,7 +73,6 @@ class VideoPlayer extends Component {
             null
           )}
 
-          
           <View style={styles.vierContainer}>
                 <Video
                   autoPlay
