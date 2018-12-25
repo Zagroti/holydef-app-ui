@@ -3,22 +3,18 @@
 import React, {Component} from 'react';
 import { StyleSheet, View } from 'react-native';
 import Header from './headerVideoPlayer';
-
 import Video from 'react-native-af-video-player'; 
-//import MediaControls, { PLAYER_STATES } from 'react-native-media-controls';
 
-class VideoPlayer extends Component {
-  videoPlayer;
+class VideoPlayer extends Component { 
 
   constructor(props) {
-    super(props);
-    this.state = {
-      isFullScreen: false,
-      isLoading: true,
-      screenType:'content',
-      videoSource:''
-
-    };
+      super(props);
+      this.state = {
+          isFullScreen: false,
+          isLoading: true,
+          screenType:'content',
+          videoSource:''
+      };
   }
 
 
@@ -55,7 +51,6 @@ class VideoPlayer extends Component {
       progress: '#fff',
       loading: '#E74C3C'
     }
-  
     const logo = 'http://holydef.ir/logo.png';
 
  
