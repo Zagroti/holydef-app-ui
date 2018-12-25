@@ -13,8 +13,6 @@ class VideoPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTime: 0,
-      duration: 0,
       isFullScreen: false,
       isLoading: true,
       paused: false, 
@@ -22,7 +20,6 @@ class VideoPlayer extends Component {
       videoSource:''
 
     };
-    this.onclick = this.onclick.bind(this)
   }
 
 
@@ -35,23 +32,17 @@ class VideoPlayer extends Component {
   }
 
   onFullScreen(status) {
-    // Set the params to pass in fullscreen status to navigationOptions
+   // return true or flase when video player is fullscreen or not
     console.log(status)
     this.setState({
       isFullScreen: status
     })
   }
 
-  
-     
-  onclick(){
-    console.log(this.state.isFullScreen)
-  }
   render() {
 
-    // const url = 'https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_30mb.mp4'
+    // const url = 'https://sample-videos.com/video123/mp4/240/big_buck_bunny_240p_30mb.mp4' long video example
     const url = this.state.videoSource;
-    // const url = 'http://www.hochmuth.com/mp3/Haydn_Cello_Concerto_D-1.mp3'
     const theme = {
       title: '#FFF',
       more: '#fff',
@@ -83,7 +74,7 @@ class VideoPlayer extends Component {
             null
           )}
 
-
+          
           <View style={styles.vierContainer}>
                 <Video
                   autoPlay
