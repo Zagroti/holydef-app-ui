@@ -53,7 +53,7 @@
 //       .catch((error) => {
 //         console.log(error);
 //   })
-     
+    
      
 //   }
 
@@ -136,28 +136,22 @@
 
 
 
-
-
-
-
-//         {/* <Button
-//           onPress={() => this.player.stop()}
-//           title="Stop"
-//         />
-//         <Button
-//           onPress={() => this.player.pause()}
-//           title="Pause"
-//         />
-//         <Button
-//           onPress={() => this.player.resume()}
-//           title="Resume"
-//         /> */}
-
+        {/* <Button
+          onPress={() => this.player.stop()}
+          title="Stop"
+        />
+        <Button
+          onPress={() => this.player.pause()}
+          title="Pause"
+        />
+        <Button
+          onPress={() => this.player.resume()}
+          title="Resume"
+        /> */}
 
 
 import React,{Component} from 'react';
 import {View , Text , } from 'react-native';
-
 
 class SoundPlayer extends Component {
   constructor(props) {
