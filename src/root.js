@@ -89,6 +89,7 @@ const MainStack = StackNavigator({
 
 const Rootcall = SwitchNavigator({
     Auth:{
+        
         screen: RootStack
     },
     MainRoot:{
@@ -114,7 +115,8 @@ export default class Root  extends React.Component{
         return(
 
              
-            <Rootcall  />
+             <Rootcall  />
+            // <SoundScreen />
         );
     }
 }

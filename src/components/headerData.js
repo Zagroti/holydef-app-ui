@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View , Text, StyleSheet, TouchableOpacity, Platform , ActivityIndicator } from 'react-native';
 import { Icon , Left} from 'native-base';
-
+import IconFont from 'react-native-vector-icons/FontAwesome5'
 import colors from '../styles/colors';
 import normalize from '../styles/normalizeText'; 
 
@@ -29,9 +29,9 @@ class HeaderSearch extends Component {
         console.log("در حال بارگذاری، لطفا کمی صبر کنید");
     }
 
-    _openSound(id,catId, Token){
+    _openSound(id,catId, Token, sound){
         console.log(id);
-        this.props.navigation.navigate('Sound', {articleId:id, categoryId: catId, Token:Token});
+        this.props.navigation.navigate('Sound', {articleId:id, categoryId: catId, Token:Token, soundURL:sound});
 
     }
 
@@ -149,12 +149,12 @@ class HeaderSearch extends Component {
                 <View style={{paddingLeft:15}}>
 
                         {this.props.sound ? (
-                                <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id, this.props.Token)} >
-                                    <Icon style={{color: '#fff'}} name='volume-up' />
+                                <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id, this.props.Token, this.props.sound)} >
+                                    <IconFont style={{color: '#fff'}}  size={22} name='volume-up' />
                                 </TouchableOpacity>
                         ) : (
                                 <View>
-                                    <Icon style={{color: 'transparent'}} name='volume-up' />
+                                    <IconFont style={{color: 'transparent'}}  size={22} name='volume-up' />
                                 </View>
                         )}
                 </View>

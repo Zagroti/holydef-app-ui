@@ -136,35 +136,187 @@
 
 
 
-        {/* <Button
-          onPress={() => this.player.stop()}
-          title="Stop"
-        />
-        <Button
-          onPress={() => this.player.pause()}
-          title="Pause"
-        />
-        <Button
-          onPress={() => this.player.resume()}
-          title="Resume"
-        /> */}
+   
 
+        import React,{ Component} from 'react';
+        import {View, Text, StyleSheet, Button, Image, BackgroundImage, TouchableOpacity , AppState} from 'react-native';
+        // import Video from 'react-native-video';
+        import Video from 'react-native-af-video-player';
+        import Header from './headerVideoPlayer';
 
-import React,{Component} from 'react';
-import {View , Text , } from 'react-native';
+        import colors from '../styles/colors';
+        
+// const url = 'http://media.mtvpersian.net/mp3/Reza%20Pishro/Reza-Pishro-Kalafegi.mp3';
+
 
 class SoundPlayer extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = { 
+      appState: AppState.currentState,
+      currentTime: null,
+      duration: 0,
+      isFullScreen: false,
+      isLoading: true,
+      paused: false,
+      screenType:'content'
+    }; 
   }
+
+
+
+  componentWillMount(){
+    const {navigation} = this.props;
+    let geturl = navigation.getParam('soundURL', 'It is Null');
+    this.setState({soundSource: geturl});
+
+    console.log(geturl)
+   // console.log(GetVideoURL);
+
+  }
+
+
   render() { 
+
+    const url = this.state.soundSource;
+    const logo = 'http://holydef.ir/logo.pn';
+    const theme = {
+      title: '#FFF',
+      more: '#446984',
+      center: '#ffffff',
+      fullscreen: 'transparent',
+      volume: '#ffffff',
+      scrubberThumb: '#234458',
+      scrubberBar: '#DBD5C7',
+      seconds: '#DBD5C7',
+      duration: '#DBD5C7',
+      progress: '#446984',
+      loading: '#DBD5C7'
+    }
+    const video = (
+
+      
+                    <Video  style={styles.hh}
+                    autoPlay
+                    url={url} 
+                    theme={theme}
+                    logo={logo}
+                    />
+
+                  );
+
+
+
+
+
     return ( 
-      <View>
-        <Text>Soud player</Text>
-      </View>
+  
+      <View  style={styles.container}>  
+            <Image style={styles.bg} source={require('../assets/img/music.jpg')} >
+            </Image>
+          <View style={styles.one}>
+                < Header navigation={this.props.navigation} />
+           </View>
+  
+         
+    
+      {video}
+
+   
+
+  
+    </View>
+
+
      );
   }
 }
  
+
+
+const styles = StyleSheet.create({
+  container:{ 
+  flex: 1,
+  flexDirection:'column',
+  backgroundColor: 'transparent',
+  alignItems:'center',
+
+  },
+  one:{
+    position:'absolute',
+    left:0,
+    width:'100%',   
+    zIndex:99
+  },
+
+  backgroundVideo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    
+  },
+  imgContainer:{
+    backgroundColor:'#666',
+    flex:2,
+
+
+  },
+  bContainer:{
+    alignItems:'center'
+  },
+
+  btnContainer:{ 
+    padding: 10,
+    margin: 10,
+    width:100,
+    height:100,
+    borderRadius: 100,
+    justifyContent:'center',
+    alignItems: 'center', 
+    borderWidth: 5,
+    borderColor: '#ffffff',
+
+
+  },
+  progressContainer:{
+    width:'100%',
+    height: 2,
+    backgroundColor:'#fff'
+  },
+  timeDurationContainer:{ 
+    flexDirection: 'row',
+    backgroundColor: '#999999',
+    justifyContent:'space-between',
+    padding:10,
+
+
+  },
+  trackStyle:{
+    backgroundColor:'#666',
+  },
+  thumbStyle:{
+    backgroundColor:'#d63031',
+
+  },
+  hh:{
+    flex:1,
+    backgroundColor:'transparent',
+    width:'100%', 
+    height:400,
+    justifyContent:'center',
+    alignItems:'center', 
+
+  },
+  bg:{
+    flex:1,
+    position:'absolute',
+    width:'100%'
+  }
+
+
+});
+
+
 export default SoundPlayer;
