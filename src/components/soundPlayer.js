@@ -218,12 +218,7 @@ class SoundPlayer extends Component {
                 < Header navigation={this.props.navigation} />
            </View>
   
-         
-    
       {video}
-
-   
-
   
     </View>
 
@@ -277,8 +272,6 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     borderWidth: 5,
     borderColor: '#ffffff',
-
-
   },
   progressContainer:{
     width:'100%',
@@ -290,7 +283,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#999999',
     justifyContent:'space-between',
     padding:10,
-
 
   },
   trackStyle:{
