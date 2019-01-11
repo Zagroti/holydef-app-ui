@@ -163,8 +163,6 @@ class SoundPlayer extends Component {
     }; 
   }
 
-
-
   componentWillMount(){
     const {navigation} = this.props;
     let geturl = navigation.getParam('soundURL', 'It is Null');
@@ -174,7 +172,6 @@ class SoundPlayer extends Component {
    // console.log(GetVideoURL);
 
   }
-
 
   render() { 
 
@@ -194,7 +191,6 @@ class SoundPlayer extends Component {
       loading: '#DBD5C7'
     }
     const video = (
-
       
                     <Video  style={styles.hh}
                     autoPlay
@@ -204,10 +200,6 @@ class SoundPlayer extends Component {
                     />
 
                   );
-
-
-
-
 
     return ( 
   
