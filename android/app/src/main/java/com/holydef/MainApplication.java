@@ -6,8 +6,7 @@ import com.facebook.react.ReactApplication;
 import com.brentvatne.react.ReactVideoPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.github.yamill.orientation.OrientationPackage;
-import com.corbt.keepawake.KCKeepAwakePackage;
-import cl.json.RNSharePackage; 
+import com.corbt.keepawake.KCKeepAwakePackage; 
 import org.devio.rn.splashscreen.SplashScreenReactPackage; 
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -33,8 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactVideoPackage(),
             new LinearGradientPackage(),
             new OrientationPackage(),
-            new KCKeepAwakePackage(),
-            new RNSharePackage(),
+            new KCKeepAwakePackage(), 
             new SplashScreenReactPackage(), 
             new VectorIconsPackage()
       );

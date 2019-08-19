@@ -4,8 +4,7 @@ import { View , Text, StyleSheet , Platform,ActivityIndicator, ImageBackground,S
     AlertIOS
      } from 'react-native';
 import Button from './touchable/button';
-import HTMLView from 'react-native-htmlview';
-import Share, {ShareSheet} from 'react-native-share';
+import HTMLView from 'react-native-htmlview'; 
 
 //
 //

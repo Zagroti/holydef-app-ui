@@ -16,7 +16,7 @@ import CategoryScreen  from './components/category';
 import DataScreen  from './components/data';
 import SearchScreen  from './components/search';
 
-import TestScreen from './components/test';
+// import TestScreen from './components/test';
 import DrawerScreen from './components/drawer';
 // import SidbarScreen from './components/SideBar';
 import StorageScreen from './components/storage';
@@ -67,7 +67,7 @@ const MainStack = StackNavigator({
     Data :     {screen : DataScreen},
     Search :   {screen : Search},
 
-    Test :     {screen : TestScreen},
+    // Test :     {screen : TestScreen},
     Drawer :   {screen : DrawerScreen},
     SideBar :   {screen : SideBar},
     Storage :  {screen : StorageScreen},
