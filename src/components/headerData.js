@@ -12,6 +12,43 @@ class HeaderSearch extends Component {
         this.state = { isFavorite:null }
     }
 
+
+    componentWillMount =  async () => {
+        console.log( this.props)
+        const {navigation} = this.props;
+        console.log(navigation.getParam('categoryId', 'It is Null'))
+        console.log(navigation.getParam('Token', 'It is Null'))
+        console.log("*************************************")
+        // let ISFAVORITE = navigation.getParam('Favorite', 'It is Null');
+        // this.setState({isFavorite: ISFAVORITE });
+
+        let catId = navigation.getParam('categoryId', 'It is Null');
+        let articleId = navigation.getParam('articleId', 'It is Null');
+        let Token = navigation.getParam('Token', 'It is Null');
+        let videourl= '';
+       //let ISFAVORITE = navigation.getParam('Favorite', 'It is Null');
+
+        const data= {
+            method: 'GET',
+            headers: {
+                "Authorization": Token,
+                "Accept":"application/json", 
+            }
+        }
+
+        let url = 'http://api.holydef.ir/api/v1/article/' + catId + '/'+ articleId +"/favourite" ;
+        let response = await fetch(url,data)
+        .then((response) => response.json());
+       console.log(response.data.is_favourite);
+       await this.setState({
+            isFavorite: response.data.is_favourite,
+            isLoading:true, 
+            videoURL:response.data.vi });
+
+    }
+
+  
+
     goBackTo = () => {
        // this.props.navigation.state.params.onGoBack();
         
@@ -74,32 +111,6 @@ class HeaderSearch extends Component {
 
     }
 
-    componentWillMount =  async () =>{
-        const {navigation} = this.props;
-        // let ISFAVORITE = navigation.getParam('Favorite', 'It is Null');
-        // this.setState({isFavorite: ISFAVORITE });
-
-        let catId = navigation.getParam('categoryId', 'It is Null');
-        let articleId = navigation.getParam('articleId', 'It is Null');
-        let Token = navigation.getParam('Token', 'It is Null');
-        let videourl= '';
-       //let ISFAVORITE = navigation.getParam('Favorite', 'It is Null');
-
-        const data= {
-            method: 'GET',
-            headers: {
-                "Authorization": Token,
-                "Accept":"application/json", 
-            }
-        }
-
-        let url = 'http://api.holydef.ir/api/v1/article/' + catId + '/'+ articleId +"/favourite" ;
-        let response = await fetch(url,data)
-        .then((response) => response.json());
-       console.log(response.data.is_favourite);
-        this.setState({isFavorite: response.data.is_favourite, isLoading:true, videoURL:response.data.vi });
-
-    }
 
     render() { 
 
@@ -113,28 +124,42 @@ class HeaderSearch extends Component {
             <View style={styles.container}>
      
             <Left style={{flexDirection:'row'}}>
-        
+
                 <View style={{paddingLeft:15}}>
-                {isLoading ? (
-                     <View>
-                                    {this.state.isFavorite ? (
-                                    <TouchableOpacity transparent onPress={() => {this._setFavorite(this.props.catid, this.props.id, this.props.Token); this.setState({isFavorite:false})}} >
-                                        <Icon style={{color: transparent}} name='heart' />
-                                    </TouchableOpacity>
-                                ) :(
-                                    <TouchableOpacity transparent onPress={() => {this._setFavorite(this.props.catid, this.props.id, this.props.Token); this.setState({isFavorite:true})}} >
-                                        <Icon style={{color: '#fff'}} name='heart' />
-                                    </TouchableOpacity>  
-                                )}
-                     </View>
-                ):(
-                    <View style={styles.loadingIocn}>
-                        <ActivityIndicator />
-                    </View>
-                )}
-
-
+                    {isLoading ? (
+                        <View>
+                                        {this.state.isFavorite ? (
+                                        <TouchableOpacity   onPress={() => {this._setFavorite(this.props.catid, this.props.id, this.props.Token); this.setState({isFavorite:false})}} >
+                                            <Icon style={{color: colors.red}} name='heart' />
+                                        </TouchableOpacity>
+                                    ) :(
+                                        <TouchableOpacity   onPress={() => {this._setFavorite(this.props.catid, this.props.id, this.props.Token); this.setState({isFavorite:true})}} >
+                                            <Icon style={{color: colors.white}} name='heart' />
+                                        </TouchableOpacity>  
+                                    )}
+                        </View>
+                    ):(
+                        <View style={styles.loadingIocn}>
+                            <ActivityIndicator />
+                        </View>
+                    )} 
                 </View>
+
+                <View style={{paddingLeft:15}}>
+                        {this.props.video ? (
+                            <TouchableOpacity  onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token, this.props.video)} >
+                                    <Icon style={{color: '#fff'}} name='videocam' />
+                            </TouchableOpacity>
+                        ) :(
+                            <View >
+                                <Icon style={{color: 'transparent'}} name='videocam' />
+                            </View>
+                        )}
+                </View>
+
+
+        
+                {/* 
                 <View style={{paddingLeft:15}}>
                         {this.props.video ? (
                             <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token, this.props.video)} >
@@ -157,7 +182,7 @@ class HeaderSearch extends Component {
                                     <IconFont style={{color: 'transparent'}}  size={22} name='volume-up' />
                                 </View>
                         )}
-                </View>
+                </View> */}
             </Left>
          
               <View><Text style={styles.titleStyling}>  </Text></View>

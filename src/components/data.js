@@ -93,7 +93,7 @@ class Data extends Component {
 
 
         _fetchdata = async() =>{
-
+            
             this.setState({ isLoading: true })
             const {navigation} = this.props;
             //let imageId =  navigation.getParam('DataId', 'Its Null') + '.jpg';
@@ -143,7 +143,8 @@ class Data extends Component {
 
          componentWillMount(){ 
 
-           this._fetchdata().done();
+           this._fetchdata();
+        //    this._fetchdata().done();
 
       
          }

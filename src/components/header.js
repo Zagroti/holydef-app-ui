@@ -28,7 +28,7 @@ class Header extends Component {
 
             <View style={styles.container}>
               <View>
-                <TouchableOpacity transparent >
+                <TouchableOpacity   >
                         <Icon style={{color: '#fff'}} name='search' />
                 </TouchableOpacity>
               </View>
@@ -36,7 +36,7 @@ class Header extends Component {
                     <Image source={require('../assets/img/logotypew.png')}  style={{width: 120, height: 100,  resizeMode: 'contain', alignItems:'center'}} />  
                 </View>
               <View>
-                <TouchableOpacity transparent onPress={this.goBackTo} >
+                <TouchableOpacity   onPress={this.goBackTo} >
                         <Icon style={{color: '#fff'}} name='arrow-forward' />
                 </TouchableOpacity>
               </View>
