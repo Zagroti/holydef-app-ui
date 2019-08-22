@@ -113,8 +113,6 @@ class HeaderSearch extends Component {
 
     const {isLoading } = this.state;
 
-
-
       
         return ( 
 
