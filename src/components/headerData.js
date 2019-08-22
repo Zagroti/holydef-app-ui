@@ -106,9 +106,6 @@ class HeaderSearch extends Component {
                 } catch(error) {
                     console.error(error);
                 }
-
-                
-
     }
 
 
@@ -156,33 +153,17 @@ class HeaderSearch extends Component {
                             </View>
                         )}
                 </View>
-
-
-        
-                {/* 
                 <View style={{paddingLeft:15}}>
-                        {this.props.video ? (
-                            <TouchableOpacity transparent onPress={ () => this._openViewPage(this.props.catid, this.props.id, this.props.Token, this.props.video)} >
-                                    <Icon style={{color: '#fff'}} name='videocam' />
+                    {this.props.sound ? (
+                            <TouchableOpacity  onPress={ () => this._openSound(this.props.catid, this.props.id, this.props.Token, this.props.sound)} >
+                                <IconFont style={{color: '#fff'}}  size={22} name='volume-up' />
                             </TouchableOpacity>
-                        ) :(
-                            <View >
-                                <Icon style={{color: 'transparent'}} name='videocam' />
+                    ) : (
+                            <View>
+                                <IconFont style={{color: 'transparent'}}  size={22} name='volume-up' />
                             </View>
-                        )}
-                </View>
-                <View style={{paddingLeft:15}}>
-
-                        {this.props.sound ? (
-                                <TouchableOpacity transparent onPress={ () => this._openSound(this.props.catid, this.props.id, this.props.Token, this.props.sound)} >
-                                    <IconFont style={{color: '#fff'}}  size={22} name='volume-up' />
-                                </TouchableOpacity>
-                        ) : (
-                                <View>
-                                    <IconFont style={{color: 'transparent'}}  size={22} name='volume-up' />
-                                </View>
-                        )}
-                </View> */}
+                    )}
+                </View> 
             </Left>
          
               <View><Text style={styles.titleStyling}>  </Text></View>
