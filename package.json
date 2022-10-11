@@ -10,7 +10,7 @@
     "buffer": "^5.2.1",
     "native-base": "^2.8.0",
     "react": "16.5.0",
-    "react-native": "0.57.0",
+    "react-native": "0.70.2",
     "react-native-af-video-player": "^0.2.1",
     "react-native-carousel-control": "^2.0.1",
     "react-native-htmlview": "^0.13.0",
